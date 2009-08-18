@@ -46,6 +46,8 @@
             this.removeCommandButton = new System.Windows.Forms.Button();
             this.targetButton = new System.Windows.Forms.Button();
             this.startInButton = new System.Windows.Forms.Button();
+            this.commandListViewHeader = new System.Windows.Forms.ColumnHeader();
+            this.targetListViewHeader = new System.Windows.Forms.ColumnHeader();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -106,6 +108,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(308, 439);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 24);
@@ -157,13 +160,20 @@
             // 
             // commandsListView
             // 
+            this.commandsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.commandListViewHeader,
+            this.targetListViewHeader});
             this.commandsTableLayoutPanel.SetColumnSpan(this.commandsListView, 3);
             this.commandsListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commandsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.commandsListView.HideSelection = false;
             this.commandsListView.Location = new System.Drawing.Point(3, 3);
+            this.commandsListView.MultiSelect = false;
             this.commandsListView.Name = "commandsListView";
             this.commandsListView.Size = new System.Drawing.Size(360, 226);
             this.commandsListView.TabIndex = 0;
             this.commandsListView.UseCompatibleStateImageBehavior = false;
+            this.commandsListView.View = System.Windows.Forms.View.Details;
             // 
             // incomingCommandLabel
             // 
@@ -265,6 +275,16 @@
             this.startInButton.TabIndex = 10;
             this.startInButton.UseVisualStyleBackColor = true;
             // 
+            // commandListViewHeader
+            // 
+            this.commandListViewHeader.Text = "Command";
+            this.commandListViewHeader.Width = 120;
+            // 
+            // targetListViewHeader
+            // 
+            this.targetListViewHeader.Text = "Target";
+            this.targetListViewHeader.Width = 236;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.okButton;
@@ -310,6 +330,8 @@
         private System.Windows.Forms.TextBox incomingCommandTextBox;
         private System.Windows.Forms.Button targetButton;
         private System.Windows.Forms.Button startInButton;
+        private System.Windows.Forms.ColumnHeader commandListViewHeader;
+        private System.Windows.Forms.ColumnHeader targetListViewHeader;
 
 
     }
