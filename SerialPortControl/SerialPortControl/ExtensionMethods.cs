@@ -25,6 +25,27 @@ namespace SerialPortControl
         }
 
 
+        public static IEnumerable<T> GetEnumValues<T>()
+        {
+            return Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+
+        public static IDictionary<string, int> GetEnumAsDictionary<T>()
+        {
+            Dictionary<string, int> output = new Dictionary<string,int>();
+
+            foreach (T t in GetEnumValues<T>())
+            {
+                output.Add(t.ToString, (int)t);
+            }
+
+            return output;
+        }
+
+        public static 
+
+
 
     }
 }

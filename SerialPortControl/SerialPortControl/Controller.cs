@@ -14,10 +14,13 @@ namespace SerialPortControl
         SettingsRepository settings;
         AvailableSerialPortConfiguration aspc;
 
+        IList<Command> _commands;
+
         public Controller()
         {
             settings = new SettingsRepository("SerialPortControl.xml");
             settings.Load();
+            _commands = settings.AllCommands().ToList();
             //settings.AddCommand(new Command { Arguments = "1234", IncomingCommand = "Josh", Target = ">> explorer.exe", StartInDirectory = "c:\\" });
             settings.Save();
             aspc = new AvailableSerialPortConfiguration();
@@ -38,6 +41,15 @@ namespace SerialPortControl
         public IEnumerable<Command> GetAllCommands()
         {
             return settings.AllCommands();
+        }
+
+
+        public IList<Command> Commands
+        {
+            get
+            {
+                return _commands;
+            }
         }
 
         public void AddCommand(Command command)

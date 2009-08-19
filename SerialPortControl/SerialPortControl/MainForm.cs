@@ -21,7 +21,8 @@ namespace SerialPortControl
         {
             InitializeComponent();
             _controller = controller;
-            LoadCommandsListView();
+            commandsListView.DataBindings
+            //LoadCommandsListView();
             LoadSerialPortConfigItems();
             LoadSerialPortConfiguration();
             DisableEditCommand();
@@ -76,11 +77,15 @@ namespace SerialPortControl
             baudRateComboBox.DataSource = typeof(BaudRate).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic);
             baudRateComboBox.DisplayMember = "Value";
 
-            parityComboBox.DataSource = typeof(Parity).GetFields(BindingFlags.Public | BindingFlags.Static);
-            parityComboBox.DisplayMember = "Name";
+
+            //parityComboBox.Items.a
+            parityComboBox.DataSource = Enum.GetNames(typeof(Parity));
+     //       parityComboBox.DisplayMember = "Name";
+            parityComboBox.ValueMember = "Value";
 
             stopBitsComboBox.DataSource = typeof(StopBits).GetFields(BindingFlags.Public | BindingFlags.Static);
             stopBitsComboBox.DisplayMember = "Name";
+            //.ValueMember = "Value";
 
             handshakeComboBox.DataSource = typeof(Handshake).GetFields(BindingFlags.Public | BindingFlags.Static);
             handshakeComboBox.DisplayMember = "Name";
@@ -90,8 +95,8 @@ namespace SerialPortControl
         {
             SerialPortConfiguration spc = _controller.GetSerialPortConfiguration();
             //portNameComboBox.SelectedValue = spc.PortName;
-           // baudRateComboBox.SelectedValue = spc.BaudRate;
-           // parityComboBox.SelectedValue = spc.Parity;
+            //baudRateComboBox.SelectedValue = spc.BaudRate;
+            parityComboBox.SelectedItem = spc.Parity;
             dataBitsTextBox.Text = spc.DataBits.ToString();
         }
 
