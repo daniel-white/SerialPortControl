@@ -17,10 +17,11 @@ namespace SerialPortControl
             InitializeComponent();
             _controller = controller;
             LoadCommandsListView();
+            LoadSerialPortConfigItems();
             DisableEditCommand();
         }
 
-        public void DisableEditCommand()
+        protected void DisableEditCommand()
         {
             removeCommandButton.Enabled = false;
 
@@ -43,7 +44,7 @@ namespace SerialPortControl
             startInButton.Enabled = false;
         }
 
-        public void EnableEditCommand()
+        protected void EnableEditCommand()
         {
             removeCommandButton.Enabled = true;
 
@@ -60,6 +61,12 @@ namespace SerialPortControl
             startInLabel.Enabled = true;
             startInTextBox.Enabled = true;
             startInButton.Enabled = true;
+        }
+
+        protected void LoadSerialPortConfigItems()
+        {
+            portNameComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().PortNames.ToArray());
+            baudRateComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().BaudRates.Cast<object>().ToArray());
         }
 
         public void LoadCommandsListView()

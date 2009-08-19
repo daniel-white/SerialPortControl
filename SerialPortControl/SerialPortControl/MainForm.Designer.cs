@@ -57,14 +57,14 @@
             this.baudRateLabel = new System.Windows.Forms.Label();
             this.portNameComboBox = new System.Windows.Forms.ComboBox();
             this.baudRateComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.parityLabel = new System.Windows.Forms.Label();
+            this.dataBitsTextBox = new System.Windows.Forms.TextBox();
+            this.parityComboBox = new System.Windows.Forms.ComboBox();
+            this.dataBitsLabel = new System.Windows.Forms.Label();
+            this.stopBitsLabel = new System.Windows.Forms.Label();
+            this.stopBitsComboBox = new System.Windows.Forms.ComboBox();
+            this.handshakeComboBox = new System.Windows.Forms.ComboBox();
+            this.handshakeLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -360,18 +360,18 @@
             this.portConfigurationTableLayoutPanel.ColumnCount = 2;
             this.portConfigurationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.portConfigurationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.label4, 0, 6);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.comboBox5, 1, 6);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.comboBox4, 2, 5);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.label3, 0, 5);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.label2, 0, 4);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.comboBox3, 2, 3);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.label1, 0, 3);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.handshakeLabel, 0, 6);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.handshakeComboBox, 1, 6);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.stopBitsComboBox, 2, 5);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.stopBitsLabel, 0, 5);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.dataBitsLabel, 0, 4);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.parityComboBox, 2, 3);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.parityLabel, 0, 3);
             this.portConfigurationTableLayoutPanel.Controls.Add(this.baudRateComboBox, 2, 2);
             this.portConfigurationTableLayoutPanel.Controls.Add(this.baudRateLabel, 0, 2);
             this.portConfigurationTableLayoutPanel.Controls.Add(this.portNameLabel, 0, 0);
             this.portConfigurationTableLayoutPanel.Controls.Add(this.portNameComboBox, 1, 0);
-            this.portConfigurationTableLayoutPanel.Controls.Add(this.textBox1, 1, 4);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.dataBitsTextBox, 1, 4);
             this.portConfigurationTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.portConfigurationTableLayoutPanel.Location = new System.Drawing.Point(3, 19);
             this.portConfigurationTableLayoutPanel.Name = "portConfigurationTableLayoutPanel";
@@ -431,91 +431,91 @@
             this.baudRateComboBox.Size = new System.Drawing.Size(265, 23);
             this.baudRateComboBox.TabIndex = 7;
             // 
-            // label1
+            // parityLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 29);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "P&arity:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.parityLabel.AutoSize = true;
+            this.parityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parityLabel.Location = new System.Drawing.Point(3, 58);
+            this.parityLabel.Name = "parityLabel";
+            this.parityLabel.Size = new System.Drawing.Size(69, 29);
+            this.parityLabel.TabIndex = 8;
+            this.parityLabel.Text = "P&arity:";
+            this.parityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // dataBitsTextBox
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(86, 90);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 23);
-            this.textBox1.TabIndex = 9;
+            this.dataBitsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataBitsTextBox.Location = new System.Drawing.Point(86, 90);
+            this.dataBitsTextBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.dataBitsTextBox.Name = "dataBitsTextBox";
+            this.dataBitsTextBox.Size = new System.Drawing.Size(265, 23);
+            this.dataBitsTextBox.TabIndex = 9;
             // 
-            // comboBox3
+            // parityComboBox
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(86, 61);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(265, 23);
-            this.comboBox3.TabIndex = 10;
+            this.parityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.parityComboBox.FormattingEnabled = true;
+            this.parityComboBox.Location = new System.Drawing.Point(86, 61);
+            this.parityComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.parityComboBox.Name = "parityComboBox";
+            this.parityComboBox.Size = new System.Drawing.Size(265, 23);
+            this.parityComboBox.TabIndex = 10;
             // 
-            // label2
+            // dataBitsLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 29);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "&Data bits:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dataBitsLabel.AutoSize = true;
+            this.dataBitsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataBitsLabel.Location = new System.Drawing.Point(3, 87);
+            this.dataBitsLabel.Name = "dataBitsLabel";
+            this.dataBitsLabel.Size = new System.Drawing.Size(69, 29);
+            this.dataBitsLabel.TabIndex = 11;
+            this.dataBitsLabel.Text = "&Data bits:";
+            this.dataBitsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // stopBitsLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 29);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "P&arity:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.stopBitsLabel.AutoSize = true;
+            this.stopBitsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stopBitsLabel.Location = new System.Drawing.Point(3, 116);
+            this.stopBitsLabel.Name = "stopBitsLabel";
+            this.stopBitsLabel.Size = new System.Drawing.Size(69, 29);
+            this.stopBitsLabel.TabIndex = 12;
+            this.stopBitsLabel.Text = "&Stop bits:";
+            this.stopBitsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox4
+            // stopBitsComboBox
             // 
-            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(86, 119);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(265, 23);
-            this.comboBox4.TabIndex = 13;
+            this.stopBitsComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stopBitsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stopBitsComboBox.FormattingEnabled = true;
+            this.stopBitsComboBox.Location = new System.Drawing.Point(86, 119);
+            this.stopBitsComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.stopBitsComboBox.Name = "stopBitsComboBox";
+            this.stopBitsComboBox.Size = new System.Drawing.Size(265, 23);
+            this.stopBitsComboBox.TabIndex = 13;
             // 
-            // comboBox5
+            // handshakeComboBox
             // 
-            this.comboBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(86, 148);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(265, 23);
-            this.comboBox5.TabIndex = 14;
+            this.handshakeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.handshakeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.handshakeComboBox.FormattingEnabled = true;
+            this.handshakeComboBox.Location = new System.Drawing.Point(86, 148);
+            this.handshakeComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.handshakeComboBox.Name = "handshakeComboBox";
+            this.handshakeComboBox.Size = new System.Drawing.Size(265, 23);
+            this.handshakeComboBox.TabIndex = 14;
             // 
-            // label4
+            // handshakeLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 30);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "&Handshake:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.handshakeLabel.AutoSize = true;
+            this.handshakeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.handshakeLabel.Location = new System.Drawing.Point(3, 145);
+            this.handshakeLabel.Name = "handshakeLabel";
+            this.handshakeLabel.Size = new System.Drawing.Size(69, 30);
+            this.handshakeLabel.TabIndex = 15;
+            this.handshakeLabel.Text = "&Handshake:";
+            this.handshakeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -529,6 +529,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -577,14 +578,14 @@
         private System.Windows.Forms.Label baudRateLabel;
         private System.Windows.Forms.ComboBox portNameComboBox;
         private System.Windows.Forms.ComboBox baudRateComboBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label parityLabel;
+        private System.Windows.Forms.TextBox dataBitsTextBox;
+        private System.Windows.Forms.Label dataBitsLabel;
+        private System.Windows.Forms.ComboBox parityComboBox;
+        private System.Windows.Forms.Label handshakeLabel;
+        private System.Windows.Forms.ComboBox handshakeComboBox;
+        private System.Windows.Forms.ComboBox stopBitsComboBox;
+        private System.Windows.Forms.Label stopBitsLabel;
 
 
     }

@@ -18,6 +18,7 @@ namespace SerialPortControl
         void UpdateCommand(string key, Command command);
 
         SerialPortConfiguration GetSerialPortConfiguration();
+        AvailableSerialPortConfiguration GetAvailableSerialPortConfiguration();
 
     }
 }

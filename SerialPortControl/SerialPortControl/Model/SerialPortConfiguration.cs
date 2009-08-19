@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.IO.Ports;
@@ -45,6 +46,19 @@ namespace SerialPortControl.Model
         Rate38400 = 38400,
         Rate57600 = 57600,
         Rate115200 = 115200
+    }
+
+    public class AvailableSerialPortConfiguration
+    {
+        public IList<string> PortNames { get { return SerialPort.GetPortNames(); } }
+        public IList<int> BaudRates
+        {
+            get
+            {
+
+                return new List<int>((int[]) Enum.GetValues(typeof(BaudRate)));
+            }
+        }
     }
     
 }

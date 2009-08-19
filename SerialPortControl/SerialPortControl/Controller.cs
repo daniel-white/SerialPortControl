@@ -12,12 +12,14 @@ namespace SerialPortControl
     public class Controller : IController
     {
         SettingsRepository settings;
+        AvailableSerialPortConfiguration aspc;
 
         public Controller()
         {
             settings = new SettingsRepository("SerialPortControl.xml");
             settings.Load();
             settings.Save();
+            aspc = new AvailableSerialPortConfiguration();
             
         }
 
@@ -72,6 +74,11 @@ namespace SerialPortControl
         public SerialPortConfiguration GetSerialPortConfiguration()
         {
             return settings.SerialPortConfiguration.Clone() as SerialPortConfiguration;
+        }
+
+        public AvailableSerialPortConfiguration GetAvailableSerialPortConfiguration()
+        {
+            return aspc;
         }
 
        
