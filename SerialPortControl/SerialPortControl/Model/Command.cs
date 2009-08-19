@@ -10,5 +10,6 @@ namespace SerialPortControl.Model
         public string IncomingCommand { get; set; }
         public string Target { get; set; }
         public string StartInDirectory { get; set; }
+        public string Arguments { get; set; }
     }
 }

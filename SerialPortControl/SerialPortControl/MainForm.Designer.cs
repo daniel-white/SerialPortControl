@@ -29,25 +29,27 @@
         private void InitializeComponent()
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.commandsTabPage = new System.Windows.Forms.TabPage();
-            this.configurationTabPage = new System.Windows.Forms.TabPage();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.okButton = new System.Windows.Forms.Button();
             this.commandsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.commandsListView = new System.Windows.Forms.ListView();
-            this.incomingCommandLabel = new System.Windows.Forms.Label();
-            this.targetLabel = new System.Windows.Forms.Label();
-            this.startInLabel = new System.Windows.Forms.Label();
-            this.incomingCommandTextBox = new System.Windows.Forms.TextBox();
-            this.targetTextBox = new System.Windows.Forms.TextBox();
             this.startInTextBox = new System.Windows.Forms.TextBox();
-            this.addCommandButton = new System.Windows.Forms.Button();
-            this.removeCommandButton = new System.Windows.Forms.Button();
-            this.targetButton = new System.Windows.Forms.Button();
-            this.startInButton = new System.Windows.Forms.Button();
+            this.targetTextBox = new System.Windows.Forms.TextBox();
+            this.startInLabel = new System.Windows.Forms.Label();
+            this.targetLabel = new System.Windows.Forms.Label();
+            this.commandsListView = new System.Windows.Forms.ListView();
             this.commandListViewHeader = new System.Windows.Forms.ColumnHeader();
             this.targetListViewHeader = new System.Windows.Forms.ColumnHeader();
+            this.addCommandButton = new System.Windows.Forms.Button();
+            this.removeCommandButton = new System.Windows.Forms.Button();
+            this.incomingCommandLabel = new System.Windows.Forms.Label();
+            this.incomingCommandTextBox = new System.Windows.Forms.TextBox();
+            this.targetButton = new System.Windows.Forms.Button();
+            this.startInButton = new System.Windows.Forms.Button();
+            this.configurationTabPage = new System.Windows.Forms.TabPage();
+            this.argumentsTextBox = new System.Windows.Forms.TextBox();
+            this.argumentsLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -73,6 +75,27 @@
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(386, 466);
             this.mainTableLayoutPanel.TabIndex = 1;
             // 
+            // okButton
+            // 
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.Location = new System.Drawing.Point(227, 439);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 24);
+            this.okButton.TabIndex = 3;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(308, 439);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 24);
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            // 
             // tabControl
             // 
             this.mainTableLayoutPanel.SetColumnSpan(this.tabControl, 2);
@@ -96,45 +119,17 @@
             this.commandsTabPage.Text = "Commands";
             this.commandsTabPage.UseVisualStyleBackColor = true;
             // 
-            // configurationTabPage
-            // 
-            this.configurationTabPage.Location = new System.Drawing.Point(4, 24);
-            this.configurationTabPage.Name = "configurationTabPage";
-            this.configurationTabPage.Size = new System.Drawing.Size(372, 402);
-            this.configurationTabPage.TabIndex = 1;
-            this.configurationTabPage.Text = "Configuration";
-            this.configurationTabPage.UseVisualStyleBackColor = true;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(308, 439);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 24);
-            this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // okButton
-            // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(227, 439);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 24);
-            this.okButton.TabIndex = 3;
-            this.okButton.Text = "OK";
-            this.okButton.UseVisualStyleBackColor = true;
-            // 
             // commandsTableLayoutPanel
             // 
             this.commandsTableLayoutPanel.ColumnCount = 3;
             this.commandsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.commandsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.commandsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.commandsTableLayoutPanel.Controls.Add(this.startInTextBox, 0, 7);
+            this.commandsTableLayoutPanel.Controls.Add(this.argumentsLabel, 0, 6);
+            this.commandsTableLayoutPanel.Controls.Add(this.argumentsTextBox, 0, 7);
+            this.commandsTableLayoutPanel.Controls.Add(this.startInTextBox, 0, 9);
             this.commandsTableLayoutPanel.Controls.Add(this.targetTextBox, 0, 5);
-            this.commandsTableLayoutPanel.Controls.Add(this.startInLabel, 0, 6);
+            this.commandsTableLayoutPanel.Controls.Add(this.startInLabel, 0, 8);
             this.commandsTableLayoutPanel.Controls.Add(this.targetLabel, 0, 4);
             this.commandsTableLayoutPanel.Controls.Add(this.commandsListView, 0, 0);
             this.commandsTableLayoutPanel.Controls.Add(this.addCommandButton, 1, 1);
@@ -142,12 +137,14 @@
             this.commandsTableLayoutPanel.Controls.Add(this.incomingCommandLabel, 0, 2);
             this.commandsTableLayoutPanel.Controls.Add(this.incomingCommandTextBox, 0, 3);
             this.commandsTableLayoutPanel.Controls.Add(this.targetButton, 2, 5);
-            this.commandsTableLayoutPanel.Controls.Add(this.startInButton, 2, 7);
+            this.commandsTableLayoutPanel.Controls.Add(this.startInButton, 2, 9);
             this.commandsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.commandsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.commandsTableLayoutPanel.Name = "commandsTableLayoutPanel";
-            this.commandsTableLayoutPanel.RowCount = 8;
+            this.commandsTableLayoutPanel.RowCount = 10;
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -157,6 +154,46 @@
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.Size = new System.Drawing.Size(366, 396);
             this.commandsTableLayoutPanel.TabIndex = 1;
+            // 
+            // startInTextBox
+            // 
+            this.commandsTableLayoutPanel.SetColumnSpan(this.startInTextBox, 2);
+            this.startInTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.startInTextBox.Location = new System.Drawing.Point(3, 369);
+            this.startInTextBox.Name = "startInTextBox";
+            this.startInTextBox.Size = new System.Drawing.Size(330, 23);
+            this.startInTextBox.TabIndex = 8;
+            // 
+            // targetTextBox
+            // 
+            this.commandsTableLayoutPanel.SetColumnSpan(this.targetTextBox, 2);
+            this.targetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.targetTextBox.Location = new System.Drawing.Point(3, 280);
+            this.targetTextBox.Name = "targetTextBox";
+            this.targetTextBox.Size = new System.Drawing.Size(330, 23);
+            this.targetTextBox.TabIndex = 7;
+            // 
+            // startInLabel
+            // 
+            this.startInLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.startInLabel, 3);
+            this.startInLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.startInLabel.Location = new System.Drawing.Point(3, 351);
+            this.startInLabel.Name = "startInLabel";
+            this.startInLabel.Size = new System.Drawing.Size(360, 15);
+            this.startInLabel.TabIndex = 5;
+            this.startInLabel.Text = "&Start In:";
+            // 
+            // targetLabel
+            // 
+            this.targetLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.targetLabel, 3);
+            this.targetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.targetLabel.Location = new System.Drawing.Point(3, 262);
+            this.targetLabel.Name = "targetLabel";
+            this.targetLabel.Size = new System.Drawing.Size(360, 15);
+            this.targetLabel.TabIndex = 4;
+            this.targetLabel.Text = "&Target:";
             // 
             // commandsListView
             // 
@@ -171,77 +208,27 @@
             this.commandsListView.Location = new System.Drawing.Point(3, 3);
             this.commandsListView.MultiSelect = false;
             this.commandsListView.Name = "commandsListView";
-            this.commandsListView.Size = new System.Drawing.Size(360, 226);
+            this.commandsListView.Size = new System.Drawing.Size(360, 182);
             this.commandsListView.TabIndex = 0;
             this.commandsListView.UseCompatibleStateImageBehavior = false;
             this.commandsListView.View = System.Windows.Forms.View.Details;
             this.commandsListView.SelectedIndexChanged += new System.EventHandler(this.commandsListView_SelectedIndexChanged);
             // 
-            // incomingCommandLabel
+            // commandListViewHeader
             // 
-            this.incomingCommandLabel.AutoSize = true;
-            this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandLabel, 3);
-            this.incomingCommandLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incomingCommandLabel.Location = new System.Drawing.Point(3, 262);
-            this.incomingCommandLabel.Name = "incomingCommandLabel";
-            this.incomingCommandLabel.Size = new System.Drawing.Size(360, 15);
-            this.incomingCommandLabel.TabIndex = 3;
-            this.incomingCommandLabel.Text = "&Incoming Command:";
+            this.commandListViewHeader.Text = "Command";
+            this.commandListViewHeader.Width = 120;
             // 
-            // targetLabel
+            // targetListViewHeader
             // 
-            this.targetLabel.AutoSize = true;
-            this.commandsTableLayoutPanel.SetColumnSpan(this.targetLabel, 3);
-            this.targetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetLabel.Location = new System.Drawing.Point(3, 306);
-            this.targetLabel.Name = "targetLabel";
-            this.targetLabel.Size = new System.Drawing.Size(360, 15);
-            this.targetLabel.TabIndex = 4;
-            this.targetLabel.Text = "&Target:";
-            // 
-            // startInLabel
-            // 
-            this.startInLabel.AutoSize = true;
-            this.commandsTableLayoutPanel.SetColumnSpan(this.startInLabel, 3);
-            this.startInLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startInLabel.Location = new System.Drawing.Point(3, 351);
-            this.startInLabel.Name = "startInLabel";
-            this.startInLabel.Size = new System.Drawing.Size(360, 15);
-            this.startInLabel.TabIndex = 5;
-            this.startInLabel.Text = "&Start In:";
-            // 
-            // incomingCommandTextBox
-            // 
-            this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandTextBox, 2);
-            this.incomingCommandTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incomingCommandTextBox.Location = new System.Drawing.Point(3, 280);
-            this.incomingCommandTextBox.Name = "incomingCommandTextBox";
-            this.incomingCommandTextBox.Size = new System.Drawing.Size(330, 23);
-            this.incomingCommandTextBox.TabIndex = 3;
-            // 
-            // targetTextBox
-            // 
-            this.commandsTableLayoutPanel.SetColumnSpan(this.targetTextBox, 2);
-            this.targetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetTextBox.Location = new System.Drawing.Point(3, 324);
-            this.targetTextBox.Name = "targetTextBox";
-            this.targetTextBox.Size = new System.Drawing.Size(330, 23);
-            this.targetTextBox.TabIndex = 7;
-            // 
-            // startInTextBox
-            // 
-            this.commandsTableLayoutPanel.SetColumnSpan(this.startInTextBox, 2);
-            this.startInTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startInTextBox.Location = new System.Drawing.Point(3, 369);
-            this.startInTextBox.Name = "startInTextBox";
-            this.startInTextBox.Size = new System.Drawing.Size(330, 23);
-            this.startInTextBox.TabIndex = 8;
+            this.targetListViewHeader.Text = "Target";
+            this.targetListViewHeader.Width = 236;
             // 
             // addCommandButton
             // 
             this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
-            this.addCommandButton.Location = new System.Drawing.Point(309, 235);
+            this.addCommandButton.Location = new System.Drawing.Point(309, 191);
             this.addCommandButton.Name = "addCommandButton";
             this.addCommandButton.Size = new System.Drawing.Size(24, 24);
             this.addCommandButton.TabIndex = 2;
@@ -251,17 +238,37 @@
             // 
             this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
-            this.removeCommandButton.Location = new System.Drawing.Point(339, 235);
+            this.removeCommandButton.Location = new System.Drawing.Point(339, 191);
             this.removeCommandButton.Name = "removeCommandButton";
             this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
             this.removeCommandButton.TabIndex = 2;
             this.removeCommandButton.UseVisualStyleBackColor = true;
             // 
+            // incomingCommandLabel
+            // 
+            this.incomingCommandLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandLabel, 3);
+            this.incomingCommandLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.incomingCommandLabel.Location = new System.Drawing.Point(3, 218);
+            this.incomingCommandLabel.Name = "incomingCommandLabel";
+            this.incomingCommandLabel.Size = new System.Drawing.Size(360, 15);
+            this.incomingCommandLabel.TabIndex = 3;
+            this.incomingCommandLabel.Text = "&Incoming Command:";
+            // 
+            // incomingCommandTextBox
+            // 
+            this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandTextBox, 3);
+            this.incomingCommandTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.incomingCommandTextBox.Location = new System.Drawing.Point(3, 236);
+            this.incomingCommandTextBox.Name = "incomingCommandTextBox";
+            this.incomingCommandTextBox.Size = new System.Drawing.Size(360, 23);
+            this.incomingCommandTextBox.TabIndex = 3;
+            // 
             // targetButton
             // 
             this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.targetButton.Location = new System.Drawing.Point(339, 324);
+            this.targetButton.Location = new System.Drawing.Point(339, 280);
             this.targetButton.Name = "targetButton";
             this.targetButton.Size = new System.Drawing.Size(24, 24);
             this.targetButton.TabIndex = 9;
@@ -277,15 +284,34 @@
             this.startInButton.TabIndex = 10;
             this.startInButton.UseVisualStyleBackColor = true;
             // 
-            // commandListViewHeader
+            // configurationTabPage
             // 
-            this.commandListViewHeader.Text = "Command";
-            this.commandListViewHeader.Width = 120;
+            this.configurationTabPage.Location = new System.Drawing.Point(4, 24);
+            this.configurationTabPage.Name = "configurationTabPage";
+            this.configurationTabPage.Size = new System.Drawing.Size(372, 402);
+            this.configurationTabPage.TabIndex = 1;
+            this.configurationTabPage.Text = "Configuration";
+            this.configurationTabPage.UseVisualStyleBackColor = true;
             // 
-            // targetListViewHeader
+            // argumentsTextBox
             // 
-            this.targetListViewHeader.Text = "Target";
-            this.targetListViewHeader.Width = 236;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsTextBox, 3);
+            this.argumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.argumentsTextBox.Location = new System.Drawing.Point(3, 325);
+            this.argumentsTextBox.Name = "argumentsTextBox";
+            this.argumentsTextBox.Size = new System.Drawing.Size(360, 23);
+            this.argumentsTextBox.TabIndex = 11;
+            // 
+            // argumentsLabel
+            // 
+            this.argumentsLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsLabel, 3);
+            this.argumentsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.argumentsLabel.Location = new System.Drawing.Point(3, 307);
+            this.argumentsLabel.Name = "argumentsLabel";
+            this.argumentsLabel.Size = new System.Drawing.Size(360, 15);
+            this.argumentsLabel.TabIndex = 12;
+            this.argumentsLabel.Text = "&Arguments:";
             // 
             // MainForm
             // 
@@ -334,6 +360,8 @@
         private System.Windows.Forms.Button startInButton;
         private System.Windows.Forms.ColumnHeader commandListViewHeader;
         private System.Windows.Forms.ColumnHeader targetListViewHeader;
+        private System.Windows.Forms.Label argumentsLabel;
+        private System.Windows.Forms.TextBox argumentsTextBox;
 
 
     }

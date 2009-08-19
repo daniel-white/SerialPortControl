@@ -26,13 +26,20 @@ namespace SerialPortControl
 
             incomingCommandLabel.Enabled = false;
             incomingCommandTextBox.Enabled = false;
+            incomingCommandTextBox.Text = "";
 
             targetLabel.Enabled = false;
             targetTextBox.Enabled = false;
+            targetTextBox.Text = "";
             targetButton.Enabled = false;
+
+            argumentsLabel.Enabled = false;
+            argumentsTextBox.Enabled = false;
+            argumentsTextBox.Text = "";
 
             startInLabel.Enabled = false;
             startInTextBox.Enabled = false;
+            startInTextBox.Text = "";
             startInButton.Enabled = false;
         }
 
@@ -46,6 +53,9 @@ namespace SerialPortControl
             targetLabel.Enabled = true;
             targetTextBox.Enabled = true;
             targetButton.Enabled = true;
+
+            argumentsLabel.Enabled = true;
+            argumentsTextBox.Enabled = true;
 
             startInLabel.Enabled = true;
             startInTextBox.Enabled = true;
@@ -62,7 +72,7 @@ namespace SerialPortControl
                 commandsListView.Items.Add(lvi);
             }
 
-            commandsListView.Columns[0].Width = -1;
+            commandsListView.Columns[0].Width = (commandsListView.Width - 2) / 3;
             commandsListView.Columns[1].Width = -2;
         }
 
@@ -71,6 +81,9 @@ namespace SerialPortControl
             if (commandsListView.SelectedItems.Count > 0)
             {
                 EnableEditCommand();
+                var command = _controller.GetCommand(commandsListView.SelectedItems[0].Tag as string);
+                incomingCommandTextBox.Text = command.IncomingCommand;
+                targetTextBox.Text = command.Target;
             }
             else
             {
@@ -78,6 +91,8 @@ namespace SerialPortControl
             }
            
         }
+
+      
 
     }
 }

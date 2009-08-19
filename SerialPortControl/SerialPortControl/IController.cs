@@ -9,7 +9,10 @@ namespace SerialPortControl
     {
         void ShowMainForm();
         IEnumerable<Model.Command> GetAllCommands();
+        Model.Command GetCommand(string key);
         void AddCommand(Model.Command command);
         void RemoveCommand(string key);
+
+        
     }
 }
