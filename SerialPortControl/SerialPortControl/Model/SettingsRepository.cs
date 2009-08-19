@@ -68,6 +68,7 @@ namespace SerialPortControl.Model
                     {
                         IncomingCommand = element.Element("IncomingCommand").Value,
                         Target = element.Element("Target").Value,
+                        Arguments = element.Element("Arguments").Value,
                         StartInDirectory = element.Element("StartInDirectory").Value
                     };
                     _commands.Add(command.IncomingCommand, command);

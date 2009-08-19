@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
+using SerialPortControl.Model;
+using System.IO.Ports;
+using System.Reflection;
+
 namespace SerialPortControl
 {
     public partial class MainForm : Form
@@ -18,6 +23,7 @@ namespace SerialPortControl
             _controller = controller;
             LoadCommandsListView();
             LoadSerialPortConfigItems();
+            LoadSerialPortConfiguration();
             DisableEditCommand();
         }
 
@@ -65,11 +71,28 @@ namespace SerialPortControl
 
         protected void LoadSerialPortConfigItems()
         {
-            portNameComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().PortNames.ToArray());
-            baudRateComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().BaudRates.Cast<object>().ToArray());
-            parityComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().Parities.Cast<object>().ToArray());
-            stopBitsComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().StopBits.Cast<object>().ToArray());
-            handshakeComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().Handshakes.Cast<object>().ToArray());
+            portNameComboBox.DataSource = _controller.GetAvailableSerialPortConfiguration().PortNames.ToArray();
+
+            baudRateComboBox.DataSource = typeof(BaudRate).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic);
+            baudRateComboBox.DisplayMember = "Value";
+
+            parityComboBox.DataSource = typeof(Parity).GetFields(BindingFlags.Public | BindingFlags.Static);
+            parityComboBox.DisplayMember = "Name";
+
+            stopBitsComboBox.DataSource = typeof(StopBits).GetFields(BindingFlags.Public | BindingFlags.Static);
+            stopBitsComboBox.DisplayMember = "Name";
+
+            handshakeComboBox.DataSource = typeof(Handshake).GetFields(BindingFlags.Public | BindingFlags.Static);
+            handshakeComboBox.DisplayMember = "Name";
+        }
+
+        protected void LoadSerialPortConfiguration()
+        {
+            SerialPortConfiguration spc = _controller.GetSerialPortConfiguration();
+            //portNameComboBox.SelectedValue = spc.PortName;
+           // baudRateComboBox.SelectedValue = spc.BaudRate;
+           // parityComboBox.SelectedValue = spc.Parity;
+            dataBitsTextBox.Text = spc.DataBits.ToString();
         }
 
         public void LoadCommandsListView()
@@ -94,6 +117,8 @@ namespace SerialPortControl
                 var command = _controller.GetCommand(commandsListView.SelectedItems[0].Tag as string);
                 incomingCommandTextBox.Text = command.IncomingCommand;
                 targetTextBox.Text = command.Target;
+                argumentsTextBox.Text = command.Arguments;
+                startInTextBox.Text = command.StartInDirectory;
             }
             else
             {
