@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 using System.IO;
-
+using System.Windows.Forms;
 using SerialPortControl.Model;
 
 namespace SerialPortControl
@@ -14,63 +14,47 @@ namespace SerialPortControl
         SettingsRepository settings;
         AvailableSerialPortConfiguration aspc;
 
-        IList<Command> _commands;
 
         public Controller()
         {
             settings = new SettingsRepository("SerialPortControl.xml");
             settings.Load();
-            _commands = settings.AllCommands().ToList();
+    
             //settings.AddCommand(new Command { Arguments = "1234", IncomingCommand = "Josh", Target = ">> explorer.exe", StartInDirectory = "c:\\" });
             settings.Save();
             aspc = new AvailableSerialPortConfiguration();
             
         }
 
-       
+        public bool WriteLog { get; set; }
+
+        public SerialPortConfiguration SerialPort { get; private set; }
 
         public void ShowMainForm()
         {
+            Commands = settings.Commands;
+            SerialPort = settings.SerialPort;
+
             MainForm mainForm = new MainForm(this);
-            mainForm.ShowDialog();
-        }
 
-        #region IController Members
-
-
-        public IEnumerable<Command> GetAllCommands()
-        {
-            return settings.AllCommands();
-        }
-
-
-        public IList<Command> Commands
-        {
-            get
+            var result = mainForm.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                return _commands;
+                settings.Commands = Commands;
+                settings.SerialPort = SerialPort;
+                settings.Save();
             }
         }
 
-        public void AddCommand(Command command)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveCommand(string key)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-
         #region IController Members
 
-
-        public Command GetCommand(string key)
+        public ICommandDictionary Commands
         {
-            return settings.SingleCommand(key);
+            get;
+            private set;
         }
+
+  
 
 
 
@@ -84,10 +68,7 @@ namespace SerialPortControl
             throw new NotImplementedException();
         }
 
-        public SerialPortConfiguration GetSerialPortConfiguration()
-        {
-            return settings.SerialPortConfiguration.Clone() as SerialPortConfiguration;
-        }
+        
 
         public AvailableSerialPortConfiguration GetAvailableSerialPortConfiguration()
         {

@@ -21,8 +21,8 @@ namespace SerialPortControl
         {
             InitializeComponent();
             _controller = controller;
-            commandsListView.DataBindings
-            //LoadCommandsListView();
+           // commandsListView.DataBindings
+            LoadCommandsListView();
             LoadSerialPortConfigItems();
             LoadSerialPortConfiguration();
             DisableEditCommand();
@@ -79,9 +79,9 @@ namespace SerialPortControl
 
 
             //parityComboBox.Items.a
-            parityComboBox.DataSource = Enum.GetNames(typeof(Parity));
+         //   parityComboBox.DataSource = Enum.GetNames(typeof(Parity));
      //       parityComboBox.DisplayMember = "Name";
-            parityComboBox.ValueMember = "Value";
+          //  parityComboBox.ValueMember = "Value";
 
             stopBitsComboBox.DataSource = typeof(StopBits).GetFields(BindingFlags.Public | BindingFlags.Static);
             stopBitsComboBox.DisplayMember = "Name";
@@ -93,16 +93,16 @@ namespace SerialPortControl
 
         protected void LoadSerialPortConfiguration()
         {
-            SerialPortConfiguration spc = _controller.GetSerialPortConfiguration();
+            
             //portNameComboBox.SelectedValue = spc.PortName;
             //baudRateComboBox.SelectedValue = spc.BaudRate;
-            parityComboBox.SelectedItem = spc.Parity;
-            dataBitsTextBox.Text = spc.DataBits.ToString();
+            parityComboBox.SelectedItem = _controller.SerialPort.Parity;
+            dataBitsTextBox.Text = _controller.SerialPort.DataBits.ToString();
         }
 
         public void LoadCommandsListView()
         {
-            foreach (var command in _controller.GetAllCommands())
+            foreach (var command in _controller.Commands.Values)
             {
                 ListViewItem lvi = new ListViewItem(command.IncomingCommand);
                 lvi.Tag = command.IncomingCommand;
@@ -119,7 +119,7 @@ namespace SerialPortControl
             if (commandsListView.SelectedItems.Count > 0)
             {
                 EnableEditCommand();
-                var command = _controller.GetCommand(commandsListView.SelectedItems[0].Tag as string);
+                var command = _controller.Commands[commandsListView.SelectedItems[0].Tag as string];
                 incomingCommandTextBox.Text = command.IncomingCommand;
                 targetTextBox.Text = command.Target;
                 argumentsTextBox.Text = command.Arguments;
@@ -130,6 +130,12 @@ namespace SerialPortControl
                 DisableEditCommand();
             }
            
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         

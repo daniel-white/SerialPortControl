@@ -11,13 +11,10 @@ namespace SerialPortControl
     {
         void ShowMainForm();
 
-        IEnumerable<Command> GetAllCommands();
-        Model.Command GetCommand(string key);
-        void AddCommand(Command command);
-        void RemoveCommand(string key);
-        void UpdateCommand(string key, Command command);
+        ICommandDictionary Commands { get; }
+        bool WriteLog { get; set; }
+        SerialPortConfiguration SerialPort { get; }
 
-        SerialPortConfiguration GetSerialPortConfiguration();
         AvailableSerialPortConfiguration GetAvailableSerialPortConfiguration();
 
     }

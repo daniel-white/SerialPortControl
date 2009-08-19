@@ -50,6 +50,7 @@
             this.targetButton = new System.Windows.Forms.Button();
             this.startInButton = new System.Windows.Forms.Button();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
+            this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
             this.portConfigurationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.handshakeLabel = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.portNameLabel = new System.Windows.Forms.Label();
             this.portNameComboBox = new System.Windows.Forms.ComboBox();
             this.dataBitsTextBox = new System.Windows.Forms.TextBox();
-            this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -102,6 +102,7 @@
             this.okButton.TabIndex = 3;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -334,6 +335,19 @@
             this.settingsTabPage.Text = "Settings";
             this.settingsTabPage.UseVisualStyleBackColor = true;
             // 
+            // writeLogFileCheckBox
+            // 
+            this.writeLogFileCheckBox.AutoSize = true;
+            this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.writeLogFileCheckBox.Location = new System.Drawing.Point(6, 205);
+            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(6);
+            this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
+            this.writeLogFileCheckBox.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.writeLogFileCheckBox.Size = new System.Drawing.Size(350, 28);
+            this.writeLogFileCheckBox.TabIndex = 1;
+            this.writeLogFileCheckBox.Text = "&Write entries in a log file on incoming commands";
+            this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
+            // 
             // portConfigurationGroupBox
             // 
             this.portConfigurationGroupBox.Controls.Add(this.portConfigurationTableLayoutPanel);
@@ -506,19 +520,6 @@
             this.dataBitsTextBox.Name = "dataBitsTextBox";
             this.dataBitsTextBox.Size = new System.Drawing.Size(255, 23);
             this.dataBitsTextBox.TabIndex = 9;
-            // 
-            // writeLogFileCheckBox
-            // 
-            this.writeLogFileCheckBox.AutoSize = true;
-            this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.writeLogFileCheckBox.Location = new System.Drawing.Point(6, 205);
-            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(6);
-            this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
-            this.writeLogFileCheckBox.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.writeLogFileCheckBox.Size = new System.Drawing.Size(350, 28);
-            this.writeLogFileCheckBox.TabIndex = 1;
-            this.writeLogFileCheckBox.Text = "&Write entries in a log file on incoming commands";
-            this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

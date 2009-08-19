@@ -11,8 +11,6 @@ namespace SerialPortControl.Model
 {
     public class SettingsRepository
     {
-        private IDictionary<string, Command> _commands;
- 
         private readonly string _xmlFilePath;
 
         public SettingsRepository(string xmlFilePath)
@@ -20,47 +18,31 @@ namespace SerialPortControl.Model
             _xmlFilePath = xmlFilePath;
         }
 
-        public bool Dirty { get; private set; }
+        public ICommandDictionary Commands { get; set; }
 
-        public IEnumerable<Command> AllCommands()
-        {
-            return _commands.Values.ToList().OrderBy(c => c.IncomingCommand);
-        }
+        public bool WriteLog { get; set; }
 
-        public Command SingleCommand(string key)
-        {
-            return _commands[key];
-        }
-
-        public void RemoveCommand(Command command)
-        {
-            _commands.Remove(command.IncomingCommand);
-            Dirty = true;
-        }
-
-        public void AddCommand(Command command)
-        {
-            _commands.Add(command.IncomingCommand, command);
-            Dirty = true;
-        }
+        public SerialPortConfiguration SerialPort { get; set; }
 
         public void Load()
         {
-            _commands = new Dictionary<string, Command>();
-            SerialPortConfiguration = new SerialPortConfiguration();
-
+            SerialPort = new SerialPortConfiguration();
+            Commands = new CommandDictionary();
             if (File.Exists(_xmlFilePath))
             {
                 XElement spcElement = XDocument.Load(_xmlFilePath).Element("SerialPortControl");
-                XElement portConfigurationElement = spcElement.Element("SerialPortConfiguration");
+                XElement settingsElement = spcElement.Element("Settings");
+                XElement serialPortElement = settingsElement.Element("SerialPort");
                 var commandElements = spcElement.Element("Commands").Elements("Command");
 
-                SerialPortConfiguration.PortName = portConfigurationElement.Element("PortName").Value;
-                SerialPortConfiguration.BaudRate = portConfigurationElement.Element("BaudRate").ToEnumValue<BaudRate>();
-                SerialPortConfiguration.Parity = portConfigurationElement.Element("Parity").ToEnumValue<Parity>();
-                SerialPortConfiguration.DataBits = Convert.ToInt32(portConfigurationElement.Element("DataBits").Value);
-                SerialPortConfiguration.StopBits = portConfigurationElement.Element("StopBits").ToEnumValue<StopBits>();
-                SerialPortConfiguration.Handshake = portConfigurationElement.Element("Handshake").ToEnumValue<Handshake>();
+                WriteLog = Convert.ToBoolean(settingsElement.Element("WriteLog").Value);
+
+                SerialPort.PortName = serialPortElement.Element("PortName").Value;
+                SerialPort.BaudRate = serialPortElement.Element("BaudRate").ToEnumValue<BaudRate>();
+                SerialPort.Parity = serialPortElement.Element("Parity").ToEnumValue<Parity>();
+                SerialPort.DataBits = Convert.ToInt32(serialPortElement.Element("DataBits").Value);
+                SerialPort.StopBits = serialPortElement.Element("StopBits").ToEnumValue<StopBits>();
+                SerialPort.Handshake = serialPortElement.Element("Handshake").ToEnumValue<Handshake>();
 
                 foreach (var element in commandElements)
                 {
@@ -71,31 +53,32 @@ namespace SerialPortControl.Model
                         Arguments = element.Element("Arguments").Value,
                         StartInDirectory = element.Element("StartInDirectory").Value
                     };
-                    _commands.Add(command.IncomingCommand, command);
+                    Commands.Add(command.IncomingCommand, command);
                 }
 
             }
-
-            Dirty = false;
         }
 
         public void Save()
         {
 
             XElement spcElement = new XElement("SerialPortControl");
-            XElement serialPortConfiguration = new XElement("SerialPortConfiguration");
+            XElement serialPortElement = new XElement("SerialPort");
+            XElement settingsElement = new XElement("Settings");
             XElement commandsElement = new XElement("Commands");
 
-            serialPortConfiguration.Add(
-                new XElement("PortName", SerialPortConfiguration.PortName),
-                new XElement("BaudRate", SerialPortConfiguration.BaudRate),
-                new XElement("Parity", SerialPortConfiguration.Parity),
-                new XElement("DataBits", SerialPortConfiguration.DataBits),
-                new XElement("StopBits", SerialPortConfiguration.StopBits),
-                new XElement("Handshake", SerialPortConfiguration.Handshake)
+            settingsElement.Add(new XElement("WriteLog", WriteLog), serialPortElement);
+
+            serialPortElement.Add(
+                new XElement("PortName", SerialPort.PortName),
+                new XElement("BaudRate", SerialPort.BaudRate),
+                new XElement("Parity", SerialPort.Parity),
+                new XElement("DataBits", SerialPort.DataBits),
+                new XElement("StopBits", SerialPort.StopBits),
+                new XElement("Handshake", SerialPort.Handshake)
                 );
 
-            foreach (var command in _commands.Values)
+            foreach (var command in Commands.Values)
             {
                 XElement commandElement = new XElement("Command",
                         new XElement("IncomingCommand", command.IncomingCommand),
@@ -107,14 +90,12 @@ namespace SerialPortControl.Model
                 commandsElement.Add(commandElement);
             }
 
-            spcElement.Add(serialPortConfiguration);
+            spcElement.Add(settingsElement);
             spcElement.Add(commandsElement);
 
             spcElement.Save(_xmlFilePath);
-
-            Dirty = false;
         }
 
-        public SerialPortConfiguration SerialPortConfiguration { get; private set; }
+        
     }
 }

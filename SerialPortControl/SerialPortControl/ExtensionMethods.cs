@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using System.Xml.Linq;
+using SerialPortControl.Model;
 
 namespace SerialPortControl
 {
@@ -31,19 +32,20 @@ namespace SerialPortControl
         }
 
 
-        public static IDictionary<string, int> GetEnumAsDictionary<T>()
+        public static IDictionary<string, int> GetEnumAsDictionary<T>() where T : IConvertible
         {
-            Dictionary<string, int> output = new Dictionary<string,int>();
+            Dictionary<string, int> output = new Dictionary<string, int>();
 
             foreach (T t in GetEnumValues<T>())
             {
-                output.Add(t.ToString, (int)t);
+                // output.Add(t.ToString, I);
             }
 
             return output;
         }
 
-        public static 
+  
+        
 
 
 
