@@ -34,6 +34,8 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.commandsTabPage = new System.Windows.Forms.TabPage();
             this.commandsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.argumentsLabel = new System.Windows.Forms.Label();
+            this.argumentsTextBox = new System.Windows.Forms.TextBox();
             this.startInTextBox = new System.Windows.Forms.TextBox();
             this.targetTextBox = new System.Windows.Forms.TextBox();
             this.startInLabel = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.targetButton = new System.Windows.Forms.Button();
             this.startInButton = new System.Windows.Forms.Button();
             this.configurationTabPage = new System.Windows.Forms.TabPage();
-            this.argumentsTextBox = new System.Windows.Forms.TextBox();
-            this.argumentsLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -154,6 +154,26 @@
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.Size = new System.Drawing.Size(366, 396);
             this.commandsTableLayoutPanel.TabIndex = 1;
+            // 
+            // argumentsLabel
+            // 
+            this.argumentsLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsLabel, 3);
+            this.argumentsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.argumentsLabel.Location = new System.Drawing.Point(3, 307);
+            this.argumentsLabel.Name = "argumentsLabel";
+            this.argumentsLabel.Size = new System.Drawing.Size(360, 15);
+            this.argumentsLabel.TabIndex = 12;
+            this.argumentsLabel.Text = "&Arguments:";
+            // 
+            // argumentsTextBox
+            // 
+            this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsTextBox, 3);
+            this.argumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.argumentsTextBox.Location = new System.Drawing.Point(3, 325);
+            this.argumentsTextBox.Name = "argumentsTextBox";
+            this.argumentsTextBox.Size = new System.Drawing.Size(360, 23);
+            this.argumentsTextBox.TabIndex = 11;
             // 
             // startInTextBox
             // 
@@ -292,26 +312,6 @@
             this.configurationTabPage.TabIndex = 1;
             this.configurationTabPage.Text = "Configuration";
             this.configurationTabPage.UseVisualStyleBackColor = true;
-            // 
-            // argumentsTextBox
-            // 
-            this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsTextBox, 3);
-            this.argumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.argumentsTextBox.Location = new System.Drawing.Point(3, 325);
-            this.argumentsTextBox.Name = "argumentsTextBox";
-            this.argumentsTextBox.Size = new System.Drawing.Size(360, 23);
-            this.argumentsTextBox.TabIndex = 11;
-            // 
-            // argumentsLabel
-            // 
-            this.argumentsLabel.AutoSize = true;
-            this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsLabel, 3);
-            this.argumentsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.argumentsLabel.Location = new System.Drawing.Point(3, 307);
-            this.argumentsLabel.Name = "argumentsLabel";
-            this.argumentsLabel.Size = new System.Drawing.Size(360, 15);
-            this.argumentsLabel.TabIndex = 12;
-            this.argumentsLabel.Text = "&Arguments:";
             // 
             // MainForm
             // 
