@@ -67,7 +67,7 @@ namespace SerialPortControl.Model
                 {
                     Command command = new Command
                     {
-                        IncomingCommand = element.Element("IncommingCommand").Value,
+                        IncomingCommand = element.Element("IncomingCommand").Value,
                         Target = element.Element("Target").Value,
                         StartInDirectory = element.Element("StartInDirectory").Value
                     };
@@ -99,7 +99,7 @@ namespace SerialPortControl.Model
             foreach (var command in _commands.Values)
             {
                 XElement commandElement = new XElement("Command",
-                        new XElement("IncommingCommand", command.IncomingCommand),
+                        new XElement("IncomingCommand", command.IncomingCommand),
                         new XElement("Target", command.Target),
                         new XElement("Arguments", command.Arguments),
                         new XElement("StartInDirectory", command.StartInDirectory)

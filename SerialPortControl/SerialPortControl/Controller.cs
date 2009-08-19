@@ -15,7 +15,7 @@ namespace SerialPortControl
         {
             commandRepository = new Model.SettingsRepository("SerialPortControl.xml");
             commandRepository.Load();
-            commandRepository.AddCommand(new Model.Command { IncomingCommand = "test", StartInDirectory = "test", Target = "test /somearg" });
+            commandRepository.AddCommand(new Model.Command { IncomingCommand = "test > test", StartInDirectory = "test", Target = "test /somearg" });
             commandRepository.Save();
             
         }
