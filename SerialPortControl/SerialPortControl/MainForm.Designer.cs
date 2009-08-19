@@ -50,21 +50,21 @@
             this.targetButton = new System.Windows.Forms.Button();
             this.startInButton = new System.Windows.Forms.Button();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
-            this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
             this.applicationSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
             this.portConfigurationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.portNameLabel = new System.Windows.Forms.Label();
-            this.baudRateLabel = new System.Windows.Forms.Label();
-            this.portNameComboBox = new System.Windows.Forms.ComboBox();
-            this.baudRateComboBox = new System.Windows.Forms.ComboBox();
-            this.parityLabel = new System.Windows.Forms.Label();
-            this.dataBitsTextBox = new System.Windows.Forms.TextBox();
-            this.parityComboBox = new System.Windows.Forms.ComboBox();
-            this.dataBitsLabel = new System.Windows.Forms.Label();
-            this.stopBitsLabel = new System.Windows.Forms.Label();
-            this.stopBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.handshakeComboBox = new System.Windows.Forms.ComboBox();
             this.handshakeLabel = new System.Windows.Forms.Label();
+            this.handshakeComboBox = new System.Windows.Forms.ComboBox();
+            this.stopBitsComboBox = new System.Windows.Forms.ComboBox();
+            this.stopBitsLabel = new System.Windows.Forms.Label();
+            this.dataBitsLabel = new System.Windows.Forms.Label();
+            this.parityComboBox = new System.Windows.Forms.ComboBox();
+            this.parityLabel = new System.Windows.Forms.Label();
+            this.baudRateComboBox = new System.Windows.Forms.ComboBox();
+            this.baudRateLabel = new System.Windows.Forms.Label();
+            this.portNameLabel = new System.Windows.Forms.Label();
+            this.portNameComboBox = new System.Windows.Forms.ComboBox();
+            this.dataBitsTextBox = new System.Windows.Forms.TextBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -90,13 +90,13 @@
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(386, 466);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(376, 366);
             this.mainTableLayoutPanel.TabIndex = 1;
             // 
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(227, 439);
+            this.okButton.Location = new System.Drawing.Point(217, 339);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 24);
             this.okButton.TabIndex = 3;
@@ -107,7 +107,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(308, 439);
+            this.cancelButton.Location = new System.Drawing.Point(298, 339);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 24);
             this.cancelButton.TabIndex = 2;
@@ -123,7 +123,7 @@
             this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(380, 430);
+            this.tabControl.Size = new System.Drawing.Size(370, 330);
             this.tabControl.TabIndex = 0;
             // 
             // commandsTabPage
@@ -132,7 +132,7 @@
             this.commandsTabPage.Location = new System.Drawing.Point(4, 24);
             this.commandsTabPage.Name = "commandsTabPage";
             this.commandsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commandsTabPage.Size = new System.Drawing.Size(372, 402);
+            this.commandsTabPage.Size = new System.Drawing.Size(362, 302);
             this.commandsTabPage.TabIndex = 0;
             this.commandsTabPage.Text = "Commands";
             this.commandsTabPage.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.commandsTableLayoutPanel.Size = new System.Drawing.Size(366, 396);
+            this.commandsTableLayoutPanel.Size = new System.Drawing.Size(356, 296);
             this.commandsTableLayoutPanel.TabIndex = 1;
             // 
             // argumentsLabel
@@ -178,9 +178,9 @@
             this.argumentsLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsLabel, 3);
             this.argumentsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.argumentsLabel.Location = new System.Drawing.Point(3, 307);
+            this.argumentsLabel.Location = new System.Drawing.Point(3, 207);
             this.argumentsLabel.Name = "argumentsLabel";
-            this.argumentsLabel.Size = new System.Drawing.Size(360, 15);
+            this.argumentsLabel.Size = new System.Drawing.Size(350, 15);
             this.argumentsLabel.TabIndex = 12;
             this.argumentsLabel.Text = "&Arguments:";
             // 
@@ -188,27 +188,27 @@
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsTextBox, 3);
             this.argumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.argumentsTextBox.Location = new System.Drawing.Point(3, 325);
+            this.argumentsTextBox.Location = new System.Drawing.Point(3, 225);
             this.argumentsTextBox.Name = "argumentsTextBox";
-            this.argumentsTextBox.Size = new System.Drawing.Size(360, 23);
+            this.argumentsTextBox.Size = new System.Drawing.Size(350, 23);
             this.argumentsTextBox.TabIndex = 11;
             // 
             // startInTextBox
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.startInTextBox, 2);
             this.startInTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startInTextBox.Location = new System.Drawing.Point(3, 369);
+            this.startInTextBox.Location = new System.Drawing.Point(3, 269);
             this.startInTextBox.Name = "startInTextBox";
-            this.startInTextBox.Size = new System.Drawing.Size(330, 23);
+            this.startInTextBox.Size = new System.Drawing.Size(320, 23);
             this.startInTextBox.TabIndex = 8;
             // 
             // targetTextBox
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.targetTextBox, 2);
             this.targetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetTextBox.Location = new System.Drawing.Point(3, 280);
+            this.targetTextBox.Location = new System.Drawing.Point(3, 180);
             this.targetTextBox.Name = "targetTextBox";
-            this.targetTextBox.Size = new System.Drawing.Size(330, 23);
+            this.targetTextBox.Size = new System.Drawing.Size(320, 23);
             this.targetTextBox.TabIndex = 7;
             // 
             // startInLabel
@@ -216,9 +216,9 @@
             this.startInLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.startInLabel, 3);
             this.startInLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startInLabel.Location = new System.Drawing.Point(3, 351);
+            this.startInLabel.Location = new System.Drawing.Point(3, 251);
             this.startInLabel.Name = "startInLabel";
-            this.startInLabel.Size = new System.Drawing.Size(360, 15);
+            this.startInLabel.Size = new System.Drawing.Size(350, 15);
             this.startInLabel.TabIndex = 5;
             this.startInLabel.Text = "&Start In:";
             // 
@@ -227,9 +227,9 @@
             this.targetLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.targetLabel, 3);
             this.targetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetLabel.Location = new System.Drawing.Point(3, 262);
+            this.targetLabel.Location = new System.Drawing.Point(3, 162);
             this.targetLabel.Name = "targetLabel";
-            this.targetLabel.Size = new System.Drawing.Size(360, 15);
+            this.targetLabel.Size = new System.Drawing.Size(350, 15);
             this.targetLabel.TabIndex = 4;
             this.targetLabel.Text = "&Target:";
             // 
@@ -246,7 +246,7 @@
             this.commandsListView.Location = new System.Drawing.Point(3, 3);
             this.commandsListView.MultiSelect = false;
             this.commandsListView.Name = "commandsListView";
-            this.commandsListView.Size = new System.Drawing.Size(360, 182);
+            this.commandsListView.Size = new System.Drawing.Size(350, 82);
             this.commandsListView.TabIndex = 0;
             this.commandsListView.UseCompatibleStateImageBehavior = false;
             this.commandsListView.View = System.Windows.Forms.View.Details;
@@ -266,7 +266,7 @@
             // 
             this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
-            this.addCommandButton.Location = new System.Drawing.Point(309, 191);
+            this.addCommandButton.Location = new System.Drawing.Point(299, 91);
             this.addCommandButton.Name = "addCommandButton";
             this.addCommandButton.Size = new System.Drawing.Size(24, 24);
             this.addCommandButton.TabIndex = 2;
@@ -276,7 +276,7 @@
             // 
             this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
-            this.removeCommandButton.Location = new System.Drawing.Point(339, 191);
+            this.removeCommandButton.Location = new System.Drawing.Point(329, 91);
             this.removeCommandButton.Name = "removeCommandButton";
             this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
             this.removeCommandButton.TabIndex = 2;
@@ -287,9 +287,9 @@
             this.incomingCommandLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandLabel, 3);
             this.incomingCommandLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incomingCommandLabel.Location = new System.Drawing.Point(3, 218);
+            this.incomingCommandLabel.Location = new System.Drawing.Point(3, 118);
             this.incomingCommandLabel.Name = "incomingCommandLabel";
-            this.incomingCommandLabel.Size = new System.Drawing.Size(360, 15);
+            this.incomingCommandLabel.Size = new System.Drawing.Size(350, 15);
             this.incomingCommandLabel.TabIndex = 3;
             this.incomingCommandLabel.Text = "&Incoming Command:";
             // 
@@ -297,16 +297,16 @@
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandTextBox, 3);
             this.incomingCommandTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incomingCommandTextBox.Location = new System.Drawing.Point(3, 236);
+            this.incomingCommandTextBox.Location = new System.Drawing.Point(3, 136);
             this.incomingCommandTextBox.Name = "incomingCommandTextBox";
-            this.incomingCommandTextBox.Size = new System.Drawing.Size(360, 23);
+            this.incomingCommandTextBox.Size = new System.Drawing.Size(350, 23);
             this.incomingCommandTextBox.TabIndex = 3;
             // 
             // targetButton
             // 
             this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.targetButton.Location = new System.Drawing.Point(339, 280);
+            this.targetButton.Location = new System.Drawing.Point(329, 180);
             this.targetButton.Name = "targetButton";
             this.targetButton.Size = new System.Drawing.Size(24, 24);
             this.targetButton.TabIndex = 9;
@@ -316,7 +316,7 @@
             // 
             this.startInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.startInButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.startInButton.Location = new System.Drawing.Point(339, 369);
+            this.startInButton.Location = new System.Drawing.Point(329, 269);
             this.startInButton.Name = "startInButton";
             this.startInButton.Size = new System.Drawing.Size(24, 24);
             this.startInButton.TabIndex = 10;
@@ -329,10 +329,20 @@
             this.settingsTabPage.Location = new System.Drawing.Point(4, 24);
             this.settingsTabPage.Name = "settingsTabPage";
             this.settingsTabPage.Padding = new System.Windows.Forms.Padding(6);
-            this.settingsTabPage.Size = new System.Drawing.Size(372, 402);
+            this.settingsTabPage.Size = new System.Drawing.Size(372, 0);
             this.settingsTabPage.TabIndex = 1;
             this.settingsTabPage.Text = "Settings";
             this.settingsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // applicationSettingsGroupBox
+            // 
+            this.applicationSettingsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.applicationSettingsGroupBox.Location = new System.Drawing.Point(6, 205);
+            this.applicationSettingsGroupBox.Name = "applicationSettingsGroupBox";
+            this.applicationSettingsGroupBox.Size = new System.Drawing.Size(360, 88);
+            this.applicationSettingsGroupBox.TabIndex = 1;
+            this.applicationSettingsGroupBox.TabStop = false;
+            this.applicationSettingsGroupBox.Text = "Application";
             // 
             // portConfigurationGroupBox
             // 
@@ -344,16 +354,6 @@
             this.portConfigurationGroupBox.TabIndex = 0;
             this.portConfigurationGroupBox.TabStop = false;
             this.portConfigurationGroupBox.Text = "Port Configuration";
-            // 
-            // applicationSettingsGroupBox
-            // 
-            this.applicationSettingsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.applicationSettingsGroupBox.Location = new System.Drawing.Point(6, 205);
-            this.applicationSettingsGroupBox.Name = "applicationSettingsGroupBox";
-            this.applicationSettingsGroupBox.Size = new System.Drawing.Size(360, 100);
-            this.applicationSettingsGroupBox.TabIndex = 1;
-            this.applicationSettingsGroupBox.TabStop = false;
-            this.applicationSettingsGroupBox.Text = "Application";
             // 
             // portConfigurationTableLayoutPanel
             // 
@@ -387,113 +387,16 @@
             this.portConfigurationTableLayoutPanel.Size = new System.Drawing.Size(354, 175);
             this.portConfigurationTableLayoutPanel.TabIndex = 0;
             // 
-            // portNameLabel
+            // handshakeLabel
             // 
-            this.portNameLabel.AutoSize = true;
-            this.portNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.portNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.portNameLabel.Name = "portNameLabel";
-            this.portNameLabel.Size = new System.Drawing.Size(69, 29);
-            this.portNameLabel.TabIndex = 4;
-            this.portNameLabel.Text = "&Port name:";
-            this.portNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // baudRateLabel
-            // 
-            this.baudRateLabel.AutoSize = true;
-            this.baudRateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baudRateLabel.Location = new System.Drawing.Point(3, 29);
-            this.baudRateLabel.Name = "baudRateLabel";
-            this.baudRateLabel.Size = new System.Drawing.Size(69, 29);
-            this.baudRateLabel.TabIndex = 5;
-            this.baudRateLabel.Text = "&Baud rate:";
-            this.baudRateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // portNameComboBox
-            // 
-            this.portNameComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.portNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.portNameComboBox.FormattingEnabled = true;
-            this.portNameComboBox.Location = new System.Drawing.Point(86, 3);
-            this.portNameComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.portNameComboBox.Name = "portNameComboBox";
-            this.portNameComboBox.Size = new System.Drawing.Size(265, 23);
-            this.portNameComboBox.TabIndex = 6;
-            // 
-            // baudRateComboBox
-            // 
-            this.baudRateComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baudRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.baudRateComboBox.FormattingEnabled = true;
-            this.baudRateComboBox.Location = new System.Drawing.Point(86, 32);
-            this.baudRateComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.baudRateComboBox.Name = "baudRateComboBox";
-            this.baudRateComboBox.Size = new System.Drawing.Size(265, 23);
-            this.baudRateComboBox.TabIndex = 7;
-            // 
-            // parityLabel
-            // 
-            this.parityLabel.AutoSize = true;
-            this.parityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parityLabel.Location = new System.Drawing.Point(3, 58);
-            this.parityLabel.Name = "parityLabel";
-            this.parityLabel.Size = new System.Drawing.Size(69, 29);
-            this.parityLabel.TabIndex = 8;
-            this.parityLabel.Text = "P&arity:";
-            this.parityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dataBitsTextBox
-            // 
-            this.dataBitsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataBitsTextBox.Location = new System.Drawing.Point(86, 90);
-            this.dataBitsTextBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.dataBitsTextBox.Name = "dataBitsTextBox";
-            this.dataBitsTextBox.Size = new System.Drawing.Size(265, 23);
-            this.dataBitsTextBox.TabIndex = 9;
-            // 
-            // parityComboBox
-            // 
-            this.parityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.parityComboBox.FormattingEnabled = true;
-            this.parityComboBox.Location = new System.Drawing.Point(86, 61);
-            this.parityComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.parityComboBox.Name = "parityComboBox";
-            this.parityComboBox.Size = new System.Drawing.Size(265, 23);
-            this.parityComboBox.TabIndex = 10;
-            // 
-            // dataBitsLabel
-            // 
-            this.dataBitsLabel.AutoSize = true;
-            this.dataBitsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataBitsLabel.Location = new System.Drawing.Point(3, 87);
-            this.dataBitsLabel.Name = "dataBitsLabel";
-            this.dataBitsLabel.Size = new System.Drawing.Size(69, 29);
-            this.dataBitsLabel.TabIndex = 11;
-            this.dataBitsLabel.Text = "&Data bits:";
-            this.dataBitsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // stopBitsLabel
-            // 
-            this.stopBitsLabel.AutoSize = true;
-            this.stopBitsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stopBitsLabel.Location = new System.Drawing.Point(3, 116);
-            this.stopBitsLabel.Name = "stopBitsLabel";
-            this.stopBitsLabel.Size = new System.Drawing.Size(69, 29);
-            this.stopBitsLabel.TabIndex = 12;
-            this.stopBitsLabel.Text = "&Stop bits:";
-            this.stopBitsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // stopBitsComboBox
-            // 
-            this.stopBitsComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stopBitsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.stopBitsComboBox.FormattingEnabled = true;
-            this.stopBitsComboBox.Location = new System.Drawing.Point(86, 119);
-            this.stopBitsComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.stopBitsComboBox.Name = "stopBitsComboBox";
-            this.stopBitsComboBox.Size = new System.Drawing.Size(265, 23);
-            this.stopBitsComboBox.TabIndex = 13;
+            this.handshakeLabel.AutoSize = true;
+            this.handshakeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.handshakeLabel.Location = new System.Drawing.Point(3, 145);
+            this.handshakeLabel.Name = "handshakeLabel";
+            this.handshakeLabel.Size = new System.Drawing.Size(69, 30);
+            this.handshakeLabel.TabIndex = 15;
+            this.handshakeLabel.Text = "&Handshake:";
+            this.handshakeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // handshakeComboBox
             // 
@@ -506,16 +409,113 @@
             this.handshakeComboBox.Size = new System.Drawing.Size(265, 23);
             this.handshakeComboBox.TabIndex = 14;
             // 
-            // handshakeLabel
+            // stopBitsComboBox
             // 
-            this.handshakeLabel.AutoSize = true;
-            this.handshakeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.handshakeLabel.Location = new System.Drawing.Point(3, 145);
-            this.handshakeLabel.Name = "handshakeLabel";
-            this.handshakeLabel.Size = new System.Drawing.Size(69, 30);
-            this.handshakeLabel.TabIndex = 15;
-            this.handshakeLabel.Text = "&Handshake:";
-            this.handshakeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.stopBitsComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stopBitsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stopBitsComboBox.FormattingEnabled = true;
+            this.stopBitsComboBox.Location = new System.Drawing.Point(86, 119);
+            this.stopBitsComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.stopBitsComboBox.Name = "stopBitsComboBox";
+            this.stopBitsComboBox.Size = new System.Drawing.Size(265, 23);
+            this.stopBitsComboBox.TabIndex = 13;
+            // 
+            // stopBitsLabel
+            // 
+            this.stopBitsLabel.AutoSize = true;
+            this.stopBitsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stopBitsLabel.Location = new System.Drawing.Point(3, 116);
+            this.stopBitsLabel.Name = "stopBitsLabel";
+            this.stopBitsLabel.Size = new System.Drawing.Size(69, 29);
+            this.stopBitsLabel.TabIndex = 12;
+            this.stopBitsLabel.Text = "&Stop bits:";
+            this.stopBitsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dataBitsLabel
+            // 
+            this.dataBitsLabel.AutoSize = true;
+            this.dataBitsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataBitsLabel.Location = new System.Drawing.Point(3, 87);
+            this.dataBitsLabel.Name = "dataBitsLabel";
+            this.dataBitsLabel.Size = new System.Drawing.Size(69, 29);
+            this.dataBitsLabel.TabIndex = 11;
+            this.dataBitsLabel.Text = "&Data bits:";
+            this.dataBitsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // parityComboBox
+            // 
+            this.parityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.parityComboBox.FormattingEnabled = true;
+            this.parityComboBox.Location = new System.Drawing.Point(86, 61);
+            this.parityComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.parityComboBox.Name = "parityComboBox";
+            this.parityComboBox.Size = new System.Drawing.Size(265, 23);
+            this.parityComboBox.TabIndex = 10;
+            // 
+            // parityLabel
+            // 
+            this.parityLabel.AutoSize = true;
+            this.parityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parityLabel.Location = new System.Drawing.Point(3, 58);
+            this.parityLabel.Name = "parityLabel";
+            this.parityLabel.Size = new System.Drawing.Size(69, 29);
+            this.parityLabel.TabIndex = 8;
+            this.parityLabel.Text = "P&arity:";
+            this.parityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // baudRateComboBox
+            // 
+            this.baudRateComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.baudRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.baudRateComboBox.FormattingEnabled = true;
+            this.baudRateComboBox.Location = new System.Drawing.Point(86, 32);
+            this.baudRateComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.baudRateComboBox.Name = "baudRateComboBox";
+            this.baudRateComboBox.Size = new System.Drawing.Size(265, 23);
+            this.baudRateComboBox.TabIndex = 7;
+            // 
+            // baudRateLabel
+            // 
+            this.baudRateLabel.AutoSize = true;
+            this.baudRateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.baudRateLabel.Location = new System.Drawing.Point(3, 29);
+            this.baudRateLabel.Name = "baudRateLabel";
+            this.baudRateLabel.Size = new System.Drawing.Size(69, 29);
+            this.baudRateLabel.TabIndex = 5;
+            this.baudRateLabel.Text = "&Baud rate:";
+            this.baudRateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // portNameLabel
+            // 
+            this.portNameLabel.AutoSize = true;
+            this.portNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.portNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.portNameLabel.Name = "portNameLabel";
+            this.portNameLabel.Size = new System.Drawing.Size(69, 29);
+            this.portNameLabel.TabIndex = 4;
+            this.portNameLabel.Text = "&COM port:";
+            this.portNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // portNameComboBox
+            // 
+            this.portNameComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.portNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.portNameComboBox.FormattingEnabled = true;
+            this.portNameComboBox.Location = new System.Drawing.Point(86, 3);
+            this.portNameComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.portNameComboBox.Name = "portNameComboBox";
+            this.portNameComboBox.Size = new System.Drawing.Size(265, 23);
+            this.portNameComboBox.TabIndex = 6;
+            // 
+            // dataBitsTextBox
+            // 
+            this.dataBitsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataBitsTextBox.Location = new System.Drawing.Point(86, 90);
+            this.dataBitsTextBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.dataBitsTextBox.Name = "dataBitsTextBox";
+            this.dataBitsTextBox.Size = new System.Drawing.Size(265, 23);
+            this.dataBitsTextBox.TabIndex = 9;
             // 
             // MainForm
             // 
@@ -523,13 +523,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(394, 474);
+            this.ClientSize = new System.Drawing.Size(384, 374);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(400, 700);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

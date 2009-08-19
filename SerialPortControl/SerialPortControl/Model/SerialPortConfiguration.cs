@@ -51,14 +51,11 @@ namespace SerialPortControl.Model
     public class AvailableSerialPortConfiguration
     {
         public IList<string> PortNames { get { return SerialPort.GetPortNames(); } }
-        public IList<int> BaudRates
-        {
-            get
-            {
+        public IList<int> BaudRates { get { return new List<int>((int[]) Enum.GetValues(typeof(BaudRate))); } }
+        public IList<string> Parities { get { return new List<string>((string[])Enum.GetNames(typeof(Parity))); } }
+        public IList<string> StopBits { get { return new List<string>((string[])Enum.GetNames(typeof(StopBits))); } }
+        public IList<string> Handshakes { get { return new List<string>((string[])Enum.GetNames(typeof(Handshake))); } }
 
-                return new List<int>((int[]) Enum.GetValues(typeof(BaudRate)));
-            }
-        }
     }
     
 }

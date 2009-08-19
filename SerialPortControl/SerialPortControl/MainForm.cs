@@ -67,6 +67,9 @@ namespace SerialPortControl
         {
             portNameComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().PortNames.ToArray());
             baudRateComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().BaudRates.Cast<object>().ToArray());
+            parityComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().Parities.Cast<object>().ToArray());
+            stopBitsComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().StopBits.Cast<object>().ToArray());
+            handshakeComboBox.Items.AddRange(_controller.GetAvailableSerialPortConfiguration().Handshakes.Cast<object>().ToArray());
         }
 
         public void LoadCommandsListView()
