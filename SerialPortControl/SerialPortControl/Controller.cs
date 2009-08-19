@@ -5,18 +5,19 @@ using System.Text;
 
 using System.IO;
 
+using SerialPortControl.Model;
+
 namespace SerialPortControl
 {
     public class Controller : IController
     {
-        Model.SettingsRepository commandRepository;
+        SettingsRepository settings;
 
         public Controller()
         {
-            commandRepository = new Model.SettingsRepository("SerialPortControl.xml");
-            commandRepository.Load();
-            commandRepository.AddCommand(new Model.Command { IncomingCommand = "test > test", StartInDirectory = "test", Target = "test /somearg" });
-            commandRepository.Save();
+            settings = new SettingsRepository("SerialPortControl.xml");
+            settings.Load();
+            settings.Save();
             
         }
 
@@ -31,12 +32,12 @@ namespace SerialPortControl
         #region IController Members
 
 
-        public IEnumerable<SerialPortControl.Model.Command> GetAllCommands()
+        public IEnumerable<Command> GetAllCommands()
         {
-            return commandRepository.AllCommands();
+            return settings.AllCommands();
         }
 
-        public void AddCommand(SerialPortControl.Model.Command command)
+        public void AddCommand(Command command)
         {
             throw new NotImplementedException();
         }
@@ -51,10 +52,29 @@ namespace SerialPortControl
         #region IController Members
 
 
-        public SerialPortControl.Model.Command GetCommand(string key)
+        public Command GetCommand(string key)
         {
-            return commandRepository.SingleCommand(key);
+            return settings.SingleCommand(key);
         }
+
+
+
+        #endregion
+
+        #region IController Members
+
+
+        public void UpdateCommand(string key, Command command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SerialPortConfiguration GetSerialPortConfiguration()
+        {
+            return settings.SerialPortConfiguration.Clone() as SerialPortConfiguration;
+        }
+
+       
 
         #endregion
     }

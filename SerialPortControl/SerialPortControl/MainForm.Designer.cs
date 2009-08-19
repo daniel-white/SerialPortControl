@@ -49,11 +49,29 @@
             this.incomingCommandTextBox = new System.Windows.Forms.TextBox();
             this.targetButton = new System.Windows.Forms.Button();
             this.startInButton = new System.Windows.Forms.Button();
-            this.configurationTabPage = new System.Windows.Forms.TabPage();
+            this.settingsTabPage = new System.Windows.Forms.TabPage();
+            this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.applicationSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.portConfigurationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.portNameLabel = new System.Windows.Forms.Label();
+            this.baudRateLabel = new System.Windows.Forms.Label();
+            this.portNameComboBox = new System.Windows.Forms.ComboBox();
+            this.baudRateComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
             this.commandsTableLayoutPanel.SuspendLayout();
+            this.settingsTabPage.SuspendLayout();
+            this.portConfigurationGroupBox.SuspendLayout();
+            this.portConfigurationTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -100,7 +118,7 @@
             // 
             this.mainTableLayoutPanel.SetColumnSpan(this.tabControl, 2);
             this.tabControl.Controls.Add(this.commandsTabPage);
-            this.tabControl.Controls.Add(this.configurationTabPage);
+            this.tabControl.Controls.Add(this.settingsTabPage);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
@@ -304,14 +322,200 @@
             this.startInButton.TabIndex = 10;
             this.startInButton.UseVisualStyleBackColor = true;
             // 
-            // configurationTabPage
+            // settingsTabPage
             // 
-            this.configurationTabPage.Location = new System.Drawing.Point(4, 24);
-            this.configurationTabPage.Name = "configurationTabPage";
-            this.configurationTabPage.Size = new System.Drawing.Size(372, 402);
-            this.configurationTabPage.TabIndex = 1;
-            this.configurationTabPage.Text = "Configuration";
-            this.configurationTabPage.UseVisualStyleBackColor = true;
+            this.settingsTabPage.Controls.Add(this.applicationSettingsGroupBox);
+            this.settingsTabPage.Controls.Add(this.portConfigurationGroupBox);
+            this.settingsTabPage.Location = new System.Drawing.Point(4, 24);
+            this.settingsTabPage.Name = "settingsTabPage";
+            this.settingsTabPage.Padding = new System.Windows.Forms.Padding(6);
+            this.settingsTabPage.Size = new System.Drawing.Size(372, 402);
+            this.settingsTabPage.TabIndex = 1;
+            this.settingsTabPage.Text = "Settings";
+            this.settingsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // portConfigurationGroupBox
+            // 
+            this.portConfigurationGroupBox.Controls.Add(this.portConfigurationTableLayoutPanel);
+            this.portConfigurationGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.portConfigurationGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.portConfigurationGroupBox.Name = "portConfigurationGroupBox";
+            this.portConfigurationGroupBox.Size = new System.Drawing.Size(360, 199);
+            this.portConfigurationGroupBox.TabIndex = 0;
+            this.portConfigurationGroupBox.TabStop = false;
+            this.portConfigurationGroupBox.Text = "Port Configuration";
+            // 
+            // applicationSettingsGroupBox
+            // 
+            this.applicationSettingsGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.applicationSettingsGroupBox.Location = new System.Drawing.Point(6, 205);
+            this.applicationSettingsGroupBox.Name = "applicationSettingsGroupBox";
+            this.applicationSettingsGroupBox.Size = new System.Drawing.Size(360, 100);
+            this.applicationSettingsGroupBox.TabIndex = 1;
+            this.applicationSettingsGroupBox.TabStop = false;
+            this.applicationSettingsGroupBox.Text = "Application";
+            // 
+            // portConfigurationTableLayoutPanel
+            // 
+            this.portConfigurationTableLayoutPanel.ColumnCount = 2;
+            this.portConfigurationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.portConfigurationTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.label4, 0, 6);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.comboBox5, 1, 6);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.comboBox4, 2, 5);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.label3, 0, 5);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.label2, 0, 4);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.comboBox3, 2, 3);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.label1, 0, 3);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.baudRateComboBox, 2, 2);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.baudRateLabel, 0, 2);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.portNameLabel, 0, 0);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.portNameComboBox, 1, 0);
+            this.portConfigurationTableLayoutPanel.Controls.Add(this.textBox1, 1, 4);
+            this.portConfigurationTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.portConfigurationTableLayoutPanel.Location = new System.Drawing.Point(3, 19);
+            this.portConfigurationTableLayoutPanel.Name = "portConfigurationTableLayoutPanel";
+            this.portConfigurationTableLayoutPanel.RowCount = 6;
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.portConfigurationTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.portConfigurationTableLayoutPanel.Size = new System.Drawing.Size(354, 175);
+            this.portConfigurationTableLayoutPanel.TabIndex = 0;
+            // 
+            // portNameLabel
+            // 
+            this.portNameLabel.AutoSize = true;
+            this.portNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.portNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.portNameLabel.Name = "portNameLabel";
+            this.portNameLabel.Size = new System.Drawing.Size(69, 29);
+            this.portNameLabel.TabIndex = 4;
+            this.portNameLabel.Text = "&Port name:";
+            this.portNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // baudRateLabel
+            // 
+            this.baudRateLabel.AutoSize = true;
+            this.baudRateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.baudRateLabel.Location = new System.Drawing.Point(3, 29);
+            this.baudRateLabel.Name = "baudRateLabel";
+            this.baudRateLabel.Size = new System.Drawing.Size(69, 29);
+            this.baudRateLabel.TabIndex = 5;
+            this.baudRateLabel.Text = "&Baud rate:";
+            this.baudRateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // portNameComboBox
+            // 
+            this.portNameComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.portNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.portNameComboBox.FormattingEnabled = true;
+            this.portNameComboBox.Location = new System.Drawing.Point(86, 3);
+            this.portNameComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.portNameComboBox.Name = "portNameComboBox";
+            this.portNameComboBox.Size = new System.Drawing.Size(265, 23);
+            this.portNameComboBox.TabIndex = 6;
+            // 
+            // baudRateComboBox
+            // 
+            this.baudRateComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.baudRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.baudRateComboBox.FormattingEnabled = true;
+            this.baudRateComboBox.Location = new System.Drawing.Point(86, 32);
+            this.baudRateComboBox.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.baudRateComboBox.Name = "baudRateComboBox";
+            this.baudRateComboBox.Size = new System.Drawing.Size(265, 23);
+            this.baudRateComboBox.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 29);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "P&arity:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(86, 90);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(265, 23);
+            this.textBox1.TabIndex = 9;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(86, 61);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(265, 23);
+            this.comboBox3.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(3, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 29);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "&Data bits:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 29);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "P&arity:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(86, 119);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(265, 23);
+            this.comboBox4.TabIndex = 13;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(86, 148);
+            this.comboBox5.Margin = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(265, 23);
+            this.comboBox5.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(3, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 30);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "&Handshake:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -334,6 +538,10 @@
             this.commandsTabPage.ResumeLayout(false);
             this.commandsTableLayoutPanel.ResumeLayout(false);
             this.commandsTableLayoutPanel.PerformLayout();
+            this.settingsTabPage.ResumeLayout(false);
+            this.portConfigurationGroupBox.ResumeLayout(false);
+            this.portConfigurationTableLayoutPanel.ResumeLayout(false);
+            this.portConfigurationTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -343,7 +551,7 @@
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage commandsTabPage;
-        private System.Windows.Forms.TabPage configurationTabPage;
+        private System.Windows.Forms.TabPage settingsTabPage;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TableLayoutPanel commandsTableLayoutPanel;
@@ -362,6 +570,21 @@
         private System.Windows.Forms.ColumnHeader targetListViewHeader;
         private System.Windows.Forms.Label argumentsLabel;
         private System.Windows.Forms.TextBox argumentsTextBox;
+        private System.Windows.Forms.GroupBox portConfigurationGroupBox;
+        private System.Windows.Forms.GroupBox applicationSettingsGroupBox;
+        private System.Windows.Forms.TableLayoutPanel portConfigurationTableLayoutPanel;
+        private System.Windows.Forms.Label portNameLabel;
+        private System.Windows.Forms.Label baudRateLabel;
+        private System.Windows.Forms.ComboBox portNameComboBox;
+        private System.Windows.Forms.ComboBox baudRateComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label3;
 
 
     }

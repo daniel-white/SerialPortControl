@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using System.IO;
+using System.IO.Ports;
 using System.Xml.Linq;
 
 namespace SerialPortControl.Model
@@ -55,13 +56,11 @@ namespace SerialPortControl.Model
                 var commandElements = spcElement.Element("Commands").Elements("Command");
 
                 SerialPortConfiguration.PortName = portConfigurationElement.Element("PortName").Value;
-                SerialPortConfiguration.BaudRate = Convert.ToInt32(portConfigurationElement.Element("BaudRate").Value);
-                //portConfigurationElement.Element("Parity",      _serialPortConfiguration.Parity
-                //portConfigurationElement.Element("DataBits",    _serialPortConfiguration.DataBits
-                //portConfigurationElement.Element("StopBits",    _serialPortConfiguration.StopBits
-                //portConfigurationElement.Element("Encoding",    _serialPortConfiguration.Encoding
-                //portConfigurationElement.Element("Handshake",   _serialPortConfiguration.Handshake
-
+                SerialPortConfiguration.BaudRate = portConfigurationElement.Element("BaudRate").ToEnumValue<BaudRate>();
+                SerialPortConfiguration.Parity = portConfigurationElement.Element("Parity").ToEnumValue<Parity>();
+                SerialPortConfiguration.DataBits = Convert.ToInt32(portConfigurationElement.Element("DataBits").Value);
+                SerialPortConfiguration.StopBits = portConfigurationElement.Element("StopBits").ToEnumValue<StopBits>();
+                SerialPortConfiguration.Handshake = portConfigurationElement.Element("Handshake").ToEnumValue<Handshake>();
 
                 foreach (var element in commandElements)
                 {
@@ -92,7 +91,6 @@ namespace SerialPortControl.Model
                 new XElement("Parity", SerialPortConfiguration.Parity),
                 new XElement("DataBits", SerialPortConfiguration.DataBits),
                 new XElement("StopBits", SerialPortConfiguration.StopBits),
-                new XElement("Encoding", SerialPortConfiguration.Encoding),
                 new XElement("Handshake", SerialPortConfiguration.Handshake)
                 );
 

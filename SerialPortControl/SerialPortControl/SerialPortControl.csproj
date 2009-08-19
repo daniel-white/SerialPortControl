@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="Model\Command.cs" />
     <Compile Include="MainForm.cs">
