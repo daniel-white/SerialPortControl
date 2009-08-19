@@ -165,6 +165,7 @@
             this.targetListViewHeader});
             this.commandsTableLayoutPanel.SetColumnSpan(this.commandsListView, 3);
             this.commandsListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commandsListView.FullRowSelect = true;
             this.commandsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.commandsListView.HideSelection = false;
             this.commandsListView.Location = new System.Drawing.Point(3, 3);
@@ -174,6 +175,7 @@
             this.commandsListView.TabIndex = 0;
             this.commandsListView.UseCompatibleStateImageBehavior = false;
             this.commandsListView.View = System.Windows.Forms.View.Details;
+            this.commandsListView.SelectedIndexChanged += new System.EventHandler(this.commandsListView_SelectedIndexChanged);
             // 
             // incomingCommandLabel
             // 

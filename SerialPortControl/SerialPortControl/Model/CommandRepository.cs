@@ -10,7 +10,7 @@ namespace SerialPortControl.Model
 {
     public class CommandRepository
     {
-        private readonly IDictionary<string, Command> _commands;
+        private IDictionary<string, Command> _commands;
         private readonly string _xmlFilePath;
 
         public CommandRepository(string xmlFilePath)
@@ -42,13 +42,50 @@ namespace SerialPortControl.Model
             Dirty = true;
         }
 
-        public void Load(string xmlFilePath)
+        public void Load()
         {
+            _commands = new Dictionary<string, Command>();
+           
+            if (File.Exists(_xmlFilePath))
+            {
+                XDocument xCommandsDocument = XDocument.Load(_xmlFilePath);
+
+                    var commandElements = xCommandsDocument.Element("Commands").Elements("Command");
+
+                    foreach (var element in commandElements)
+                    {
+                        Command command = new Command
+                        {
+                            IncomingCommand = element.Element("IncommingCommand").Value,
+                            Target = element.Element("Target").Value,
+                            StartInDirectory = element.Element("StartInDirectory").Value
+                        };
+                        _commands.Add(command.IncomingCommand, command);
+                    }
+                
+            }
+
             Dirty = false;
         }
 
         public void Save()
         {
+            XDocument xCommandsDocument = new XDocument();
+            var commandsElement =  new XElement("Commands");
+
+            foreach (var command in _commands.Values)
+            {
+                XElement commandElement = new XElement("Command",
+                        new XElement("IncommingCommand", command.IncomingCommand),
+                        new XElement("Target", command.Target),
+                        new XElement("StartInDirectory", command.StartInDirectory)
+                    );
+
+                commandsElement.Add(commandElement);
+            }
+
+            xCommandsDocument.Add(commandsElement);
+            xCommandsDocument.Save(_xmlFilePath);
             Dirty = false;
         }
     }
