@@ -18,6 +18,7 @@ namespace SerialPortControl
         {
             settings = new SettingsRepository("SerialPortControl.xml");
             settings.Load();
+            //settings.AddCommand(new Command { Arguments = "1234", IncomingCommand = "Josh", Target = ">> explorer.exe", StartInDirectory = "c:\\" });
             settings.Save();
             aspc = new AvailableSerialPortConfiguration();
             
