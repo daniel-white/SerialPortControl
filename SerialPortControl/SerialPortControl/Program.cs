@@ -15,10 +15,11 @@ namespace SerialPortControl
         [STAThread]
         static void Main()
         {
-            _controller = new Controller();
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            _controller = new Controller();
             _controller.ShowTrayIcon();
             _controller.ShowMainForm();
             

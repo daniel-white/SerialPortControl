@@ -10,8 +10,8 @@ namespace SerialPortControl.IO
     public interface ISerialPortWatcher
     {
         event EventHandler<ReceivedDataEventArgs> ReceivedData;
-        event EventHandler Connected;
-        event EventHandler Disconnected;
+        event EventHandler StartedListening;
+        event EventHandler StoppedListening;
 
         SerialPortSettings PortOptions { set; }
 

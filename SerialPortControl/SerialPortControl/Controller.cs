@@ -27,6 +27,8 @@ namespace SerialPortControl
 
             icon = new TrayIcon();
 
+            icon.ShowSettings += new EventHandler(OnShowSettings);
+
             if (SerialPort.Configurations.PortNames.Count() == 0)
             {
                 MessageBox.Show("Unable to find any available COM ports on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -35,8 +37,8 @@ namespace SerialPortControl
 
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
-            _theWatcher.Connected += new EventHandler(OnConnected);
-            _theWatcher.Disconnected += new EventHandler(OnDisconnected);
+            _theWatcher.StartedListening += new EventHandler(OnConnected);
+            _theWatcher.StoppedListening += new EventHandler(OnDisconnected);
             _theWatcher.Start();
         }
 
@@ -75,14 +77,19 @@ namespace SerialPortControl
             settings.Commands[e.Data].Run();
         }
 
+        protected void OnShowSettings(object sender, EventArgs e)
+        {
+            ShowMainForm();
+        }
+
         protected void OnConnected(object sender, EventArgs e)
         {
-            icon.Connected = true;
+            icon.Listening = true;
         }
 
         protected void OnDisconnected(object sender, EventArgs e)
         {
-            icon.Connected = false;
+            icon.Listening = false;
         }
 
         #region IController Members
