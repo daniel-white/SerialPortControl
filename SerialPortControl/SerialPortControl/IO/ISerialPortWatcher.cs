@@ -9,9 +9,13 @@ namespace SerialPortControl.IO
 {
     public interface ISerialPortWatcher
     {
-        event EventHandler<ReceivedDataEventArgs> OnReceivedData;
+        event EventHandler<ReceivedDataEventArgs> ReceivedData;
 
-        SerialPortSettings SerialPort { set; }
+        SerialPortSettings PortOptions { set; }
+
+        bool Enabled { get; set; }
+        void Stop();
+        void Start();
     }
 
     public class ReceivedDataEventArgs : EventArgs

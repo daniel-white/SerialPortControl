@@ -52,6 +52,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IO\ISerialPortWatcher.cs" />
+    <Compile Include="IO\SerialPortWatcher.cs" />
     <Compile Include="Model\Command.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
