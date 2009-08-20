@@ -12,28 +12,24 @@ namespace SerialPortControl
     public class Controller : IController
     {
         SettingsRepository settings;
-        AvailableSerialPortConfiguration aspc;
 
 
         public Controller()
         {
             settings = new SettingsRepository("SerialPortControl.xml");
-            settings.Load();
-    
-            //settings.AddCommand(new Command { Arguments = "1234", IncomingCommand = "Josh", Target = ">> explorer.exe", StartInDirectory = "c:\\" });
-            settings.Save();
-            aspc = new AvailableSerialPortConfiguration();
             
         }
 
         public bool WriteLog { get; set; }
-
-        public SerialPortConfiguration SerialPort { get; private set; }
+        public SerialPortSettings SerialPort { get; private set; }
+        public ICommandDictionary Commands { get; private set; }
 
         public void ShowMainForm()
         {
+            settings.Load();
             Commands = settings.Commands;
             SerialPort = settings.SerialPort;
+            WriteLog = settings.WriteLog;
 
             MainForm mainForm = new MainForm(this);
 
@@ -42,17 +38,14 @@ namespace SerialPortControl
             {
                 settings.Commands = Commands;
                 settings.SerialPort = SerialPort;
+                settings.WriteLog = WriteLog;
                 settings.Save();
             }
         }
 
         #region IController Members
 
-        public ICommandDictionary Commands
-        {
-            get;
-            private set;
-        }
+        
 
   
 
@@ -69,11 +62,6 @@ namespace SerialPortControl
         }
 
         
-
-        public AvailableSerialPortConfiguration GetAvailableSerialPortConfiguration()
-        {
-            return aspc;
-        }
 
        
 

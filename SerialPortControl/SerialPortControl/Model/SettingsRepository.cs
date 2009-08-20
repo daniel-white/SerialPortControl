@@ -19,14 +19,12 @@ namespace SerialPortControl.Model
         }
 
         public ICommandDictionary Commands { get; set; }
-
         public bool WriteLog { get; set; }
-
-        public SerialPortConfiguration SerialPort { get; set; }
+        public SerialPortSettings SerialPort { get; set; }
 
         public void Load()
         {
-            SerialPort = new SerialPortConfiguration();
+            SerialPort = new SerialPortSettings();
             Commands = new CommandDictionary();
             if (File.Exists(_xmlFilePath))
             {
@@ -35,7 +33,7 @@ namespace SerialPortControl.Model
                 XElement serialPortElement = settingsElement.Element("SerialPort");
                 var commandElements = spcElement.Element("Commands").Elements("Command");
 
-                WriteLog = Convert.ToBoolean(settingsElement.Element("WriteLog").Value);
+                WriteLog = Boolean.Parse(settingsElement.Element("WriteLog").Value);
 
                 SerialPort.PortName = serialPortElement.Element("PortName").Value;
                 SerialPort.BaudRate = serialPortElement.Element("BaudRate").ToEnumValue<BaudRate>();

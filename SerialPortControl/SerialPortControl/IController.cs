@@ -13,9 +13,7 @@ namespace SerialPortControl
 
         ICommandDictionary Commands { get; }
         bool WriteLog { get; set; }
-        SerialPortConfiguration SerialPort { get; }
-
-        AvailableSerialPortConfiguration GetAvailableSerialPortConfiguration();
+        SerialPortSettings SerialPort { get; }
 
     }
 }

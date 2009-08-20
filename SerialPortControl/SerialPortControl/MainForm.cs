@@ -22,8 +22,11 @@ namespace SerialPortControl
             InitializeComponent();
             _controller = controller;
            // commandsListView.DataBindings
+
+            writeLogFileCheckBox.Checked = _controller.WriteLog;
+
             LoadCommandsListView();
-            LoadSerialPortConfigItems();
+            LoadSerialPortSettings();
             LoadSerialPortConfiguration();
             DisableEditCommand();
         }
@@ -70,25 +73,19 @@ namespace SerialPortControl
             startInButton.Enabled = true;
         }
 
-        protected void LoadSerialPortConfigItems()
+        protected void LoadSerialPortSettings()
         {
-            portNameComboBox.DataSource = _controller.GetAvailableSerialPortConfiguration().PortNames.ToArray();
+            portNameComboBox.Items.AddRange(_controller.SerialPort.Configurations.PortNames.Cast<object>().ToArray());
+            baudRateComboBox.Items.AddRange(_controller.SerialPort.Configurations.BaudRates.Cast<object>().ToArray());
+            parityComboBox.Items.AddRange(_controller.SerialPort.Configurations.Parities.Cast<object>().ToArray());
+            stopBitsComboBox.Items.AddRange(_controller.SerialPort.Configurations.StopBits.Cast<object>().ToArray());
+            handshakeComboBox.Items.AddRange(_controller.SerialPort.Configurations.Handshakes.Cast<object>().ToArray());
 
-            baudRateComboBox.DataSource = typeof(BaudRate).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic);
-            baudRateComboBox.DisplayMember = "Value";
-
-
-            //parityComboBox.Items.a
-         //   parityComboBox.DataSource = Enum.GetNames(typeof(Parity));
-     //       parityComboBox.DisplayMember = "Name";
-          //  parityComboBox.ValueMember = "Value";
-
-            stopBitsComboBox.DataSource = typeof(StopBits).GetFields(BindingFlags.Public | BindingFlags.Static);
-            stopBitsComboBox.DisplayMember = "Name";
-            //.ValueMember = "Value";
-
-            handshakeComboBox.DataSource = typeof(Handshake).GetFields(BindingFlags.Public | BindingFlags.Static);
-            handshakeComboBox.DisplayMember = "Name";
+            dataBitsTextBox.Text = _controller.SerialPort.DataBits.ToString();
+            baudRateComboBox.SelectedItem = ((int)_controller.SerialPort.BaudRate);
+            parityComboBox.SelectedIndex = (int)_controller.SerialPort.Parity;
+            stopBitsComboBox.SelectedIndex = (int)_controller.SerialPort.StopBits;
+            handshakeComboBox.SelectedIndex = (int)_controller.SerialPort.Handshake;
         }
 
         protected void LoadSerialPortConfiguration()
@@ -97,7 +94,7 @@ namespace SerialPortControl
             //portNameComboBox.SelectedValue = spc.PortName;
             //baudRateComboBox.SelectedValue = spc.BaudRate;
             parityComboBox.SelectedItem = _controller.SerialPort.Parity;
-            dataBitsTextBox.Text = _controller.SerialPort.DataBits.ToString();
+            ;
         }
 
         public void LoadCommandsListView()
@@ -135,6 +132,10 @@ namespace SerialPortControl
         private void okButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+
+            _controller.WriteLog = writeLogFileCheckBox.Checked;
+            _controller.SerialPort.Handshake = handshakeComboBox.SelectedItem.ToEnumValue<Handshake>();
+
             Close();
         }
 

@@ -15,6 +15,11 @@ namespace SerialPortControl
             return (T)Enum.Parse(typeof(T), str, true);
         }
 
+        public static T ToEnumValue<T>(this object obj)
+        {
+            return ToEnumValue<T>(obj.ToString());
+        }
+
         public static T ToEnumValue<T>(this XAttribute obj)
         {
             return ToEnumValue<T>(obj.Value);
