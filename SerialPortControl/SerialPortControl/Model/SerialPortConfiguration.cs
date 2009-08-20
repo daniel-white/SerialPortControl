@@ -21,7 +21,6 @@ namespace SerialPortControl.Model
         public StopBits StopBits { get; set; }
         public Handshake Handshake { get; set; }
 
-
         public object Clone()
         {
             return new SerialPortSettings

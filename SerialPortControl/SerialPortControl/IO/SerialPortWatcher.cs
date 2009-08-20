@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Threading;
+
 using System.IO.Ports;
+using SerialPortControl.Model;
 
 namespace SerialPortControl.IO
 {
@@ -11,8 +14,34 @@ namespace SerialPortControl.IO
     {
         private SerialPort _serialPort;
         public event EventHandler<ReceivedDataEventArgs> ReceivedData;
+        Thread _readingThread;
 
-        public SerialPortControl.Model.SerialPortSettings PortOptions
+        public SerialPortWatcher(SerialPortSettings portOptions)
+        {
+            _readingThread = new Thread(ReadData);
+
+            _serialPort = new SerialPort();
+
+            _serialPort.PortName = portOptions.PortName;
+            _serialPort.BaudRate = (int)portOptions.BaudRate;
+            _serialPort.Parity = portOptions.Parity;
+            _serialPort.DataBits = portOptions.DataBits;
+            _serialPort.StopBits = portOptions.StopBits;
+            _serialPort.Handshake = portOptions.Handshake;
+
+            _serialPort.Encoding = Encoding.ASCII;
+
+            _serialPort.ReadTimeout = 500;
+            _serialPort.WriteTimeout = 500;
+
+        }
+
+        ~SerialPortWatcher()
+        {
+            Stop();
+        }
+
+        public SerialPortSettings PortOptions
         {
             set
             {
@@ -41,8 +70,33 @@ namespace SerialPortControl.IO
             }
         }
 
-        public void Stop() { Enabled = false; }
-        public void Start() { Enabled = true; }
+        public void Stop()
+        {
+            _serialPort.Close();
+            _readingThread.Abort();
+        }
+        public void Start()
+        {
+            _serialPort.Open();
+            _readingThread.Start();
+            _readingThread.Join();
+        }
 
+        protected void ReadData()
+        {
+            string data;
+            try
+            {
+                while (_serialPort.IsOpen)
+                {
+                    data = _serialPort.ReadLine();
+                    ReceivedData(this, new ReceivedDataEventArgs(data));
+                }
+            }
+            catch (TimeoutException)
+            {
+                // Ignore
+            }
+        }
     }
 }
