@@ -25,9 +25,7 @@ namespace SerialPortControl
             SerialPort = settings.SerialPort;
             WriteLog = settings.WriteLog;
 
-            icon = new TrayIcon();
-
-            icon.ShowSettings += new EventHandler(OnShowSettings);
+            
 
             if (SerialPort.Configurations.PortNames.Count() == 0)
             {
@@ -35,11 +33,35 @@ namespace SerialPortControl
                 Application.Exit();
             }
 
+            icon = new TrayIcon();
+
+            icon.ShowSettings += new EventHandler(OnShowSettings);
+            icon.Exit += new EventHandler(OnExitRequest);
+            icon.ToggleListening += new EventHandler(OnToggleListening);
+            ShowTrayIcon();
+
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
             _theWatcher.StartedListening += new EventHandler(OnConnected);
             _theWatcher.StoppedListening += new EventHandler(OnDisconnected);
             _theWatcher.Start();
+
+            
+        }
+
+        void OnToggleListening(object sender, EventArgs e)
+        {
+            _theWatcher.Enabled = !_theWatcher.Enabled;
+        }
+
+        void OnExitRequest(object sender, EventArgs e)
+        {
+            var dr = MessageBox.Show("Are you sure you want to exit?", "Serial Port Control", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                _theWatcher.Stop();
+                Application.Exit();
+            }
         }
 
         ~Controller()
@@ -79,7 +101,10 @@ namespace SerialPortControl
 
         protected void OnShowSettings(object sender, EventArgs e)
         {
-            ShowMainForm();
+            if (_mainForm == null || !_mainForm.Visible)
+                ShowMainForm();
+            else
+                _mainForm.Select();
         }
 
         protected void OnConnected(object sender, EventArgs e)

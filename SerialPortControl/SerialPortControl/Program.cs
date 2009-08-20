@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SerialPortControl
 {
@@ -15,15 +16,21 @@ namespace SerialPortControl
         [STAThread]
         static void Main()
         {
-            
+            Application.ThreadException += new ThreadExceptionEventHandler(OnError);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            
             _controller = new Controller();
-            _controller.ShowTrayIcon();
-            _controller.ShowMainForm();
             
             Application.Run();
         }
+
+        static void OnError(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.ToString());
+        }
+        
     }
 }
