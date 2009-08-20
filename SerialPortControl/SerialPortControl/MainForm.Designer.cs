@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -43,8 +44,13 @@
             this.commandsListView = new System.Windows.Forms.ListView();
             this.commandListViewHeader = new System.Windows.Forms.ColumnHeader();
             this.targetListViewHeader = new System.Windows.Forms.ColumnHeader();
+            this.addCommandButton = new System.Windows.Forms.Button();
+            this.removeCommandButton = new System.Windows.Forms.Button();
             this.incomingCommandLabel = new System.Windows.Forms.Label();
             this.incomingCommandTextBox = new System.Windows.Forms.TextBox();
+            this.targetButton = new System.Windows.Forms.Button();
+            this.startInButton = new System.Windows.Forms.Button();
+            this.commitEditCommandLinkLabel = new System.Windows.Forms.LinkLabel();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
@@ -61,11 +67,6 @@
             this.portNameLabel = new System.Windows.Forms.Label();
             this.portNameComboBox = new System.Windows.Forms.ComboBox();
             this.dataBitsTextBox = new System.Windows.Forms.TextBox();
-            this.addCommandButton = new System.Windows.Forms.Button();
-            this.removeCommandButton = new System.Windows.Forms.Button();
-            this.targetButton = new System.Windows.Forms.Button();
-            this.startInButton = new System.Windows.Forms.Button();
-            this.commitEditCommandLinkLabel = new System.Windows.Forms.LinkLabel();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -267,6 +268,28 @@
             this.targetListViewHeader.Text = "Target";
             this.targetListViewHeader.Width = 236;
             // 
+            // addCommandButton
+            // 
+            this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
+            this.addCommandButton.Location = new System.Drawing.Point(299, 154);
+            this.addCommandButton.Name = "addCommandButton";
+            this.addCommandButton.Size = new System.Drawing.Size(24, 24);
+            this.addCommandButton.TabIndex = 2;
+            this.addCommandButton.UseVisualStyleBackColor = true;
+            this.addCommandButton.Click += new System.EventHandler(this.addCommandButton_Click);
+            // 
+            // removeCommandButton
+            // 
+            this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
+            this.removeCommandButton.Location = new System.Drawing.Point(329, 154);
+            this.removeCommandButton.Name = "removeCommandButton";
+            this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
+            this.removeCommandButton.TabIndex = 2;
+            this.removeCommandButton.UseVisualStyleBackColor = true;
+            this.removeCommandButton.Click += new System.EventHandler(this.removeCommandButton_Click);
+            // 
             // incomingCommandLabel
             // 
             this.incomingCommandLabel.AutoSize = true;
@@ -287,6 +310,49 @@
             this.incomingCommandTextBox.Size = new System.Drawing.Size(350, 23);
             this.incomingCommandTextBox.TabIndex = 3;
             // 
+            // targetButton
+            // 
+            this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
+            this.targetButton.Location = new System.Drawing.Point(329, 243);
+            this.targetButton.Name = "targetButton";
+            this.targetButton.Size = new System.Drawing.Size(24, 24);
+            this.targetButton.TabIndex = 9;
+            this.targetButton.UseVisualStyleBackColor = true;
+            // 
+            // startInButton
+            // 
+            this.startInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.startInButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
+            this.startInButton.Location = new System.Drawing.Point(329, 332);
+            this.startInButton.Name = "startInButton";
+            this.startInButton.Size = new System.Drawing.Size(24, 24);
+            this.startInButton.TabIndex = 10;
+            this.startInButton.UseVisualStyleBackColor = true;
+            // 
+            // commitEditCommandLinkLabel
+            // 
+            this.commitEditCommandLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.commitEditCommandLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.commitEditCommandLinkLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.commitEditCommandLinkLabel, 2);
+            this.commitEditCommandLinkLabel.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
+            this.commitEditCommandLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.commitEditCommandLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.commitEditCommandLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.commitEditCommandLinkLabel.Location = new System.Drawing.Point(299, 362);
+            this.commitEditCommandLinkLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.commitEditCommandLinkLabel.Name = "commitEditCommandLinkLabel";
+            this.commitEditCommandLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
+            this.commitEditCommandLinkLabel.Size = new System.Drawing.Size(54, 21);
+            this.commitEditCommandLinkLabel.TabIndex = 14;
+            this.commitEditCommandLinkLabel.TabStop = true;
+            this.commitEditCommandLinkLabel.Text = "Commit";
+            this.commitEditCommandLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.commitEditCommandLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.commitEditCommandLinkLabel_LinkClicked);
+            // 
             // settingsTabPage
             // 
             this.settingsTabPage.Controls.Add(this.writeLogFileCheckBox);
@@ -294,7 +360,7 @@
             this.settingsTabPage.Location = new System.Drawing.Point(4, 24);
             this.settingsTabPage.Name = "settingsTabPage";
             this.settingsTabPage.Padding = new System.Windows.Forms.Padding(6);
-            this.settingsTabPage.Size = new System.Drawing.Size(362, 302);
+            this.settingsTabPage.Size = new System.Drawing.Size(362, 392);
             this.settingsTabPage.TabIndex = 1;
             this.settingsTabPage.Text = "Settings";
             this.settingsTabPage.UseVisualStyleBackColor = true;
@@ -485,71 +551,6 @@
             this.dataBitsTextBox.Size = new System.Drawing.Size(255, 23);
             this.dataBitsTextBox.TabIndex = 9;
             // 
-            // addCommandButton
-            // 
-            this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
-            this.addCommandButton.Location = new System.Drawing.Point(299, 154);
-            this.addCommandButton.Name = "addCommandButton";
-            this.addCommandButton.Size = new System.Drawing.Size(24, 24);
-            this.addCommandButton.TabIndex = 2;
-            this.addCommandButton.UseVisualStyleBackColor = true;
-            this.addCommandButton.Click += new System.EventHandler(this.addCommandButton_Click);
-            // 
-            // removeCommandButton
-            // 
-            this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
-            this.removeCommandButton.Location = new System.Drawing.Point(329, 154);
-            this.removeCommandButton.Name = "removeCommandButton";
-            this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
-            this.removeCommandButton.TabIndex = 2;
-            this.removeCommandButton.UseVisualStyleBackColor = true;
-            this.removeCommandButton.Click += new System.EventHandler(this.removeCommandButton_Click);
-            // 
-            // targetButton
-            // 
-            this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.targetButton.Location = new System.Drawing.Point(329, 243);
-            this.targetButton.Name = "targetButton";
-            this.targetButton.Size = new System.Drawing.Size(24, 24);
-            this.targetButton.TabIndex = 9;
-            this.targetButton.UseVisualStyleBackColor = true;
-            // 
-            // startInButton
-            // 
-            this.startInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.startInButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.startInButton.Location = new System.Drawing.Point(329, 332);
-            this.startInButton.Name = "startInButton";
-            this.startInButton.Size = new System.Drawing.Size(24, 24);
-            this.startInButton.TabIndex = 10;
-            this.startInButton.UseVisualStyleBackColor = true;
-            // 
-            // commitEditCommandLinkLabel
-            // 
-            this.commitEditCommandLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
-            this.commitEditCommandLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.commitEditCommandLinkLabel.AutoSize = true;
-            this.commandsTableLayoutPanel.SetColumnSpan(this.commitEditCommandLinkLabel, 2);
-            this.commitEditCommandLinkLabel.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
-            this.commitEditCommandLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.commitEditCommandLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.commitEditCommandLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.commitEditCommandLinkLabel.Location = new System.Drawing.Point(299, 362);
-            this.commitEditCommandLinkLabel.Margin = new System.Windows.Forms.Padding(3);
-            this.commitEditCommandLinkLabel.Name = "commitEditCommandLinkLabel";
-            this.commitEditCommandLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
-            this.commitEditCommandLinkLabel.Size = new System.Drawing.Size(54, 21);
-            this.commitEditCommandLinkLabel.TabIndex = 14;
-            this.commitEditCommandLinkLabel.TabStop = true;
-            this.commitEditCommandLinkLabel.Text = "Commit";
-            this.commitEditCommandLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.commitEditCommandLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.commitEditCommandLinkLabel_LinkClicked);
-            // 
             // MainForm
             // 
             this.AcceptButton = this.okButton;
@@ -559,6 +560,7 @@
             this.ClientSize = new System.Drawing.Size(384, 464);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
