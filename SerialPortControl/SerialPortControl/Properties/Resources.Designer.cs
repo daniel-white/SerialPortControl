@@ -60,6 +60,13 @@ namespace SerialPortControl.Properties {
             }
         }
         
+        internal static System.Drawing.Icon Connected {
+            get {
+                object obj = ResourceManager.GetObject("Connected", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap edit_add {
             get {
                 object obj = ResourceManager.GetObject("edit_add", resourceCulture);
@@ -85,6 +92,13 @@ namespace SerialPortControl.Properties {
             get {
                 object obj = ResourceManager.GetObject("folder_brown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon NotConnected {
+            get {
+                object obj = ResourceManager.GetObject("NotConnected", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

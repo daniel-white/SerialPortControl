@@ -87,7 +87,6 @@ namespace SerialPortControl.IO
             if (!_readingThread.IsAlive)
             {
                 _readingThread.Start();
-                //_readingThread.Join();
             }
         }
 
