@@ -19,6 +19,7 @@ namespace SerialPortControl.IO
         public SerialPortWatcher(SerialPortSettings portOptions)
         {
             _readingThread = new Thread(ReadData);
+            _readingThread.Name = "SerialData";
 
             _serialPort = new SerialPort();
 
@@ -31,6 +32,9 @@ namespace SerialPortControl.IO
 
             _serialPort.Encoding = Encoding.ASCII;
 
+            _serialPort.NewLine = "\r\n";
+            
+
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
 
@@ -39,6 +43,7 @@ namespace SerialPortControl.IO
         ~SerialPortWatcher()
         {
             Stop();
+            _readingThread.Abort();
         }
 
         public SerialPortSettings PortOptions
@@ -73,12 +78,16 @@ namespace SerialPortControl.IO
         public void Stop()
         {
             _serialPort.Close();
-            _readingThread.Abort();
+
         }
         public void Start()
         {
             _serialPort.Open();
-            _readingThread.Start();
+            
+            if (_readingThread.ThreadState == ThreadState.Suspended)
+                _readingThread.Resume();
+            else
+                _readingThread.Start();
             _readingThread.Join();
         }
 
@@ -89,6 +98,9 @@ namespace SerialPortControl.IO
             {
                 while (_serialPort.IsOpen)
                 {
+                    //char bytes[_serialPort.BytesToRead];
+                    //System.Windows.Forms.MessageBox.Show(_serialPort.ReadChar().ToString());
+                   
                     data = _serialPort.ReadLine();
                     ReceivedData(this, new ReceivedDataEventArgs(data));
                 }

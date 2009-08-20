@@ -32,7 +32,7 @@ namespace SerialPortControl
 
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
-            _theWatcher.Start();
+           _theWatcher.Start();
         }
 
         public bool WriteLog { get; set; }
