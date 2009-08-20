@@ -53,7 +53,10 @@ namespace SerialPortControl.Model
                     };
                     Commands.Add(command.IncomingCommand, command);
                 }
-
+            }
+            else
+            {
+                CreateDefaultSettings();
             }
         }
 
@@ -94,6 +97,23 @@ namespace SerialPortControl.Model
             spcElement.Save(_xmlFilePath);
         }
 
-        
+        public void CreateDefaultSettings()
+        {
+            WriteLog = false;
+            Commands = new CommandDictionary();
+
+            SerialPort defaultConfig = new SerialPort();
+
+            defaultConfig.Encoding = Encoding.ASCII;
+
+            SerialPort.PortName = defaultConfig.PortName;
+            SerialPort.BaudRate = (BaudRate)defaultConfig.BaudRate;
+            SerialPort.Parity = defaultConfig.Parity;
+            SerialPort.DataBits = defaultConfig.DataBits;
+            SerialPort.StopBits = defaultConfig.StopBits;
+            SerialPort.Handshake = defaultConfig.Handshake;
+
+
+        }
     }
 }

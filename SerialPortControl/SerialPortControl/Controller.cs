@@ -6,18 +6,26 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using SerialPortControl.Model;
+using SerialPortControl.IO;
 
 namespace SerialPortControl
 {
     public class Controller : IController
     {
         SettingsRepository settings;
-
+        MainForm _mainForm;
+        ISerialPortWatcher _theWatcher;
 
         public Controller()
         {
             settings = new SettingsRepository("SerialPortControl.xml");
-            
+            settings.Load();
+            Commands = settings.Commands;
+            SerialPort = settings.SerialPort;
+            WriteLog = settings.WriteLog;
+
+            _theWatcher = new SerialPortWatcher(SerialPort);
+            _theWatcher.Start();
         }
 
         public bool WriteLog { get; set; }
@@ -31,40 +39,18 @@ namespace SerialPortControl
             SerialPort = settings.SerialPort;
             WriteLog = settings.WriteLog;
 
-            MainForm mainForm = new MainForm(this);
+            _mainForm = new MainForm(this);
 
-            var result = mainForm.ShowDialog();
+            var result = _mainForm.ShowDialog();
             if (result == DialogResult.OK)
             {
                 settings.Commands = Commands;
                 settings.SerialPort = SerialPort;
                 settings.WriteLog = WriteLog;
                 settings.Save();
+                _theWatcher.PortOptions = SerialPort;
             }
         }
 
-        #region IController Members
-
-        
-
-  
-
-
-
-        #endregion
-
-        #region IController Members
-
-
-        public void UpdateCommand(string key, Command command)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-
-       
-
-        #endregion
     }
 }
