@@ -19,7 +19,9 @@ namespace SerialPortControl
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            _controller.ShowTrayIcon();
             _controller.ShowMainForm();
+            
             Application.Run();
         }
     }

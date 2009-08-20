@@ -15,5 +15,8 @@ namespace SerialPortControl
         bool WriteLog { get; set; }
         SerialPortSettings SerialPort { get; }
 
+        void ShowTrayIcon();
+        void HideTrayIcon();
+
     }
 }

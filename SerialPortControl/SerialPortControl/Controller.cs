@@ -15,6 +15,7 @@ namespace SerialPortControl
         SettingsRepository settings;
         MainForm _mainForm;
         ISerialPortWatcher _theWatcher;
+        TrayIcon icon;
 
         public Controller()
         {
@@ -23,6 +24,8 @@ namespace SerialPortControl
             Commands = settings.Commands;
             SerialPort = settings.SerialPort;
             WriteLog = settings.WriteLog;
+
+            icon = new TrayIcon();
 
             if (SerialPort.Configurations.PortNames.Count() == 0)
             {
@@ -33,6 +36,12 @@ namespace SerialPortControl
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
            _theWatcher.Start();
+        }
+
+        ~Controller()
+        {
+            icon.Visible = false;
+            _theWatcher.Stop();
         }
 
         public bool WriteLog { get; set; }
@@ -63,5 +72,20 @@ namespace SerialPortControl
         {
             settings.Commands[e.Data].Run();
         }
+
+        #region IController Members
+
+
+        public void ShowTrayIcon()
+        {
+            icon.Visible = true;
+        }
+
+        public void HideTrayIcon()
+        {
+            icon.Visible = false;
+        }
+
+        #endregion
     }
 }

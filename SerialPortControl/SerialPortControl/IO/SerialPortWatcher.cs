@@ -14,6 +14,9 @@ namespace SerialPortControl.IO
     {
         private SerialPort _serialPort;
         public event EventHandler<ReceivedDataEventArgs> ReceivedData;
+        public event EventHandler Connected;
+        public event EventHandler Disconnected;
+
         Thread _readingThread;
 
         public SerialPortWatcher(SerialPortSettings portOptions)
@@ -77,12 +80,14 @@ namespace SerialPortControl.IO
 
         public void Stop()
         {
+            Disconnected(this, new EventArgs());
             _serialPort.Close();
             
         }
         public void Start()
         {
             _serialPort.Open();
+            Connected(this, new EventArgs());
 
             if (!_readingThread.IsAlive)
             {
