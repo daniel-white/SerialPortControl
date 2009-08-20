@@ -43,12 +43,8 @@
             this.commandsListView = new System.Windows.Forms.ListView();
             this.commandListViewHeader = new System.Windows.Forms.ColumnHeader();
             this.targetListViewHeader = new System.Windows.Forms.ColumnHeader();
-            this.addCommandButton = new System.Windows.Forms.Button();
-            this.removeCommandButton = new System.Windows.Forms.Button();
             this.incomingCommandLabel = new System.Windows.Forms.Label();
             this.incomingCommandTextBox = new System.Windows.Forms.TextBox();
-            this.targetButton = new System.Windows.Forms.Button();
-            this.startInButton = new System.Windows.Forms.Button();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
@@ -65,6 +61,11 @@
             this.portNameLabel = new System.Windows.Forms.Label();
             this.portNameComboBox = new System.Windows.Forms.ComboBox();
             this.dataBitsTextBox = new System.Windows.Forms.TextBox();
+            this.addCommandButton = new System.Windows.Forms.Button();
+            this.removeCommandButton = new System.Windows.Forms.Button();
+            this.targetButton = new System.Windows.Forms.Button();
+            this.startInButton = new System.Windows.Forms.Button();
+            this.commitEditCommandLinkLabel = new System.Windows.Forms.LinkLabel();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -90,13 +91,13 @@
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(376, 366);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(376, 456);
             this.mainTableLayoutPanel.TabIndex = 1;
             // 
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(217, 339);
+            this.okButton.Location = new System.Drawing.Point(217, 429);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 24);
             this.okButton.TabIndex = 3;
@@ -108,7 +109,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(298, 339);
+            this.cancelButton.Location = new System.Drawing.Point(298, 429);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 24);
             this.cancelButton.TabIndex = 2;
@@ -124,7 +125,7 @@
             this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(370, 330);
+            this.tabControl.Size = new System.Drawing.Size(370, 420);
             this.tabControl.TabIndex = 0;
             // 
             // commandsTabPage
@@ -133,7 +134,7 @@
             this.commandsTabPage.Location = new System.Drawing.Point(4, 24);
             this.commandsTabPage.Name = "commandsTabPage";
             this.commandsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commandsTabPage.Size = new System.Drawing.Size(362, 302);
+            this.commandsTabPage.Size = new System.Drawing.Size(362, 392);
             this.commandsTabPage.TabIndex = 0;
             this.commandsTabPage.Text = "Commands";
             this.commandsTabPage.UseVisualStyleBackColor = true;
@@ -157,10 +158,11 @@
             this.commandsTableLayoutPanel.Controls.Add(this.incomingCommandTextBox, 0, 3);
             this.commandsTableLayoutPanel.Controls.Add(this.targetButton, 2, 5);
             this.commandsTableLayoutPanel.Controls.Add(this.startInButton, 2, 9);
+            this.commandsTableLayoutPanel.Controls.Add(this.commitEditCommandLinkLabel, 1, 10);
             this.commandsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.commandsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.commandsTableLayoutPanel.Name = "commandsTableLayoutPanel";
-            this.commandsTableLayoutPanel.RowCount = 10;
+            this.commandsTableLayoutPanel.RowCount = 11;
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -171,7 +173,9 @@
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.commandsTableLayoutPanel.Size = new System.Drawing.Size(356, 296);
+            this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.commandsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.commandsTableLayoutPanel.Size = new System.Drawing.Size(356, 386);
             this.commandsTableLayoutPanel.TabIndex = 1;
             // 
             // argumentsLabel
@@ -179,7 +183,7 @@
             this.argumentsLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsLabel, 3);
             this.argumentsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.argumentsLabel.Location = new System.Drawing.Point(3, 207);
+            this.argumentsLabel.Location = new System.Drawing.Point(3, 270);
             this.argumentsLabel.Name = "argumentsLabel";
             this.argumentsLabel.Size = new System.Drawing.Size(350, 15);
             this.argumentsLabel.TabIndex = 12;
@@ -189,7 +193,7 @@
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.argumentsTextBox, 3);
             this.argumentsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.argumentsTextBox.Location = new System.Drawing.Point(3, 225);
+            this.argumentsTextBox.Location = new System.Drawing.Point(3, 288);
             this.argumentsTextBox.Name = "argumentsTextBox";
             this.argumentsTextBox.Size = new System.Drawing.Size(350, 23);
             this.argumentsTextBox.TabIndex = 11;
@@ -198,7 +202,7 @@
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.startInTextBox, 2);
             this.startInTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startInTextBox.Location = new System.Drawing.Point(3, 269);
+            this.startInTextBox.Location = new System.Drawing.Point(3, 332);
             this.startInTextBox.Name = "startInTextBox";
             this.startInTextBox.Size = new System.Drawing.Size(320, 23);
             this.startInTextBox.TabIndex = 8;
@@ -207,7 +211,7 @@
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.targetTextBox, 2);
             this.targetTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetTextBox.Location = new System.Drawing.Point(3, 180);
+            this.targetTextBox.Location = new System.Drawing.Point(3, 243);
             this.targetTextBox.Name = "targetTextBox";
             this.targetTextBox.Size = new System.Drawing.Size(320, 23);
             this.targetTextBox.TabIndex = 7;
@@ -217,7 +221,7 @@
             this.startInLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.startInLabel, 3);
             this.startInLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startInLabel.Location = new System.Drawing.Point(3, 251);
+            this.startInLabel.Location = new System.Drawing.Point(3, 314);
             this.startInLabel.Name = "startInLabel";
             this.startInLabel.Size = new System.Drawing.Size(350, 15);
             this.startInLabel.TabIndex = 5;
@@ -228,7 +232,7 @@
             this.targetLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.targetLabel, 3);
             this.targetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.targetLabel.Location = new System.Drawing.Point(3, 162);
+            this.targetLabel.Location = new System.Drawing.Point(3, 225);
             this.targetLabel.Name = "targetLabel";
             this.targetLabel.Size = new System.Drawing.Size(350, 15);
             this.targetLabel.TabIndex = 4;
@@ -247,7 +251,7 @@
             this.commandsListView.Location = new System.Drawing.Point(3, 3);
             this.commandsListView.MultiSelect = false;
             this.commandsListView.Name = "commandsListView";
-            this.commandsListView.Size = new System.Drawing.Size(350, 82);
+            this.commandsListView.Size = new System.Drawing.Size(350, 145);
             this.commandsListView.TabIndex = 0;
             this.commandsListView.UseCompatibleStateImageBehavior = false;
             this.commandsListView.View = System.Windows.Forms.View.Details;
@@ -263,32 +267,12 @@
             this.targetListViewHeader.Text = "Target";
             this.targetListViewHeader.Width = 236;
             // 
-            // addCommandButton
-            // 
-            this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
-            this.addCommandButton.Location = new System.Drawing.Point(299, 91);
-            this.addCommandButton.Name = "addCommandButton";
-            this.addCommandButton.Size = new System.Drawing.Size(24, 24);
-            this.addCommandButton.TabIndex = 2;
-            this.addCommandButton.UseVisualStyleBackColor = true;
-            // 
-            // removeCommandButton
-            // 
-            this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
-            this.removeCommandButton.Location = new System.Drawing.Point(329, 91);
-            this.removeCommandButton.Name = "removeCommandButton";
-            this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
-            this.removeCommandButton.TabIndex = 2;
-            this.removeCommandButton.UseVisualStyleBackColor = true;
-            // 
             // incomingCommandLabel
             // 
             this.incomingCommandLabel.AutoSize = true;
             this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandLabel, 3);
             this.incomingCommandLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incomingCommandLabel.Location = new System.Drawing.Point(3, 118);
+            this.incomingCommandLabel.Location = new System.Drawing.Point(3, 181);
             this.incomingCommandLabel.Name = "incomingCommandLabel";
             this.incomingCommandLabel.Size = new System.Drawing.Size(350, 15);
             this.incomingCommandLabel.TabIndex = 3;
@@ -298,30 +282,10 @@
             // 
             this.commandsTableLayoutPanel.SetColumnSpan(this.incomingCommandTextBox, 3);
             this.incomingCommandTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incomingCommandTextBox.Location = new System.Drawing.Point(3, 136);
+            this.incomingCommandTextBox.Location = new System.Drawing.Point(3, 199);
             this.incomingCommandTextBox.Name = "incomingCommandTextBox";
             this.incomingCommandTextBox.Size = new System.Drawing.Size(350, 23);
             this.incomingCommandTextBox.TabIndex = 3;
-            // 
-            // targetButton
-            // 
-            this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.targetButton.Location = new System.Drawing.Point(329, 180);
-            this.targetButton.Name = "targetButton";
-            this.targetButton.Size = new System.Drawing.Size(24, 24);
-            this.targetButton.TabIndex = 9;
-            this.targetButton.UseVisualStyleBackColor = true;
-            // 
-            // startInButton
-            // 
-            this.startInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.startInButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
-            this.startInButton.Location = new System.Drawing.Point(329, 269);
-            this.startInButton.Name = "startInButton";
-            this.startInButton.Size = new System.Drawing.Size(24, 24);
-            this.startInButton.TabIndex = 10;
-            this.startInButton.UseVisualStyleBackColor = true;
             // 
             // settingsTabPage
             // 
@@ -521,20 +485,83 @@
             this.dataBitsTextBox.Size = new System.Drawing.Size(255, 23);
             this.dataBitsTextBox.TabIndex = 9;
             // 
+            // addCommandButton
+            // 
+            this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
+            this.addCommandButton.Location = new System.Drawing.Point(299, 154);
+            this.addCommandButton.Name = "addCommandButton";
+            this.addCommandButton.Size = new System.Drawing.Size(24, 24);
+            this.addCommandButton.TabIndex = 2;
+            this.addCommandButton.UseVisualStyleBackColor = true;
+            this.addCommandButton.Click += new System.EventHandler(this.addCommandButton_Click);
+            // 
+            // removeCommandButton
+            // 
+            this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
+            this.removeCommandButton.Location = new System.Drawing.Point(329, 154);
+            this.removeCommandButton.Name = "removeCommandButton";
+            this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
+            this.removeCommandButton.TabIndex = 2;
+            this.removeCommandButton.UseVisualStyleBackColor = true;
+            this.removeCommandButton.Click += new System.EventHandler(this.removeCommandButton_Click);
+            // 
+            // targetButton
+            // 
+            this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
+            this.targetButton.Location = new System.Drawing.Point(329, 243);
+            this.targetButton.Name = "targetButton";
+            this.targetButton.Size = new System.Drawing.Size(24, 24);
+            this.targetButton.TabIndex = 9;
+            this.targetButton.UseVisualStyleBackColor = true;
+            // 
+            // startInButton
+            // 
+            this.startInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.startInButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
+            this.startInButton.Location = new System.Drawing.Point(329, 332);
+            this.startInButton.Name = "startInButton";
+            this.startInButton.Size = new System.Drawing.Size(24, 24);
+            this.startInButton.TabIndex = 10;
+            this.startInButton.UseVisualStyleBackColor = true;
+            // 
+            // commitEditCommandLinkLabel
+            // 
+            this.commitEditCommandLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.commitEditCommandLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.commitEditCommandLinkLabel.AutoSize = true;
+            this.commandsTableLayoutPanel.SetColumnSpan(this.commitEditCommandLinkLabel, 2);
+            this.commitEditCommandLinkLabel.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
+            this.commitEditCommandLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.commitEditCommandLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.commitEditCommandLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.commitEditCommandLinkLabel.Location = new System.Drawing.Point(299, 362);
+            this.commitEditCommandLinkLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.commitEditCommandLinkLabel.Name = "commitEditCommandLinkLabel";
+            this.commitEditCommandLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
+            this.commitEditCommandLinkLabel.Size = new System.Drawing.Size(54, 21);
+            this.commitEditCommandLinkLabel.TabIndex = 14;
+            this.commitEditCommandLinkLabel.TabStop = true;
+            this.commitEditCommandLinkLabel.Text = "Commit";
+            this.commitEditCommandLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.commitEditCommandLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.commitEditCommandLinkLabel_LinkClicked);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(384, 374);
+            this.ClientSize = new System.Drawing.Size(384, 464);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(400, 700);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -592,6 +619,7 @@
         private System.Windows.Forms.ComboBox stopBitsComboBox;
         private System.Windows.Forms.Label stopBitsLabel;
         private System.Windows.Forms.CheckBox writeLogFileCheckBox;
+        private System.Windows.Forms.LinkLabel commitEditCommandLinkLabel;
 
 
     }

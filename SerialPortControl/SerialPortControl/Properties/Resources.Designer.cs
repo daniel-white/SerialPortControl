@@ -74,6 +74,13 @@ namespace SerialPortControl.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap filesave {
+            get {
+                object obj = ResourceManager.GetObject("filesave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap folder_brown {
             get {
                 object obj = ResourceManager.GetObject("folder_brown", resourceCulture);

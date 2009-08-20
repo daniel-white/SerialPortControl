@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using SerialPortControl.Model;
 using System.IO.Ports;
+using System.IO;
 using System.Reflection;
 
 namespace SerialPortControl
@@ -21,13 +22,9 @@ namespace SerialPortControl
         {
             InitializeComponent();
             _controller = controller;
-           // commandsListView.DataBindings
-
-            writeLogFileCheckBox.Checked = _controller.WriteLog;
-
+           
             LoadCommandsListView();
-            LoadSerialPortSettings();
-            LoadSerialPortConfiguration();
+            LoadSettings();
             DisableEditCommand();
         }
 
@@ -52,6 +49,8 @@ namespace SerialPortControl
             startInTextBox.Enabled = false;
             startInTextBox.Text = "";
             startInButton.Enabled = false;
+
+            commitEditCommandLinkLabel.Enabled = false;
         }
 
         protected void EnableEditCommand()
@@ -60,17 +59,23 @@ namespace SerialPortControl
 
             incomingCommandLabel.Enabled = true;
             incomingCommandTextBox.Enabled = true;
+            incomingCommandTextBox.Text = "";
 
             targetLabel.Enabled = true;
             targetTextBox.Enabled = true;
             targetButton.Enabled = true;
+            targetTextBox.Text = "";
 
             argumentsLabel.Enabled = true;
             argumentsTextBox.Enabled = true;
+            targetTextBox.Text = "";
 
             startInLabel.Enabled = true;
             startInTextBox.Enabled = true;
             startInButton.Enabled = true;
+            targetTextBox.Text = "";
+
+            commitEditCommandLinkLabel.Enabled = true;
         }
 
         protected void LoadSerialPortSettings()
@@ -81,25 +86,26 @@ namespace SerialPortControl
             stopBitsComboBox.Items.AddRange(_controller.SerialPort.Configurations.StopBits.Cast<object>().ToArray());
             handshakeComboBox.Items.AddRange(_controller.SerialPort.Configurations.Handshakes.Cast<object>().ToArray());
 
-            dataBitsTextBox.Text = _controller.SerialPort.DataBits.ToString();
+            portNameComboBox.SelectedItem = _controller.SerialPort.PortName;
             baudRateComboBox.SelectedItem = ((int)_controller.SerialPort.BaudRate);
             parityComboBox.SelectedIndex = (int)_controller.SerialPort.Parity;
+            dataBitsTextBox.Text = _controller.SerialPort.DataBits.ToString();
             stopBitsComboBox.SelectedIndex = (int)_controller.SerialPort.StopBits;
             handshakeComboBox.SelectedIndex = (int)_controller.SerialPort.Handshake;
         }
 
-        protected void LoadSerialPortConfiguration()
+        protected void LoadSettings()
         {
-            
-            //portNameComboBox.SelectedValue = spc.PortName;
-            //baudRateComboBox.SelectedValue = spc.BaudRate;
-            parityComboBox.SelectedItem = _controller.SerialPort.Parity;
-            ;
+            writeLogFileCheckBox.Checked = _controller.WriteLog;
+            LoadSerialPortSettings();
         }
+
 
         public void LoadCommandsListView()
         {
-            foreach (var command in _controller.Commands.Values)
+            commandsListView.Items.Clear();
+
+            foreach (var command in _controller.Commands.Values.OrderBy(i => i.IncomingCommand))
             {
                 ListViewItem lvi = new ListViewItem(command.IncomingCommand);
                 lvi.Tag = command.IncomingCommand;
@@ -133,15 +139,84 @@ namespace SerialPortControl
         {
             DialogResult = DialogResult.OK;
 
-            _controller.WriteLog = writeLogFileCheckBox.Checked;
+            _controller.SerialPort.PortName = portNameComboBox.SelectedItem as string;
+            _controller.SerialPort.BaudRate = (BaudRate)baudRateComboBox.SelectedItem;
+            _controller.SerialPort.Parity = parityComboBox.SelectedItem.ToEnumValue<Parity>();
+            _controller.SerialPort.DataBits = Convert.ToInt32(dataBitsTextBox.Text);
+            _controller.SerialPort.StopBits = stopBitsComboBox.SelectedItem.ToEnumValue<StopBits>();
             _controller.SerialPort.Handshake = handshakeComboBox.SelectedItem.ToEnumValue<Handshake>();
+            
+            _controller.WriteLog = writeLogFileCheckBox.Checked;
 
             Close();
         }
 
-        
+        private void addCommandButton_Click(object sender, EventArgs e)
+        {
+            StartAddItem();
+        }
 
-      
+        protected void StartAddItem()
+        {
+            commandsListView.SelectedItems.Clear();
+            EnableEditCommand();
+            removeCommandButton.Enabled = false;
+        }
+
+        private void commitEditCommandLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CommitEditCommand();
+        }
+
+        protected void CommitEditCommand()
+        {
+            try {
+                if (incomingCommandTextBox.Text.Length == 0)
+                    throw new Exception("Please enter an Incoming Command.");
+
+                if (_controller.Commands.Where(i => i.Key == incomingCommandTextBox.Text).Count() > 0)
+                    throw new DuplicateNameException("There already exists a Command with that Incoming Command. Choose a different string.");
+
+                if (!File.Exists(targetTextBox.Text))
+                    throw new FileNotFoundException("The Target cannot be found.");
+
+                Command command = new Command
+                {
+                    IncomingCommand = incomingCommandTextBox.Text,
+                    Target = targetTextBox.Text,
+                    Arguments = argumentsTextBox.Text,
+                    StartInDirectory = startInTextBox.Text
+                };
+
+                _controller.Commands.Add(command);
+
+                LoadCommandsListView();
+                DisableEditCommand();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void removeCommandButton_Click(object sender, EventArgs e)
+        {
+            RemoveCommand();
+        }
+
+        void RemoveCommand()
+        {
+            DialogResult dr = MessageBox.Show("Do you want to remove this Command?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                _controller.Commands.Remove(commandsListView.SelectedItems[0].Tag as string);
+
+                LoadCommandsListView();
+                DisableEditCommand();
+            }
+
+        }
 
     }
 }

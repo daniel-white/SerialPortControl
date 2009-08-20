@@ -27,6 +27,7 @@ namespace SerialPortControl.Model
     public interface ICommandDictionary : IDictionary<string, Command>
     {
         ICommandDictionary Clone();
+        void Add(Command command);
     }
 
     public class CommandDictionary : Dictionary<string, Command>, ICommandDictionary
@@ -40,6 +41,11 @@ namespace SerialPortControl.Model
             }
 
             return returnValue;
+        }
+
+        public void Add(Command command)
+        {
+            Add(command.IncomingCommand, command);
         }
     }
 }
