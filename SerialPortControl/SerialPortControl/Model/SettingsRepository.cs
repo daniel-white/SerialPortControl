@@ -106,7 +106,7 @@ namespace SerialPortControl.Model
 
             defaultConfig.Encoding = Encoding.ASCII;
 
-            SerialPort.PortName = defaultConfig.PortName;
+            SerialPort.PortName = System.IO.Ports.SerialPort.GetPortNames().;
             SerialPort.BaudRate = (BaudRate)defaultConfig.BaudRate;
             SerialPort.Parity = defaultConfig.Parity;
             SerialPort.DataBits = defaultConfig.DataBits;

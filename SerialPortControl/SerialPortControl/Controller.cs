@@ -25,6 +25,7 @@ namespace SerialPortControl
             WriteLog = settings.WriteLog;
 
             _theWatcher = new SerialPortWatcher(SerialPort);
+            _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
             _theWatcher.Start();
         }
 
@@ -52,5 +53,9 @@ namespace SerialPortControl
             }
         }
 
+        protected void OnReceivedData(object sender, ReceivedDataEventArgs e)
+        {
+            MessageBox.Show(e.Data, "Incoming");
+        }
     }
 }
