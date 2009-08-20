@@ -21,6 +21,8 @@ namespace SerialPortControl.IO
 
         public SerialPortWatcher(SerialPortSettings portOptions)
         {
+            //ReceivedData = new EventHandler<ReceivedDataEventArgs>();
+
             _readingThread = new Thread(ReadData);
             _readingThread.Name = "SerialData";
 

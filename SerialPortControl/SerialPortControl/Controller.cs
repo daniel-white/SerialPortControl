@@ -35,7 +35,9 @@ namespace SerialPortControl
 
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
-           _theWatcher.Start();
+            _theWatcher.Connected += new EventHandler(OnConnected);
+            _theWatcher.Disconnected += new EventHandler(OnDisconnected);
+            _theWatcher.Start();
         }
 
         ~Controller()
@@ -71,6 +73,16 @@ namespace SerialPortControl
         protected void OnReceivedData(object sender, ReceivedDataEventArgs e)
         {
             settings.Commands[e.Data].Run();
+        }
+
+        protected void OnConnected(object sender, EventArgs e)
+        {
+            icon.Connected = true;
+        }
+
+        protected void OnDisconnected(object sender, EventArgs e)
+        {
+            icon.Connected = false;
         }
 
         #region IController Members
