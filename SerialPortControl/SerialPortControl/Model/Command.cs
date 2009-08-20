@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
+
+
 
 namespace SerialPortControl.Model
 {
@@ -21,6 +24,13 @@ namespace SerialPortControl.Model
                 StartInDirectory = this.StartInDirectory,
                 Arguments = this.Arguments
             };
+        }
+
+        public void Run()
+        {
+            Process.Start(
+                new ProcessStartInfo { FileName = Target, WorkingDirectory = StartInDirectory, Arguments = Arguments }
+            );
         }
     }
 
@@ -48,4 +58,6 @@ namespace SerialPortControl.Model
             Add(command.IncomingCommand, command);
         }
     }
+
+
 }

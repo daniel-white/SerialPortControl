@@ -33,7 +33,7 @@ namespace SerialPortControl.IO
             _serialPort.Encoding = Encoding.ASCII;
 
             _serialPort.NewLine = "\r\n";
-            
+
 
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
@@ -78,37 +78,39 @@ namespace SerialPortControl.IO
         public void Stop()
         {
             _serialPort.Close();
-
+            
         }
         public void Start()
         {
             _serialPort.Open();
-            
-            if (_readingThread.ThreadState == ThreadState.Suspended)
-                _readingThread.Resume();
-            else
+
+            if (!_readingThread.IsAlive)
+            {
                 _readingThread.Start();
-            _readingThread.Join();
+                //_readingThread.Join();
+            }
         }
 
         protected void ReadData()
         {
             string data;
-            try
+            while (true)
             {
-                while (_serialPort.IsOpen)
+                try
                 {
-                    //char bytes[_serialPort.BytesToRead];
-                    //System.Windows.Forms.MessageBox.Show(_serialPort.ReadChar().ToString());
-                   
-                    data = _serialPort.ReadLine();
-                    ReceivedData(this, new ReceivedDataEventArgs(data));
+                    if (_serialPort.IsOpen)
+                    {
+                        data = _serialPort.ReadLine();
+                        if (data.Length > 0)
+                            ReceivedData(_serialPort, new ReceivedDataEventArgs(data));
+                    }
+                }
+                catch (TimeoutException)
+                {
+                  //  No action
                 }
             }
-            catch (TimeoutException)
-            {
-                // Ignore
-            }
+            
         }
     }
 }

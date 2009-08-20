@@ -61,7 +61,7 @@ namespace SerialPortControl
 
         protected void OnReceivedData(object sender, ReceivedDataEventArgs e)
         {
-            MessageBox.Show(e.Data, "Incoming");
+            settings.Commands[e.Data].Run();
         }
     }
 }
