@@ -36,7 +36,7 @@ namespace SerialPortControl.Model
                 WriteLog = Boolean.Parse(settingsElement.Element("WriteLog").Value);
 
                 SerialPort.PortName = serialPortElement.Element("PortName").Value;
-                SerialPort.BaudRate = serialPortElement.Element("BaudRate").ToEnumValue<BaudRate>();
+                SerialPort.BaudRate = (BaudRate)Convert.ToInt32(serialPortElement.Element("BaudRate").Value);
                 SerialPort.Parity = serialPortElement.Element("Parity").ToEnumValue<Parity>();
                 SerialPort.DataBits = Convert.ToInt32(serialPortElement.Element("DataBits").Value);
                 SerialPort.StopBits = serialPortElement.Element("StopBits").ToEnumValue<StopBits>();
@@ -62,7 +62,6 @@ namespace SerialPortControl.Model
 
         public void Save()
         {
-
             XElement spcElement = new XElement("SerialPortControl");
             XElement serialPortElement = new XElement("SerialPort");
             XElement settingsElement = new XElement("Settings");
@@ -72,7 +71,7 @@ namespace SerialPortControl.Model
 
             serialPortElement.Add(
                 new XElement("PortName", SerialPort.PortName),
-                new XElement("BaudRate", SerialPort.BaudRate),
+                new XElement("BaudRate", (int)SerialPort.BaudRate),
                 new XElement("Parity", SerialPort.Parity),
                 new XElement("DataBits", SerialPort.DataBits),
                 new XElement("StopBits", SerialPort.StopBits),
@@ -106,14 +105,14 @@ namespace SerialPortControl.Model
 
             defaultConfig.Encoding = Encoding.ASCII;
 
-            SerialPort.PortName = System.IO.Ports.SerialPort.GetPortNames().;
+            SerialPort.PortName = System.IO.Ports.SerialPort.GetPortNames()[0];
             SerialPort.BaudRate = (BaudRate)defaultConfig.BaudRate;
             SerialPort.Parity = defaultConfig.Parity;
             SerialPort.DataBits = defaultConfig.DataBits;
             SerialPort.StopBits = defaultConfig.StopBits;
             SerialPort.Handshake = defaultConfig.Handshake;
 
-
+            Save();
         }
     }
 }

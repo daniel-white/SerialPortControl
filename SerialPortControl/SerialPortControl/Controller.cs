@@ -24,6 +24,12 @@ namespace SerialPortControl
             SerialPort = settings.SerialPort;
             WriteLog = settings.WriteLog;
 
+            if (SerialPort.Configurations.PortNames.Count() == 0)
+            {
+                MessageBox.Show("Unable to find any available COM ports on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
             _theWatcher.Start();
