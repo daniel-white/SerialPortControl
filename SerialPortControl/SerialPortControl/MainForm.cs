@@ -22,10 +22,18 @@ namespace SerialPortControl
         {
             InitializeComponent();
             _controller = controller;
-           
+        }
+
+        public new DialogResult ShowDialog()
+        {
             LoadCommandsListView();
             LoadSettings();
             DisableEditCommand();
+
+            okButton.Select();
+            commandsTabPage.Select();
+
+            return base.ShowDialog();
         }
 
         protected void DisableEditCommand()

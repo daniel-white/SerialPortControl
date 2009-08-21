@@ -19,19 +19,10 @@ namespace SerialPortControl
 
         public Controller()
         {
-            settings = new SettingsRepository("SerialPortControl.xml");
-            settings.Load();
-            Commands = settings.Commands;
-            SerialPort = settings.SerialPort;
-            WriteLog = settings.WriteLog;
-
             
 
-            if (SerialPort.Configurations.PortNames.Count() == 0)
-            {
-                MessageBox.Show("Unable to find any available COM ports on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
+            _mainForm = new MainForm(this);
+            settings = new SettingsRepository("SerialPortControl.xml");
 
             icon = new TrayIcon();
 
@@ -40,13 +31,37 @@ namespace SerialPortControl
             icon.ToggleListening += new EventHandler(OnToggleListening);
             ShowTrayIcon();
 
+            if (settings.SettingsFileExists)
+            {
+                settings.Load();
+                Commands = settings.Commands;
+                SerialPort = settings.SerialPort;
+                WriteLog = settings.WriteLog;
+            }
+            else
+            {
+                ShowMainForm();
+            }
+
+            if (SerialPort.Configurations.PortNames.Count() == 0)
+            {
+                MessageBox.Show("Unable to find any available COM ports on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new IOException();
+            }
+
+            if (!settings.SettingsFileExists)
+            {
+                MessageBox.Show("Unable to find any configuration on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception();
+            }
+
             _theWatcher = new SerialPortWatcher(SerialPort);
             _theWatcher.ReceivedData += new EventHandler<ReceivedDataEventArgs>(OnReceivedData);
             _theWatcher.StartedListening += new EventHandler(OnConnected);
             _theWatcher.StoppedListening += new EventHandler(OnDisconnected);
+
             _theWatcher.Start();
 
-            
         }
 
         void OnToggleListening(object sender, EventArgs e)
@@ -76,12 +91,18 @@ namespace SerialPortControl
 
         public void ShowMainForm()
         {
-            settings.Load();
+            if (settings.SettingsFileExists)
+            {
+                settings.Load();
+            }
+            else
+            {
+                settings.CreateDefaultSettings();
+            }
             Commands = settings.Commands;
             SerialPort = settings.SerialPort;
             WriteLog = settings.WriteLog;
 
-            _mainForm = new MainForm(this);
 
             var result = _mainForm.ShowDialog();
             if (result == DialogResult.OK)
@@ -90,7 +111,9 @@ namespace SerialPortControl
                 settings.SerialPort = SerialPort;
                 settings.WriteLog = WriteLog;
                 settings.Save();
-                _theWatcher.PortOptions = SerialPort;
+
+                if (_theWatcher != null)
+                    _theWatcher.PortOptions = SerialPort;
             }
         }
 

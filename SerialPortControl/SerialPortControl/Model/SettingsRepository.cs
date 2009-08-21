@@ -22,11 +22,13 @@ namespace SerialPortControl.Model
         public bool WriteLog { get; set; }
         public SerialPortSettings SerialPort { get; set; }
 
+        public bool SettingsFileExists { get { return File.Exists(_xmlFilePath); } }
+
         public void Load()
         {
             SerialPort = new SerialPortSettings();
             Commands = new CommandDictionary();
-            if (File.Exists(_xmlFilePath))
+            if (SettingsFileExists)
             {
                 XElement spcElement = XDocument.Load(_xmlFilePath).Element("SerialPortControl");
                 XElement settingsElement = spcElement.Element("Settings");
@@ -53,10 +55,6 @@ namespace SerialPortControl.Model
                     };
                     Commands.Add(command.IncomingCommand, command);
                 }
-            }
-            else
-            {
-                CreateDefaultSettings();
             }
         }
 
@@ -99,20 +97,23 @@ namespace SerialPortControl.Model
         public void CreateDefaultSettings()
         {
             WriteLog = false;
+            SerialPort = new SerialPortSettings();
             Commands = new CommandDictionary();
 
             SerialPort defaultConfig = new SerialPort();
 
             defaultConfig.Encoding = Encoding.ASCII;
 
-            SerialPort.PortName = System.IO.Ports.SerialPort.GetPortNames()[0];
+            var portNames = System.IO.Ports.SerialPort.GetPortNames();
+            if (portNames.Count() == 0)
+                throw new Exception("No ports found");
+
+            SerialPort.PortName = portNames[0];
             SerialPort.BaudRate = (BaudRate)defaultConfig.BaudRate;
             SerialPort.Parity = defaultConfig.Parity;
             SerialPort.DataBits = defaultConfig.DataBits;
             SerialPort.StopBits = defaultConfig.StopBits;
             SerialPort.Handshake = defaultConfig.Handshake;
-
-            Save();
         }
     }
 }
