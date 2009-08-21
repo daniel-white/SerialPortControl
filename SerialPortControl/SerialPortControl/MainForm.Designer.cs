@@ -52,6 +52,8 @@
             this.startInButton = new System.Windows.Forms.Button();
             this.commitEditCommandLinkLabel = new System.Windows.Forms.LinkLabel();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
             this.portConfigurationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -359,6 +361,8 @@
             // 
             // settingsTabPage
             // 
+            this.settingsTabPage.Controls.Add(this.linkLabel2);
+            this.settingsTabPage.Controls.Add(this.linkLabel1);
             this.settingsTabPage.Controls.Add(this.writeLogFileCheckBox);
             this.settingsTabPage.Controls.Add(this.portConfigurationGroupBox);
             this.settingsTabPage.Location = new System.Drawing.Point(4, 24);
@@ -368,6 +372,48 @@
             this.settingsTabPage.TabIndex = 1;
             this.settingsTabPage.Text = "Settings";
             this.settingsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
+            this.linkLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel2.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.linkLabel2.Location = new System.Drawing.Point(115, 230);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(3);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
+            this.linkLabel2.Size = new System.Drawing.Size(101, 21);
+            this.linkLabel2.TabIndex = 16;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Delete the log file";
+            this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
+            this.linkLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.linkLabel1.Location = new System.Drawing.Point(12, 230);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(3);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
+            this.linkLabel1.Size = new System.Drawing.Size(97, 21);
+            this.linkLabel1.TabIndex = 15;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open the log file";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // writeLogFileCheckBox
             // 
@@ -639,6 +685,8 @@
         private System.Windows.Forms.LinkLabel commitEditCommandLinkLabel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel1;
 
 
     }
