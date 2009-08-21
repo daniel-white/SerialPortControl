@@ -52,9 +52,8 @@
             this.startInButton = new System.Windows.Forms.Button();
             this.commitEditCommandLinkLabel = new System.Windows.Forms.LinkLabel();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
+            this.emptyLogLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.openLogLinkLabel = new System.Windows.Forms.LinkLabel();
             this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
             this.portConfigurationTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.handshakeLabel = new System.Windows.Forms.Label();
@@ -71,6 +70,9 @@
             this.dataBitsTextBox = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -78,6 +80,8 @@
             this.settingsTabPage.SuspendLayout();
             this.portConfigurationGroupBox.SuspendLayout();
             this.portConfigurationTableLayoutPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -361,9 +365,7 @@
             // 
             // settingsTabPage
             // 
-            this.settingsTabPage.Controls.Add(this.linkLabel2);
-            this.settingsTabPage.Controls.Add(this.linkLabel1);
-            this.settingsTabPage.Controls.Add(this.writeLogFileCheckBox);
+            this.settingsTabPage.Controls.Add(this.groupBox1);
             this.settingsTabPage.Controls.Add(this.portConfigurationGroupBox);
             this.settingsTabPage.Location = new System.Drawing.Point(4, 24);
             this.settingsTabPage.Name = "settingsTabPage";
@@ -373,60 +375,41 @@
             this.settingsTabPage.Text = "Settings";
             this.settingsTabPage.UseVisualStyleBackColor = true;
             // 
-            // linkLabel2
+            // emptyLogLinkLabel
             // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
-            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
-            this.linkLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel2.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.linkLabel2.Location = new System.Drawing.Point(115, 230);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(3);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
-            this.linkLabel2.Size = new System.Drawing.Size(101, 21);
-            this.linkLabel2.TabIndex = 16;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Delete the log file";
-            this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.emptyLogLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.emptyLogLinkLabel.AutoSize = true;
+            this.emptyLogLinkLabel.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
+            this.emptyLogLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.emptyLogLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.emptyLogLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.emptyLogLinkLabel.Location = new System.Drawing.Point(175, 22);
+            this.emptyLogLinkLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.emptyLogLinkLabel.Name = "emptyLogLinkLabel";
+            this.emptyLogLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
+            this.emptyLogLinkLabel.Size = new System.Drawing.Size(102, 21);
+            this.emptyLogLinkLabel.TabIndex = 16;
+            this.emptyLogLinkLabel.TabStop = true;
+            this.emptyLogLinkLabel.Text = "Empty the log file";
+            this.emptyLogLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // linkLabel1
+            // openLogLinkLabel
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
-            this.linkLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.linkLabel1.Location = new System.Drawing.Point(12, 230);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(3);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
-            this.linkLabel1.Size = new System.Drawing.Size(97, 21);
-            this.linkLabel1.TabIndex = 15;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Open the log file";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // writeLogFileCheckBox
-            // 
-            this.writeLogFileCheckBox.AutoSize = true;
-            this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.writeLogFileCheckBox.Location = new System.Drawing.Point(6, 205);
-            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(6);
-            this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
-            this.writeLogFileCheckBox.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.writeLogFileCheckBox.Size = new System.Drawing.Size(350, 28);
-            this.writeLogFileCheckBox.TabIndex = 1;
-            this.writeLogFileCheckBox.Text = "&Write entries in a log file on incoming commands";
-            this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
+            this.openLogLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.openLogLinkLabel.AutoSize = true;
+            this.openLogLinkLabel.DisabledLinkColor = System.Drawing.SystemColors.ControlDark;
+            this.openLogLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.openLogLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.openLogLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.openLogLinkLabel.Location = new System.Drawing.Point(3, 22);
+            this.openLogLinkLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.openLogLinkLabel.Name = "openLogLinkLabel";
+            this.openLogLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
+            this.openLogLinkLabel.Size = new System.Drawing.Size(97, 21);
+            this.openLogLinkLabel.TabIndex = 15;
+            this.openLogLinkLabel.TabStop = true;
+            this.openLogLinkLabel.Text = "Open the log file";
+            this.openLogLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // portConfigurationGroupBox
             // 
@@ -611,6 +594,47 @@
             this.openFileDialog.Filter = "All files|*.*";
             this.openFileDialog.SupportMultiDottedExtensions = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(6, 205);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(350, 72);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Logging";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.writeLogFileCheckBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.emptyLogLinkLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.openLogLinkLabel, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 48);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // writeLogFileCheckBox
+            // 
+            this.writeLogFileCheckBox.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.writeLogFileCheckBox, 2);
+            this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.writeLogFileCheckBox.Location = new System.Drawing.Point(0, 0);
+            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
+            this.writeLogFileCheckBox.Size = new System.Drawing.Size(344, 19);
+            this.writeLogFileCheckBox.TabIndex = 2;
+            this.writeLogFileCheckBox.Text = "&Log all incoming commands";
+            this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.okButton;
@@ -635,10 +659,12 @@
             this.commandsTableLayoutPanel.ResumeLayout(false);
             this.commandsTableLayoutPanel.PerformLayout();
             this.settingsTabPage.ResumeLayout(false);
-            this.settingsTabPage.PerformLayout();
             this.portConfigurationGroupBox.ResumeLayout(false);
             this.portConfigurationTableLayoutPanel.ResumeLayout(false);
             this.portConfigurationTableLayoutPanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -681,12 +707,14 @@
         private System.Windows.Forms.ComboBox handshakeComboBox;
         private System.Windows.Forms.ComboBox stopBitsComboBox;
         private System.Windows.Forms.Label stopBitsLabel;
-        private System.Windows.Forms.CheckBox writeLogFileCheckBox;
         private System.Windows.Forms.LinkLabel commitEditCommandLinkLabel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel emptyLogLinkLabel;
+        private System.Windows.Forms.LinkLabel openLogLinkLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox writeLogFileCheckBox;
 
 
     }
