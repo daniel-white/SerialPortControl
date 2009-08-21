@@ -68,7 +68,7 @@ namespace SerialPortControl.IO
             }
         }
 
-        public bool Enabled
+        public bool Listening
         {
             get { return _serialPort.IsOpen; }
             set

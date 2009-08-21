@@ -117,7 +117,7 @@ namespace SerialPortControl
             {
                 ListViewItem lvi = new ListViewItem(command.IncomingCommand);
                 lvi.Tag = command.IncomingCommand;
-                lvi.SubItems.Add(command.Target);
+                lvi.SubItems.Add(Path.GetFileName(command.Target));
                 commandsListView.Items.Add(lvi);
             }
 
@@ -224,6 +224,51 @@ namespace SerialPortControl
                 DisableEditCommand();
             }
 
+        }
+
+        private void targetButton_Click(object sender, EventArgs e)
+        {
+            SelectTargetFromDialog();
+        }
+
+
+        protected void SelectTargetFromDialog()
+        {
+            openFileDialog.RestoreDirectory = true;
+
+            if (targetTextBox.Text.Trim().Length > 0)
+            {
+                openFileDialog.InitialDirectory = Path.GetDirectoryName(targetTextBox.Text);
+                openFileDialog.FileName = Path.GetFileName(targetTextBox.Text);
+            }
+            else
+            {
+                openFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                openFileDialog.FileName = "";
+            }
+
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                targetTextBox.Text = openFileDialog.FileName;
+
+                if (startInTextBox.Text.Trim().Length == 0)
+                    startInTextBox.Text = Path.GetDirectoryName(openFileDialog.FileName);
+            }
+        }
+
+        private void startInButton_Click(object sender, EventArgs e)
+        {
+            SelectStartInFromDialog();
+        }
+
+        protected void SelectStartInFromDialog()
+        {
+            folderBrowserDialog.SelectedPath = startInTextBox.Text;
+
+            if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                startInTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
         }
 
     }

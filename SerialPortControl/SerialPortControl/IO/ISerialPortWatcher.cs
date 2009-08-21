@@ -15,7 +15,7 @@ namespace SerialPortControl.IO
 
         SerialPortSettings PortOptions { set; }
 
-        bool Enabled { get; set; }
+        bool Listening { get; set; }
         void Stop();
         void Start();
     }

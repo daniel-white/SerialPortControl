@@ -66,7 +66,7 @@ namespace SerialPortControl
 
         void OnToggleListening(object sender, EventArgs e)
         {
-            _theWatcher.Enabled = !_theWatcher.Enabled;
+            _theWatcher.Listening = !_theWatcher.Listening;
         }
 
         void OnExitRequest(object sender, EventArgs e)

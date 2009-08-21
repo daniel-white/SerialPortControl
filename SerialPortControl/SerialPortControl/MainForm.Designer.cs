@@ -67,6 +67,8 @@
             this.portNameLabel = new System.Windows.Forms.Label();
             this.portNameComboBox = new System.Windows.Forms.ComboBox();
             this.dataBitsTextBox = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
@@ -319,6 +321,7 @@
             this.targetButton.Size = new System.Drawing.Size(24, 24);
             this.targetButton.TabIndex = 9;
             this.targetButton.UseVisualStyleBackColor = true;
+            this.targetButton.Click += new System.EventHandler(this.targetButton_Click);
             // 
             // startInButton
             // 
@@ -329,6 +332,7 @@
             this.startInButton.Size = new System.Drawing.Size(24, 24);
             this.startInButton.TabIndex = 10;
             this.startInButton.UseVisualStyleBackColor = true;
+            this.startInButton.Click += new System.EventHandler(this.startInButton_Click);
             // 
             // commitEditCommandLinkLabel
             // 
@@ -551,6 +555,16 @@
             this.dataBitsTextBox.Size = new System.Drawing.Size(255, 23);
             this.dataBitsTextBox.TabIndex = 9;
             // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.folderBrowserDialog.ShowNewFolderButton = false;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "All files|*.*";
+            this.openFileDialog.SupportMultiDottedExtensions = true;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.okButton;
@@ -623,6 +637,8 @@
         private System.Windows.Forms.Label stopBitsLabel;
         private System.Windows.Forms.CheckBox writeLogFileCheckBox;
         private System.Windows.Forms.LinkLabel commitEditCommandLinkLabel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
 
 
     }
