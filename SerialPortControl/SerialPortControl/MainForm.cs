@@ -17,24 +17,6 @@ namespace SerialPortControl
 {
     public partial class MainForm : Form
     {
-        private readonly IController _controller;
-        public MainForm(IController controller)
-        {
-            InitializeComponent();
-            _controller = controller;
-        }
-
-        public new DialogResult ShowDialog()
-        {
-            LoadCommandsListView();
-            LoadSettings();
-            DisableEditCommand();
-
-            okButton.Select();
-            commandsTabPage.Select();
-
-            return base.ShowDialog();
-        }
 
         protected void DisableEditCommand()
         {
@@ -125,43 +107,26 @@ namespace SerialPortControl
             commandsListView.Columns[1].Width = -2;
         }
 
-        private void commandsListView_SelectedIndexChanged(object sender, EventArgs e)
+
+        void PopulateCommandForEditing(string key)
         {
-            if (commandsListView.SelectedItems.Count > 0)
-            {
-                EnableEditCommand();
-                var command = _controller.Commands[commandsListView.SelectedItems[0].Tag as string];
-                incomingCommandTextBox.Text = command.IncomingCommand;
-                targetTextBox.Text = command.Target;
-                argumentsTextBox.Text = command.Arguments;
-                startInTextBox.Text = command.StartInDirectory;
-            }
-            else
-            {
-                DisableEditCommand();
-            }
-           
+            var command = _controller.Commands[key];
+            incomingCommandTextBox.Text = command.IncomingCommand;
+            targetTextBox.Text = command.Target;
+            argumentsTextBox.Text = command.Arguments;
+            startInTextBox.Text = command.StartInDirectory;
         }
 
-        private void okButton_Click(object sender, EventArgs e)
+        protected void SaveToController()
         {
-            DialogResult = DialogResult.OK;
-
             _controller.SerialPort.PortName = portNameComboBox.SelectedItem as string;
             _controller.SerialPort.BaudRate = (BaudRate)baudRateComboBox.SelectedItem;
             _controller.SerialPort.Parity = parityComboBox.SelectedItem.ToEnumValue<Parity>();
             _controller.SerialPort.DataBits = Convert.ToInt32(dataBitsTextBox.Text);
             _controller.SerialPort.StopBits = stopBitsComboBox.SelectedItem.ToEnumValue<StopBits>();
             _controller.SerialPort.Handshake = handshakeComboBox.SelectedItem.ToEnumValue<Handshake>();
-            
+
             _controller.WriteLog = writeLogFileCheckBox.Checked;
-
-            Close();
-        }
-
-        private void addCommandButton_Click(object sender, EventArgs e)
-        {
-            StartAddItem();
         }
 
         protected void StartAddItem()
@@ -171,10 +136,7 @@ namespace SerialPortControl
             removeCommandButton.Enabled = false;
         }
 
-        private void commitEditCommandLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            CommitEditCommand();
-        }
+        
 
         protected void CommitEditCommand()
         {
@@ -207,10 +169,7 @@ namespace SerialPortControl
             }
         }
 
-        private void removeCommandButton_Click(object sender, EventArgs e)
-        {
-            RemoveCommand();
-        }
+        
 
         void RemoveCommand()
         {
@@ -225,12 +184,6 @@ namespace SerialPortControl
             }
 
         }
-
-        private void targetButton_Click(object sender, EventArgs e)
-        {
-            SelectTargetFromDialog();
-        }
-
 
         protected void SelectTargetFromDialog()
         {
@@ -256,10 +209,7 @@ namespace SerialPortControl
             }
         }
 
-        private void startInButton_Click(object sender, EventArgs e)
-        {
-            SelectStartInFromDialog();
-        }
+        
 
         protected void SelectStartInFromDialog()
         {
