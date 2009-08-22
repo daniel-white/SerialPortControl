@@ -15,6 +15,7 @@ namespace SerialPortControl
         SettingsRepository settings;
         MainForm _mainForm;
         ISerialPortWatcher _theWatcher;
+        ILog _theLogger;
         TrayIcon icon;
 
         public Controller()
@@ -23,7 +24,7 @@ namespace SerialPortControl
 
             _mainForm = new MainForm(this);
             settings = new SettingsRepository("SerialPortControl.xml");
-
+            _theLogger = new Log();
             icon = new TrayIcon();
 
             icon.ShowSettings += new EventHandler(OnShowSettings);
@@ -74,6 +75,7 @@ namespace SerialPortControl
             var dr = MessageBox.Show("Are you sure you want to exit?", "Serial Port Control", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
+                icon.Visible = false;
                 _theWatcher.Stop();
                 Application.Exit();
             }
@@ -110,6 +112,7 @@ namespace SerialPortControl
                 settings.Commands = Commands;
                 settings.SerialPort = SerialPort;
                 settings.WriteLog = WriteLog;
+                _theLogger.Enabled = WriteLog;
                 settings.Save();
 
                 if (_theWatcher != null)

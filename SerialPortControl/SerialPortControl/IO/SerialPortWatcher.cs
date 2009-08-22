@@ -83,6 +83,7 @@ namespace SerialPortControl.IO
         public void Stop()
         {
             StoppedListening(this, new EventArgs());
+            _readingThread.Abort();
             _serialPort.Close();
             
         }
@@ -93,6 +94,7 @@ namespace SerialPortControl.IO
 
             if (!_readingThread.IsAlive)
             {
+                _readingThread = new Thread(ReadData);
                 _readingThread.Start();
             }
         }
