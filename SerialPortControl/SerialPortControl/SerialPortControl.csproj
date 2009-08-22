@@ -78,7 +78,9 @@
     <Compile Include="Controller.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IO\ILog.cs" />
     <Compile Include="IO\ISerialPortWatcher.cs" />
+    <Compile Include="IO\Log.cs" />
     <Compile Include="IO\SerialPortWatcher.cs" />
     <Compile Include="MainFormEvents.cs">
       <SubType>Form</SubType>

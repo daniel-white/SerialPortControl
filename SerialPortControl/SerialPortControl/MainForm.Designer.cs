@@ -52,6 +52,9 @@
             this.startInButton = new System.Windows.Forms.Button();
             this.commitEditCommandLinkLabel = new System.Windows.Forms.LinkLabel();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.emptyLogLinkLabel = new System.Windows.Forms.LinkLabel();
             this.openLogLinkLabel = new System.Windows.Forms.LinkLabel();
             this.portConfigurationGroupBox = new System.Windows.Forms.GroupBox();
@@ -70,18 +73,15 @@
             this.dataBitsTextBox = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.writeLogFileCheckBox = new System.Windows.Forms.CheckBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.commandsTabPage.SuspendLayout();
             this.commandsTableLayoutPanel.SuspendLayout();
             this.settingsTabPage.SuspendLayout();
-            this.portConfigurationGroupBox.SuspendLayout();
-            this.portConfigurationTableLayoutPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.portConfigurationGroupBox.SuspendLayout();
+            this.portConfigurationTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -375,6 +375,47 @@
             this.settingsTabPage.Text = "Settings";
             this.settingsTabPage.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(6, 205);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(350, 72);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Logging";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.writeLogFileCheckBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.emptyLogLinkLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.openLogLinkLabel, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 48);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // writeLogFileCheckBox
+            // 
+            this.writeLogFileCheckBox.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.writeLogFileCheckBox, 2);
+            this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.writeLogFileCheckBox.Location = new System.Drawing.Point(0, 0);
+            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
+            this.writeLogFileCheckBox.Size = new System.Drawing.Size(344, 19);
+            this.writeLogFileCheckBox.TabIndex = 2;
+            this.writeLogFileCheckBox.Text = "&Log all incoming commands";
+            this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
+            // 
             // emptyLogLinkLabel
             // 
             this.emptyLogLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
@@ -594,47 +635,6 @@
             this.openFileDialog.Filter = "All files|*.*";
             this.openFileDialog.SupportMultiDottedExtensions = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(6, 205);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(350, 72);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Logging";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.writeLogFileCheckBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.emptyLogLinkLabel, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.openLogLinkLabel, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 48);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // writeLogFileCheckBox
-            // 
-            this.writeLogFileCheckBox.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.writeLogFileCheckBox, 2);
-            this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.writeLogFileCheckBox.Location = new System.Drawing.Point(0, 0);
-            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(0);
-            this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
-            this.writeLogFileCheckBox.Size = new System.Drawing.Size(344, 19);
-            this.writeLogFileCheckBox.TabIndex = 2;
-            this.writeLogFileCheckBox.Text = "&Log all incoming commands";
-            this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AcceptButton = this.okButton;
@@ -659,12 +659,12 @@
             this.commandsTableLayoutPanel.ResumeLayout(false);
             this.commandsTableLayoutPanel.PerformLayout();
             this.settingsTabPage.ResumeLayout(false);
-            this.portConfigurationGroupBox.ResumeLayout(false);
-            this.portConfigurationTableLayoutPanel.ResumeLayout(false);
-            this.portConfigurationTableLayoutPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.portConfigurationGroupBox.ResumeLayout(false);
+            this.portConfigurationTableLayoutPanel.ResumeLayout(false);
+            this.portConfigurationTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
