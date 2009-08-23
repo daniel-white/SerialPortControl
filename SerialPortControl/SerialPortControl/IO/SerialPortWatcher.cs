@@ -13,6 +13,7 @@ namespace SerialPortControl.IO
     public class SerialPortWatcher : ISerialPortWatcher
     {
         private SerialPortSettings _serialPortSettings;
+        protected ManualResetEvent _stopThreadEvent;
         public event EventHandler<ReceivedDataEventArgs> ReceivedData;
         public event EventHandler StartedListening;
         public event EventHandler StoppedListening;
@@ -23,13 +24,13 @@ namespace SerialPortControl.IO
         public SerialPortWatcher(SerialPortSettings portOptions)
         {
             _serialPortSettings = portOptions;
+            _stopThreadEvent = new ManualResetEvent(false);
             SetupThread();
         }
 
         ~SerialPortWatcher()
         {
             Stop();
-            _readingThread.Abort();
         }
 
         protected SerialPort SetupSerialPort(SerialPortSettings settings)
@@ -55,6 +56,7 @@ namespace SerialPortControl.IO
 
         protected void SetupThread()
         {
+            _stopThreadEvent.Reset();
             _readingThread = new Thread(ReadData);
             _readingThread.Name = "SerialData";
         }
@@ -87,7 +89,7 @@ namespace SerialPortControl.IO
 
         public void Stop()
         {
-            _readingThread.Abort();
+            _stopThreadEvent.Set();
             StoppedListening(this, new EventArgs());
         }
         public void Start()
@@ -109,25 +111,31 @@ namespace SerialPortControl.IO
             {
                 serialPort = SetupSerialPort(_serialPortSettings);
                 serialPort.Open();
-            
+
                 string data;
                 while (serialPort.IsOpen)
                 {
                     try
                     {
-                        
+
                         data = serialPort.ReadLine();
                         if (data.Length > 0)
                             ReceivedData(serialPort, new ReceivedDataEventArgs(data));
-                        
+
                     }
                     catch (TimeoutException)
                     {
                         //  No action
                     }
+                    if (_stopThreadEvent.WaitOne(0))
+                        break;
                 }
+
             }
-            catch (ThreadAbortException)
+            catch (Exception)
+            {
+            }
+            finally
             {
                 if (serialPort != null)
                     serialPort.Close();
