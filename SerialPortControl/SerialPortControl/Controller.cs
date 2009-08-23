@@ -20,8 +20,6 @@ namespace SerialPortControl
 
         public Controller()
         {
-            
-
             _mainForm = new MainForm(this);
             settings = new SettingsRepository("SerialPortControl.xml");
             _theLogger = new Log();
@@ -67,7 +65,8 @@ namespace SerialPortControl
             _theWatcher.StartedListening += new EventHandler(OnConnected);
             _theWatcher.StoppedListening += new EventHandler(OnDisconnected);
 
-            _theWatcher.Start();
+            if (settings.Listening)
+                _theWatcher.Start();
 
         }
 
@@ -82,6 +81,7 @@ namespace SerialPortControl
             if (dr == DialogResult.Yes)
             {
                 icon.Visible = false;
+                settings.Listening = _theWatcher.Listening;
                 _theWatcher.Stop();
                 Application.Exit();
             }
@@ -91,6 +91,7 @@ namespace SerialPortControl
         {
             icon.Visible = false;
             _theWatcher.Stop();
+            settings.Save();
             _theLogger.Write("Controller is shutting down.");
         }
 
@@ -162,6 +163,7 @@ namespace SerialPortControl
         protected void OnConnected(object sender, EventArgs e)
         {
             _theLogger.Write("Started listening.");
+            
             icon.Listening = true;
         }
 

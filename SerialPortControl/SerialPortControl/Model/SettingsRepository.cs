@@ -18,9 +18,15 @@ namespace SerialPortControl.Model
             _xmlFilePath = xmlFilePath;
         }
 
+        ~SettingsRepository()
+        {
+            Save();
+        }
+
         public ICommandDictionary Commands { get; set; }
         public bool WriteLog { get; set; }
         public SerialPortSettings SerialPort { get; set; }
+        public bool Listening { get; set; }
 
         public bool SettingsFileExists { get { return File.Exists(_xmlFilePath); } }
 
@@ -35,7 +41,8 @@ namespace SerialPortControl.Model
                 XElement serialPortElement = settingsElement.Element("SerialPort");
                 var commandElements = spcElement.Element("Commands").Elements("Command");
 
-                WriteLog = Boolean.Parse(settingsElement.Element("WriteLog").Value);
+                WriteLog = (bool)settingsElement.Element("WriteLog");
+                Listening = (bool)settingsElement.Element("Listening");
 
                 SerialPort.PortName = serialPortElement.Element("PortName").Value;
                 SerialPort.BaudRate = (BaudRate)Convert.ToInt32(serialPortElement.Element("BaudRate").Value);
@@ -43,6 +50,7 @@ namespace SerialPortControl.Model
                 SerialPort.DataBits = Convert.ToInt32(serialPortElement.Element("DataBits").Value);
                 SerialPort.StopBits = serialPortElement.Element("StopBits").ToEnumValue<StopBits>();
                 SerialPort.Handshake = serialPortElement.Element("Handshake").ToEnumValue<Handshake>();
+
 
                 foreach (var element in commandElements)
                 {
@@ -65,7 +73,9 @@ namespace SerialPortControl.Model
             XElement settingsElement = new XElement("Settings");
             XElement commandsElement = new XElement("Commands");
 
-            settingsElement.Add(new XElement("WriteLog", WriteLog), serialPortElement);
+            settingsElement.Add(new XElement("WriteLog", WriteLog));
+            settingsElement.Add(new XElement("Listening", Listening));
+            settingsElement.Add(serialPortElement);
 
             serialPortElement.Add(
                 new XElement("PortName", SerialPort.PortName),
