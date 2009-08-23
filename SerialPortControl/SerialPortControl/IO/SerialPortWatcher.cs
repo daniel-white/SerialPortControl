@@ -12,37 +12,19 @@ namespace SerialPortControl.IO
 {
     public class SerialPortWatcher : ISerialPortWatcher
     {
-        private SerialPort _serialPort;
+        private static SerialPort _serialPort;
+        private SerialPortSettings _serialPortSettings;
         public event EventHandler<ReceivedDataEventArgs> ReceivedData;
         public event EventHandler StartedListening;
         public event EventHandler StoppedListening;
 
+        
         Thread _readingThread;
 
         public SerialPortWatcher(SerialPortSettings portOptions)
         {
-            //ReceivedData = new EventHandler<ReceivedDataEventArgs>();
-
-            _readingThread = new Thread(ReadData);
-            _readingThread.Name = "SerialData";
-
-            _serialPort = new SerialPort();
-
-            _serialPort.PortName = portOptions.PortName;
-            _serialPort.BaudRate = (int)portOptions.BaudRate;
-            _serialPort.Parity = portOptions.Parity;
-            _serialPort.DataBits = portOptions.DataBits;
-            _serialPort.StopBits = portOptions.StopBits;
-            _serialPort.Handshake = portOptions.Handshake;
-
-            _serialPort.Encoding = Encoding.ASCII;
-
-            _serialPort.NewLine = "\r\n";
-
-
-            _serialPort.ReadTimeout = 500;
-            _serialPort.WriteTimeout = 500;
-
+            SetupSerialPort(portOptions);
+            SetupThread();
         }
 
         ~SerialPortWatcher()
@@ -51,18 +33,38 @@ namespace SerialPortControl.IO
             _readingThread.Abort();
         }
 
+        protected void SetupSerialPort(SerialPortSettings settings)
+        {
+            _serialPort = new SerialPort();
+
+            _serialPort.PortName = settings.PortName;
+            _serialPort.BaudRate = (int)settings.BaudRate;
+            _serialPort.Parity = settings.Parity;
+            _serialPort.DataBits = settings.DataBits;
+            _serialPort.StopBits = settings.StopBits;
+            _serialPort.Handshake = settings.Handshake;
+
+            _serialPort.Encoding = Encoding.ASCII;
+
+            _serialPort.NewLine = "\r\n";
+
+            _serialPort.ReadTimeout = 500;
+            _serialPort.WriteTimeout = 500;
+        }
+
+        protected void SetupThread()
+        {
+            _readingThread = new Thread(ReadData);
+            _readingThread.Name = "SerialData";
+        }
+
         public SerialPortSettings PortOptions
         {
             set
             {
                 Stop();
 
-                _serialPort.PortName = value.PortName;
-                _serialPort.BaudRate = (int)value.BaudRate;
-                _serialPort.Parity = value.Parity;
-                _serialPort.DataBits = value.DataBits;
-                _serialPort.StopBits = value.StopBits;
-                _serialPort.Handshake = value.Handshake;
+                SetupSerialPort(value);
 
                 Start();
             }
@@ -82,41 +84,48 @@ namespace SerialPortControl.IO
 
         public void Stop()
         {
-            StoppedListening(this, new EventArgs());
             _readingThread.Abort();
             _serialPort.Close();
-            
+            StoppedListening(this, new EventArgs());
         }
         public void Start()
         {
-            _serialPort.Open();
-            StartedListening(this, new EventArgs());
+            if (_readingThread.IsAlive || _serialPort.IsOpen)
+                return;
 
-            if (!_readingThread.IsAlive)
-            {
-                _readingThread = new Thread(ReadData);
-                _readingThread.Start();
-            }
+            _serialPort.Open();
+
+            SetupThread();
+            _readingThread.Start();
+
+            StartedListening(this, new EventArgs());
         }
 
         protected void ReadData()
         {
-            string data;
-            while (true)
+            try
             {
-                try
+                string data;
+                while (true)
                 {
-                    if (_serialPort.IsOpen)
+                    try
                     {
-                        data = _serialPort.ReadLine();
-                        if (data.Length > 0)
-                            ReceivedData(_serialPort, new ReceivedDataEventArgs(data));
+                        if (_serialPort.IsOpen)
+                        {
+                            data = _serialPort.ReadLine();
+                            if (data.Length > 0)
+                                ReceivedData(_serialPort, new ReceivedDataEventArgs(data));
+                        }
+                    }
+                    catch (TimeoutException)
+                    {
+                        //  No action
                     }
                 }
-                catch (TimeoutException)
-                {
-                  //  No action
-                }
+            }
+            catch (ThreadAbortException)
+            {
+                // Fall through
             }
             
         }
