@@ -22,9 +22,14 @@ namespace SerialPortControl.IO
         {
             if (!Enabled) return;
 
-            string entry = string.Format("[{0:G}] {0}", DateTime.Now, message);
+            string entry = string.Format("[{0:G}] {1}", DateTime.Now, message);
 
             _logWriter.WriteLine(entry);
+        }
+
+        public void Write(string format, params object[] args)
+        {
+            Write(string.Format(format, args));
         }
 
         public void Empty()

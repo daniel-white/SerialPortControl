@@ -38,15 +38,20 @@ namespace SerialPortControl
                 Commands = settings.Commands;
                 SerialPort = settings.SerialPort;
                 WriteLog = settings.WriteLog;
+                _theLogger.Enabled = WriteLog;
+                _theLogger.Write("Settings loaded from XML file.");
             }
             else
             {
                 ShowMainForm();
             }
 
+            
+
             if (SerialPort.Configurations.PortNames.Count() == 0)
             {
                 MessageBox.Show("Unable to find any available COM ports on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 throw new IOException();
             }
 
@@ -85,6 +90,7 @@ namespace SerialPortControl
         {
             icon.Visible = false;
             _theWatcher.Stop();
+            _theLogger.Write("Controller is shutting down.");
         }
 
         public bool WriteLog { get; set; }
@@ -122,7 +128,26 @@ namespace SerialPortControl
 
         protected void OnReceivedData(object sender, ReceivedDataEventArgs e)
         {
-            settings.Commands[e.Data].Run();
+            _theLogger.Write("Command \"{0}\" received.", e.Data);
+
+            Command commandToRun = settings.Commands.SingleOrDefault(c => c.Key == e.Data).Value;
+
+            if (commandToRun != null)
+            {
+                _theLogger.Write("Command \"{0}\" found. Executing target.", e.Data);
+                try
+                {
+                    commandToRun.Run();
+                }
+                catch (Exception ex)
+                {
+                    _theLogger.Write("ERROR: Unable to run target - {0}", ex.Message);
+                }
+            }
+            else
+            {
+                _theLogger.Write("ERROR: Command \"{0}\" not found.", e.Data);
+            }
         }
 
         protected void OnShowSettings(object sender, EventArgs e)
@@ -135,11 +160,13 @@ namespace SerialPortControl
 
         protected void OnConnected(object sender, EventArgs e)
         {
+            _theLogger.Write("Started listening.");
             icon.Listening = true;
         }
 
         protected void OnDisconnected(object sender, EventArgs e)
         {
+            _theLogger.Write("Ended listening.");
             icon.Listening = false;
         }
 

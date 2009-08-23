@@ -8,6 +8,7 @@ namespace SerialPortControl.IO
     public interface ILog
     {
         void Write(string message);
+        void Write(string format, params object[] args);
         void Empty();
         void Show();
 
