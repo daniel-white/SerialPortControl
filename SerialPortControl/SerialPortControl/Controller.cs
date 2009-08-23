@@ -44,6 +44,7 @@ namespace SerialPortControl
             else
             {
                 ShowMainForm();
+                _theLogger.Write("Settings XML file created.");
             }
 
             
