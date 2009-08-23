@@ -20,7 +20,7 @@ namespace SerialPortControl.IO
 
         public void Write(string message)
         {
-            if (!Enabled) return;
+            if (!Enabled || !_logWriter.BaseStream.CanWrite) return;
 
             string entry = string.Format("[{0:G}] {1}", DateTime.Now, message);
 
