@@ -221,6 +221,16 @@ namespace SerialPortControl
             }
         }
 
+        private void openLogLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _controller.ShowLogFile();
+        }
+
+        private void emptyLogLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _controller.EmptyLogFile();
+        }
+
       
 
         

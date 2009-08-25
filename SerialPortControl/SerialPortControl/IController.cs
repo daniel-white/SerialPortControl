@@ -17,6 +17,8 @@ namespace SerialPortControl
 
         void ShowTrayIcon();
         void HideTrayIcon();
+        void ShowLogFile();
+        void EmptyLogFile();
 
     }
 }

@@ -408,10 +408,10 @@
             this.writeLogFileCheckBox.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.writeLogFileCheckBox, 2);
             this.writeLogFileCheckBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.writeLogFileCheckBox.Location = new System.Drawing.Point(0, 0);
-            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.writeLogFileCheckBox.Location = new System.Drawing.Point(6, 2);
+            this.writeLogFileCheckBox.Margin = new System.Windows.Forms.Padding(6, 2, 0, 0);
             this.writeLogFileCheckBox.Name = "writeLogFileCheckBox";
-            this.writeLogFileCheckBox.Size = new System.Drawing.Size(344, 19);
+            this.writeLogFileCheckBox.Size = new System.Drawing.Size(338, 19);
             this.writeLogFileCheckBox.TabIndex = 2;
             this.writeLogFileCheckBox.Text = "&Log all incoming commands";
             this.writeLogFileCheckBox.UseVisualStyleBackColor = true;
@@ -424,7 +424,7 @@
             this.emptyLogLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.emptyLogLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.emptyLogLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.emptyLogLinkLabel.Location = new System.Drawing.Point(175, 22);
+            this.emptyLogLinkLabel.Location = new System.Drawing.Point(175, 24);
             this.emptyLogLinkLabel.Margin = new System.Windows.Forms.Padding(3);
             this.emptyLogLinkLabel.Name = "emptyLogLinkLabel";
             this.emptyLogLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
@@ -433,6 +433,7 @@
             this.emptyLogLinkLabel.TabStop = true;
             this.emptyLogLinkLabel.Text = "Empty the log file";
             this.emptyLogLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.emptyLogLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emptyLogLinkLabel_LinkClicked);
             // 
             // openLogLinkLabel
             // 
@@ -442,7 +443,7 @@
             this.openLogLinkLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.openLogLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.openLogLinkLabel.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.openLogLinkLabel.Location = new System.Drawing.Point(3, 22);
+            this.openLogLinkLabel.Location = new System.Drawing.Point(3, 24);
             this.openLogLinkLabel.Margin = new System.Windows.Forms.Padding(3);
             this.openLogLinkLabel.Name = "openLogLinkLabel";
             this.openLogLinkLabel.Padding = new System.Windows.Forms.Padding(0, 3, 2, 3);
@@ -451,6 +452,7 @@
             this.openLogLinkLabel.TabStop = true;
             this.openLogLinkLabel.Text = "Open the log file";
             this.openLogLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.openLogLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.openLogLinkLabel_LinkClicked);
             // 
             // portConfigurationGroupBox
             // 

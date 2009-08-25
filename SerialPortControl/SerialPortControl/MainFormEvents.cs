@@ -62,16 +62,12 @@ namespace SerialPortControl
 
         private void commandsListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DisableEditCommand();
             if (commandsListView.SelectedItems.Count > 0)
             {
-                EnableEditCommand();
                 PopulateCommandForEditing(commandsListView.SelectedItems[0].Tag as string);
+                removeCommandButton.Enabled = true;
             }
-            else
-            {
-                DisableEditCommand();
-            }
-
         }
 
     }

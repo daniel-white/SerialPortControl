@@ -186,6 +186,16 @@ namespace SerialPortControl
             icon.Visible = false;
         }
 
+        public void ShowLogFile()
+        {
+            _theLogger.Show();
+        }
+        public void EmptyLogFile()
+        {
+            _theLogger.Empty();
+        }
+
+
         #endregion
     }
 }
