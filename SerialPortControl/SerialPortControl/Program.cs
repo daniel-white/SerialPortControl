@@ -17,14 +17,25 @@ namespace SerialPortControl
         static void Main()
         {
             Application.ThreadException += new ThreadExceptionEventHandler(OnError);
+            bool createdNew = false;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
-            _controller = new Controller();
-            
-            Application.Run();
+            using (new Mutex(true, "SerialPortControl", out createdNew))
+            {
+                if (createdNew)
+                {
+
+                    _controller = new Controller();
+
+                    Application.Run();
+                }
+                else
+                {
+                    MessageBox.Show("Serial Port Control is already running.", "Serial Port Control", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         static void OnError(object sender, ThreadExceptionEventArgs e)
