@@ -138,6 +138,8 @@
     <None Include="Resources\Connected.ico" />
     <None Include="Resources\NotConnected.ico" />
     <None Include="SerialPortControl_TemporaryKey.pfx" />
+    <None Include="Resources\banner.png" />
+    <None Include="Resources\SerialPortControl256.png" />
     <Content Include="SerialPortControl.ico" />
   </ItemGroup>
   <ItemGroup>

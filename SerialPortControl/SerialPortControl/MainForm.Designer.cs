@@ -279,7 +279,7 @@
             // addCommandButton
             // 
             this.addCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_add;
+            this.addCommandButton.Image = global::SerialPortControl.Properties.Resources.Add;
             this.addCommandButton.Location = new System.Drawing.Point(299, 154);
             this.addCommandButton.Name = "addCommandButton";
             this.addCommandButton.Size = new System.Drawing.Size(24, 24);
@@ -290,7 +290,7 @@
             // removeCommandButton
             // 
             this.removeCommandButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.edit_delete_mail;
+            this.removeCommandButton.Image = global::SerialPortControl.Properties.Resources.Delete;
             this.removeCommandButton.Location = new System.Drawing.Point(329, 154);
             this.removeCommandButton.Name = "removeCommandButton";
             this.removeCommandButton.Size = new System.Drawing.Size(24, 24);
@@ -321,7 +321,7 @@
             // targetButton
             // 
             this.targetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.targetButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
+            this.targetButton.Image = global::SerialPortControl.Properties.Resources.Folder;
             this.targetButton.Location = new System.Drawing.Point(329, 243);
             this.targetButton.Name = "targetButton";
             this.targetButton.Size = new System.Drawing.Size(24, 24);
@@ -332,7 +332,7 @@
             // startInButton
             // 
             this.startInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.startInButton.Image = global::SerialPortControl.Properties.Resources.folder_brown;
+            this.startInButton.Image = global::SerialPortControl.Properties.Resources.Folder;
             this.startInButton.Location = new System.Drawing.Point(329, 332);
             this.startInButton.Name = "startInButton";
             this.startInButton.Size = new System.Drawing.Size(24, 24);

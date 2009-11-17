@@ -60,6 +60,13 @@ namespace SerialPortControl.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Add {
+            get {
+                object obj = ResourceManager.GetObject("Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon Connected {
             get {
                 object obj = ResourceManager.GetObject("Connected", resourceCulture);
@@ -67,30 +74,16 @@ namespace SerialPortControl.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap edit_add {
+        internal static System.Drawing.Bitmap Delete {
             get {
-                object obj = ResourceManager.GetObject("edit_add", resourceCulture);
+                object obj = ResourceManager.GetObject("Delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap edit_delete_mail {
+        internal static System.Drawing.Bitmap Folder {
             get {
-                object obj = ResourceManager.GetObject("edit_delete_mail", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap filesave {
-            get {
-                object obj = ResourceManager.GetObject("filesave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap folder_brown {
-            get {
-                object obj = ResourceManager.GetObject("folder_brown", resourceCulture);
+                object obj = ResourceManager.GetObject("Folder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -99,6 +92,20 @@ namespace SerialPortControl.Properties {
             get {
                 object obj = ResourceManager.GetObject("NotConnected", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Save {
+            get {
+                object obj = ResourceManager.GetObject("Save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SerialPortControl256 {
+            get {
+                object obj = ResourceManager.GetObject("SerialPortControl256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
