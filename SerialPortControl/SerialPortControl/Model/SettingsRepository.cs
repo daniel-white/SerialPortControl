@@ -9,7 +9,8 @@ using System.Xml.Linq;
 
 namespace SerialPortControl.Model
 {
-    public class SettingsRepository
+    // An xml repository
+    public class SettingsRepository : ISettingsRepository
     {
         private readonly string _xmlFilePath;
 

@@ -7,6 +7,7 @@ using System.IO.Ports;
 
 namespace SerialPortControl.Model
 {
+    // different data types that represent a serial port connection
     public class SerialPortSettings: ICloneable
     {
         public SerialPortSettings()

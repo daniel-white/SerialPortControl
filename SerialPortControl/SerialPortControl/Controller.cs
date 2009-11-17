@@ -12,30 +12,30 @@ namespace SerialPortControl
 {
     public class Controller : IController
     {
-        SettingsRepository settings;
+        ISettingsRepository _settings;
         MainForm _mainForm;
         ISerialPortWatcher _theWatcher;
         ILog _theLogger;
-        TrayIcon icon;
+        TrayIcon _trayIcon;
 
         public Controller()
         {
             _mainForm = new MainForm(this);
-            settings = new SettingsRepository("SerialPortControl.xml");
+            _settings = new SettingsRepository("SerialPortControl.xml");
             _theLogger = new Log();
-            icon = new TrayIcon();
+            _trayIcon = new TrayIcon();
 
-            icon.ShowSettings += new EventHandler(OnShowSettings);
-            icon.Exit += new EventHandler(OnExitRequest);
-            icon.ToggleListening += new EventHandler(OnToggleListening);
+            _trayIcon.ShowSettings += new EventHandler(OnShowSettings);
+            _trayIcon.Exit += new EventHandler(OnExitRequest);
+            _trayIcon.ToggleListening += new EventHandler(OnToggleListening);
             ShowTrayIcon();
 
-            if (settings.SettingsFileExists)
+            if (_settings.SettingsFileExists)
             {
-                settings.Load();
-                Commands = settings.Commands;
-                SerialPort = settings.SerialPort;
-                WriteLog = settings.WriteLog;
+                _settings.Load();
+                Commands = _settings.Commands;
+                SerialPort = _settings.SerialPort;
+                WriteLog = _settings.WriteLog;
                 _theLogger.Enabled = WriteLog;
                 _theLogger.Write("Settings loaded from XML file.");
             }
@@ -53,7 +53,7 @@ namespace SerialPortControl
                 Application.Exit();
             }
 
-            if (!settings.SettingsFileExists)
+            if (!_settings.SettingsFileExists)
             {
                 MessageBox.Show("Unable to find any configuration on your system. Serial Port Control is cannot function.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -64,7 +64,7 @@ namespace SerialPortControl
             _theWatcher.StartedListening += new EventHandler(OnConnected);
             _theWatcher.StoppedListening += new EventHandler(OnDisconnected);
 
-            if (settings.Listening)
+            if (_settings.Listening)
                 _theWatcher.Start();
 
         }
@@ -79,8 +79,8 @@ namespace SerialPortControl
             var dr = MessageBox.Show("Are you sure you want to exit?", "Serial Port Control", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                icon.Visible = false;
-                settings.Listening = _theWatcher.Listening;
+                _trayIcon.Visible = false;
+                _settings.Listening = _theWatcher.Listening;
                 _theWatcher.Stop();
                 Application.Exit();
             }
@@ -88,9 +88,9 @@ namespace SerialPortControl
 
         ~Controller()
         {
-            icon.Visible = false;
+            _trayIcon.Visible = false;
             _theWatcher.Stop();
-            settings.Save();
+            _settings.Save();
             _theLogger.Write("Controller is shutting down.");
         }
 
@@ -100,27 +100,27 @@ namespace SerialPortControl
 
         public void ShowMainForm()
         {
-            if (settings.SettingsFileExists)
+            if (_settings.SettingsFileExists)
             {
-                settings.Load();
+                _settings.Load();
             }
             else
             {
-                settings.CreateDefaultSettings();
+                _settings.CreateDefaultSettings();
             }
-            Commands = settings.Commands;
-            SerialPort = settings.SerialPort;
-            WriteLog = settings.WriteLog;
+            Commands = _settings.Commands;
+            SerialPort = _settings.SerialPort;
+            WriteLog = _settings.WriteLog;
 
 
             var result = _mainForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                settings.Commands = Commands;
-                settings.SerialPort = SerialPort;
-                settings.WriteLog = WriteLog;
+                _settings.Commands = Commands;
+                _settings.SerialPort = SerialPort;
+                _settings.WriteLog = WriteLog;
                 _theLogger.Enabled = WriteLog;
-                settings.Save();
+                _settings.Save();
 
                 if (_theWatcher != null)
                     _theWatcher.PortOptions = SerialPort;
@@ -131,7 +131,7 @@ namespace SerialPortControl
         {
             _theLogger.Write("Command \"{0}\" received.", e.Data);
 
-            Command commandToRun = settings.Commands.SingleOrDefault(c => c.Key == e.Data).Value;
+            Command commandToRun = _settings.Commands.SingleOrDefault(c => c.Key == e.Data).Value;
 
             if (commandToRun != null)
             {
@@ -163,13 +163,13 @@ namespace SerialPortControl
         {
             _theLogger.Write("Started listening.");
             
-            icon.Listening = true;
+            _trayIcon.Listening = true;
         }
 
         protected void OnDisconnected(object sender, EventArgs e)
         {
             _theLogger.Write("Ended listening.");
-            icon.Listening = false;
+            _trayIcon.Listening = false;
         }
 
         #region IController Members
@@ -177,12 +177,12 @@ namespace SerialPortControl
 
         public void ShowTrayIcon()
         {
-            icon.Visible = true;
+            _trayIcon.Visible = true;
         }
 
         public void HideTrayIcon()
         {
-            icon.Visible = false;
+            _trayIcon.Visible = false;
         }
 
         public void ShowLogFile()

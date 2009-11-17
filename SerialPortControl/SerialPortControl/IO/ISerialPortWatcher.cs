@@ -1,4 +1,6 @@
-﻿using System;
+﻿// An interface to define the contracts for watching an serialport
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace SerialPortControl.Model
 {
+    // Represents a command that is stored
     public class Command
     {
         public string IncomingCommand { get; set; }
@@ -34,14 +35,17 @@ namespace SerialPortControl.Model
         }
     }
 
+    // define the interface
     public interface ICommandDictionary : IDictionary<string, Command>
     {
         ICommandDictionary Clone();
         void Add(Command command);
     }
 
+    // used for storing in memory all commands
     public class CommandDictionary : Dictionary<string, Command>, ICommandDictionary
     {
+        // duplicate
         public ICommandDictionary Clone()
         {
             CommandDictionary returnValue = new CommandDictionary();
@@ -53,6 +57,7 @@ namespace SerialPortControl.Model
             return returnValue;
         }
 
+        // helper to make it standard
         public void Add(Command command)
         {
             Add(command.IncomingCommand, command);
