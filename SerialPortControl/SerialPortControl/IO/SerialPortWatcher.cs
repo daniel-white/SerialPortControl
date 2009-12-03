@@ -98,6 +98,7 @@ namespace SerialPortControl.IO
         {
             // block and notify
             _stopThreadEvent.Set();
+            _readingThread.Abort();
             StoppedListening(this, new EventArgs());
         }
         public void Start()
