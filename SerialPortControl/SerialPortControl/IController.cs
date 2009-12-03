@@ -20,5 +20,8 @@ namespace SerialPortControl
         void ShowLogFile();
         void EmptyLogFile();
 
+        void Start();
+        void Stop();
+
     }
 }

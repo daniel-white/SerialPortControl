@@ -14,7 +14,7 @@ namespace SerialPortControl
         /// 
         static IController _controller;
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.ThreadException += new ThreadExceptionEventHandler(OnError);
             bool createdNew = false;
@@ -29,6 +29,8 @@ namespace SerialPortControl
 
                     _controller = new Controller();
 
+                    if (ForceStart(args)) _controller.Start();
+
                     Application.Run();
                 }
                 else
@@ -42,6 +44,10 @@ namespace SerialPortControl
         {
             MessageBox.Show(e.Exception.ToString());
         }
-        
+
+        static bool ForceStart(string[] args)
+        {
+            return args.Select(a => a.ToLower() == "/start").Count() > 0;
+        }
     }
 }

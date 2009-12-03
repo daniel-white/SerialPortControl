@@ -162,7 +162,6 @@ namespace SerialPortControl
         protected void OnConnected(object sender, EventArgs e)
         {
             _theLogger.Write("Started listening.");
-            
             _trayIcon.Listening = true;
         }
 
@@ -192,6 +191,17 @@ namespace SerialPortControl
         public void EmptyLogFile()
         {
             _theLogger.Empty();
+        }
+
+
+        public void Start()
+        {
+            _theWatcher.Start();
+        }
+
+        public void Stop()
+        {
+            _theWatcher.Stop();
         }
 
 

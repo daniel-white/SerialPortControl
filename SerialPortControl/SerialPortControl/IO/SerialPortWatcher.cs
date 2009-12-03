@@ -64,6 +64,10 @@ namespace SerialPortControl.IO
         {
             // start a new thread
             _stopThreadEvent.Reset();
+
+            if (_readingThread != null)
+                _readingThread.Abort();
+
             _readingThread = new Thread(ReadData);
             _readingThread.Name = "SerialData";
         }
@@ -98,7 +102,7 @@ namespace SerialPortControl.IO
         {
             // block and notify
             _stopThreadEvent.Set();
-            _readingThread.Abort();
+            
             StoppedListening(this, new EventArgs());
         }
         public void Start()
@@ -107,7 +111,7 @@ namespace SerialPortControl.IO
             if (_readingThread.IsAlive)
                 return;
 
-            // set itup again
+            // set it up again
             SetupThread();
             _readingThread.Start();
 
@@ -144,6 +148,7 @@ namespace SerialPortControl.IO
                     }
                     if (_stopThreadEvent.WaitOne(0))
                     {
+                        serialPort.Close();
                         break;
                         // fall through the end of the thread
                     }
@@ -153,12 +158,8 @@ namespace SerialPortControl.IO
             catch (Exception)
             {
             }
-            finally
-            {
-                // clean up on any exceptions
-                if (serialPort != null)
-                    serialPort.Close();
-            }
+            if (serialPort != null && serialPort.IsOpen)
+                serialPort.Close();
 
         }
     }
